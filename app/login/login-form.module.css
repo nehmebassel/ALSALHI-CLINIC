@@ -1,0 +1,39 @@
+/* Login/Auth scoped styles */
+.scope { display: contents; }
+
+.scope :global(.login-page) {min-height: 100vh; display: grid; place-items: center; padding: 28px;
+  background: radial-gradient(circle at 15% 5%, rgba(49,95,140,.12), transparent 27rem), linear-gradient(135deg, #eef2f4, #fafafa 58%, #f1f1ef);}
+
+.scope :global(.login-card) {width: min(500px, 100%); padding: clamp(26px, 5vw, 44px); border: 1px solid #d5dadd; border-radius: 26px; background: rgba(255,255,255,.97); box-shadow: 0 28px 90px rgba(20,31,50,.12);}
+
+.scope :global(.login-brand) {display: flex; align-items: center; gap: 14px;}
+
+.scope :global(.login-brand) img {width: 72px; height: 72px; border-radius: 16px; object-fit: cover;}
+
+.scope :global(.login-brand) > div {display: grid; gap: 3px;}
+
+.scope :global(.login-brand) strong {color: var(--deep-navy); font-size: 1.04rem;}
+
+.scope :global(.login-brand) span {color: var(--graphite); font-size: .76rem;}
+
+.scope :global(.login-language) {display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 26px 0; padding: 4px; border-radius: 12px; background: #edf0f2;}
+
+.scope :global(.login-language) button {min-height: 42px; border: 0; border-radius: 9px; background: transparent; color: var(--graphite); font-weight: 850; cursor: pointer;}
+
+.scope :global(.login-language) button.active {background: white; color: var(--deep-navy); box-shadow: 0 3px 10px rgba(20,31,50,.08);}
+
+.scope :global(.login-copy) h1 {margin: 4px 0 8px; color: var(--deep-navy); font-size: clamp(2rem, 6vw, 2.8rem);}
+
+.scope :global(.login-copy) > p:last-child {margin: 0; color: var(--graphite); line-height: 1.75; font-size: .9rem;}
+
+.scope :global(.login-form) {display: grid; gap: 16px; margin-top: 27px;}
+
+.scope :global(.login-form) label {display: grid; gap: 7px; color: var(--secondary-steel); font-size: .82rem; font-weight: 800;}
+
+.scope :global(.login-form) input {min-height: 52px;}
+
+.scope :global(.login-submit) {width: 100%; min-height: 52px; margin-top: 4px;}
+
+.scope :global(.login-error) {padding: 11px 13px; border: 1px solid #e6bcbc; border-radius: 11px; background: #fff6f6; color: #8d3232; font-size: .82rem;}
+
+.scope :global(.login-footnote) {margin: 22px 0 0; padding-top: 18px; border-top: 1px solid #e6e8ea; color: var(--graphite); line-height: 1.65; font-size: .72rem;}

@@ -1,0 +1,1384 @@
+/* Patient Hair History scoped styles */
+.scope { display: contents; }
+
+.scope :global(.hair-history-workspace) {display: grid; gap: 14px;}
+
+.scope :global(.history-layer-chip-row) {display: flex; flex-wrap: wrap; gap: 7px; justify-content: center;}
+
+.scope :global(.history-layer-chip) {min-height: 34px; padding: 6px 11px; border: 1px solid var(--silver); border-radius: 9px; background: white; color: var(--graphite); cursor: pointer; font-size: .66rem; font-weight: 800;}
+
+.scope :global(.history-layer-chip--active) {border-color: #9eabb7; background: var(--soft-silver); color: var(--deep-navy);}
+
+.scope :global(.history-layer-chip--locked) {opacity: 1; cursor: default; background: #e5e8ea; color: #2d7453;}
+
+.scope :global(.hair-history-measure-legend) {display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 13px; padding-top: 12px; border-top: 1px solid #e7eaec;}
+
+.scope :global(.history-legend-item) {display: inline-flex; align-items: center; gap: 7px; color: var(--graphite); font-size: .64rem; font-weight: 700;}
+
+.scope :global(.history-legend-marker) {display: inline-block; width: 10px; height: 10px; border: 2px solid currentColor; background: white;}
+
+.scope :global(.history-legend-marker--shedding) {border-radius: 50%;}
+
+.scope :global(.history-legend-marker--density) {border-radius: 1px;}
+
+.scope :global(.history-legend-marker--itch) {transform: rotate(45deg);}
+
+.scope :global(.history-legend-marker--burning) {width: 0; height: 0; border: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 11px solid currentColor; background: transparent;}
+
+.scope :global(.history-legend-marker--scalp_pain) {position: relative; border: 0; background: transparent;}
+
+.scope :global(.history-legend-marker--scalp_pain)::before,
+.scope :global(.history-legend-marker--scalp_pain)::after {content: ""; position: absolute; inset: 4px 0 auto; height: 2px; background: currentColor;}
+
+.scope :global(.history-legend-marker--scalp_pain)::after {transform: rotate(90deg);}
+
+.scope :global(.history-legend-line) {width: 24px; border-top: 2px solid currentColor;}
+
+.scope :global(.history-metric--shedding) {color: #141f32;}
+
+.scope :global(.history-metric--density) {color: #315f8c;}
+
+.scope :global(.history-metric--itch) {color: #6d5a9a;}
+
+.scope :global(.history-metric--burning) {color: #a56a14;}
+
+.scope :global(.history-metric--pain) {color: #a23a3a;}
+
+.scope :global(.history-metric--itch) :global(.history-legend-line),
+.scope :global(.history-metric--burning) :global(.history-legend-line) {border-top-style: dashed;}
+
+.scope :global(.hair-history-main-grid) {display: grid; grid-template-columns: minmax(0,1fr) minmax(300px, .34fr); gap: 14px; align-items: start;}
+
+.scope :global(.hair-history-chart-card) {padding: 16px 18px 12px; overflow: hidden;}
+
+.scope :global(.hair-history-svg-wrap) {width: 100%; overflow-x: auto;}
+
+.scope :global(.hair-history-svg-wrap) svg {display: block; width: 100%; min-width: 920px; height: auto; touch-action: none; user-select: none;}
+
+.scope :global(.history-grid-line) {stroke: #e3e7ea; stroke-width: 1;}
+
+.scope :global(.history-axis-title),
+.scope :global(.history-axis-label),
+.scope :global(.history-date-label),
+.scope :global(.history-lane-label),
+.scope :global(.history-event-section-title) {fill: #616870; font-family: Tahoma, Arial, sans-serif;}
+
+.scope :global(.history-axis-title) {font-size: 11px; font-weight: 800;}
+
+.scope :global(.history-axis-label),
+.scope :global(.history-date-label) {font-size: 10px;}
+
+.scope :global(.history-lane-label) {font-size: 10px; font-weight: 800;}
+
+.scope :global(.history-event-section-title) {font-size: 11px; font-weight: 800; fill: #273349;}
+
+.scope :global(.history-boundary-line) {stroke: #9ba8b2; stroke-width: 1.2;}
+
+.scope :global(.history-lane-line) {stroke: #e5e8eb; stroke-width: 1;}
+
+.scope :global(.history-metric-line) {fill: none; stroke: currentColor; stroke-width: 2.4;}
+
+.scope :global(.history-metric--itch) :global(.history-metric-line),
+.scope :global(.history-metric--burning) :global(.history-metric-line) {stroke-dasharray: 7 5;}
+
+.scope :global(.history-point) {cursor: ns-resize; color: inherit;}
+
+.scope :global(.history-point) circle,
+.scope :global(.history-point) rect,
+.scope :global(.history-point) polygon {fill: white; stroke: currentColor; stroke-width: 2.7;}
+
+.scope :global(.history-point) line {stroke: currentColor; stroke-width: 3; stroke-linecap: round;}
+
+.scope :global(.history-point--selected) circle,
+.scope :global(.history-point--selected) rect,
+.scope :global(.history-point--selected) polygon {stroke-width: 5;}
+
+.scope :global(.history-point--selected) line {stroke-width: 5;}
+
+.scope :global(.history-point-value) {fill: currentColor; font-size: 10px; font-weight: 900; pointer-events: none;}
+
+.scope :global(.hair-history-empty) {min-height: 330px; display: grid; place-content: center; text-align: center; gap: 7px; color: var(--graphite);}
+
+.scope :global(.hair-history-empty) strong {color: var(--deep-navy);}
+
+.scope :global(.hair-history-empty) p {margin: 0;}
+
+.scope :global(.hair-history-editor-card) {position: sticky; top: 16px; min-height: 360px;}
+
+.scope :global(.hair-history-edit-form),
+.scope :global(.hair-history-approved-panel) {display: grid; gap: 12px;}
+
+.scope :global(.hair-history-edit-form) h2,
+.scope :global(.hair-history-approved-panel) h2 {margin: 0; color: var(--deep-navy); font-size: 1rem;}
+
+.scope :global(.hair-history-edit-form) label,
+.scope :global(.hair-history-approved-panel) label {display: grid; gap: 5px; color: var(--secondary-steel); font-size: .68rem; font-weight: 800;}
+
+.scope :global(.hair-history-edit-form) textarea,
+.scope :global(.hair-history-approved-panel) textarea {min-height: 76px; resize: vertical;}
+
+.scope :global(.hair-history-edit-form) label small {color: var(--graphite); font-weight: 500; line-height: 1.45;}
+
+.scope :global(.hair-history-include-toggle) {grid-template-columns: auto 1fr !important; align-items: center;}
+
+.scope :global(.hair-history-include-toggle) input {width: 18px; min-height: 18px; margin: 0;}
+
+.scope :global(.hair-history-approved-panel) p {margin: 0; color: var(--graphite); font-size: .68rem; line-height: 1.55;}
+
+.scope :global(.hair-history-detail-list) {display: grid; gap: 0; margin: 0; border: 1px solid #e1e5e8; border-radius: 10px; overflow: hidden;}
+
+.scope :global(.hair-history-detail-list) > div {display: grid; grid-template-columns: minmax(105px,.42fr) 1fr; gap: 10px; padding: 9px 10px; background: white; border-top: 1px solid #edf0f2;}
+
+.scope :global(.hair-history-detail-list) > div:first-child {border-top: 0;}
+
+.scope :global(.hair-history-detail-list) dt {color: var(--graphite); font-size: .61rem; font-weight: 700;}
+
+.scope :global(.hair-history-detail-list) dd {margin: 0; color: var(--deep-navy); font-size: .66rem; font-weight: 800; overflow-wrap: anywhere;}
+
+.scope :global(.hair-history-panel-actions) {display: flex; gap: 8px; justify-content: flex-end;}
+
+.scope :global(.hair-history-panel-actions) :global(.button) {min-width: 110px;}
+
+.scope :global(.hair-history-panel-error) {margin: 0; padding: 10px 12px; border: 1px solid #d99b9b; border-radius: 9px; background: #fff0f0; color: var(--error); font-size: .67rem; line-height: 1.5;}
+
+.scope :global(.hair-history-panel-message) {margin: 0; padding: 10px 12px; border-radius: 9px; background: #edf4fa; color: var(--info); font-size: .67rem; line-height: 1.5;}
+
+.scope :global(.hair-history-editor-card--error) {border-color: #d99b9b;}
+
+.scope :global(.hair-history-editor-card--saved) {border-color: #8ab39a; background: #f7fbf8;}
+
+.scope :global(.hair-history-saved-state) {display: grid; gap: 7px; padding: 12px; border: 1px solid #9cc3aa; border-radius: 10px; background: #edf7f0; color: #2d7453;}
+
+.scope :global(.hair-history-saved-state) strong {font-size: .9rem;}
+
+.scope :global(.hair-history-saved-state) span,
+.scope :global(.hair-history-saved-state) small {font-size: .65rem;}
+
+.scope :global(.hair-history-undated-card) {display: grid; gap: 10px;}
+
+.scope :global(.hair-history-undated-card) h2 {margin: 0; font-size: .95rem;}
+
+.scope :global(.hair-history-undated-card) :global(.muted) {margin: 0;}
+
+.scope :global(.hair-history-undated-list) {display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px;}
+
+.scope :global(.hair-history-undated-item) {display: grid; gap: 4px; min-width: 0; padding: 10px 12px; border: 1px solid #dfe4e7; border-radius: 9px; background: white; color: var(--deep-navy); text-align: start; cursor: pointer;}
+
+.scope :global(.hair-history-undated-item) strong {font-size: .7rem; overflow-wrap: anywhere;}
+
+.scope :global(.hair-history-undated-item) span {color: var(--graphite); font-size: .6rem;}
+
+.scope :global(.hair-history-undated-item--selected) {border-color: #303c56; box-shadow: inset 0 0 0 1px #303c56;}
+
+.scope :global(.hair-history-actions) {display: flex; align-items: center; justify-content: space-between; gap: 20px; border-color: #c8cacc; background: white;}
+
+.scope :global(.hair-history-actions) strong {color: var(--deep-navy); font-size: .88rem;}
+
+.scope :global(.hair-history-actions) p {max-width: 760px; margin: 5px 0 0; color: var(--graphite); font-size: .68rem; line-height: 1.55;}
+
+.scope :global(.hair-history-actions) > div:last-child {display: flex; flex-wrap: wrap; gap: 8px;}
+
+.scope :global(.hair-history-message) {margin: 0; padding: 10px 13px; border-radius: 10px; background: #edf4fa; color: var(--info); font-size: .72rem; font-weight: 700;}
+
+.scope :global(.hair-history-modal-backdrop) {position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px; background: rgba(20,31,50,.38);}
+
+.scope :global(.hair-history-confirm-dialog) {width: min(760px, 100%); display: grid; gap: 14px; padding: 28px 30px; border: 1px solid #78a28a; border-radius: 14px; background: white; box-shadow: 0 22px 70px rgba(20,31,50,.2);}
+
+.scope :global(.hair-history-confirm-dialog) h2 {margin: 0; color: #2d7453; font-size: 1.2rem;}
+
+.scope :global(.hair-history-confirm-dialog) > p {margin: 0; color: var(--graphite); font-size: .72rem; line-height: 1.65;}
+
+.scope :global(.hair-history-confirm-dialog) ul {display: grid; gap: 8px; margin: 0; padding: 0; list-style: none;}
+
+.scope :global(.hair-history-confirm-dialog) li {display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px; border-bottom: 1px solid #eef0f1; color: var(--deep-navy); font-size: .75rem; font-weight: 800;}
+
+.scope :global(.hair-history-confirm-dialog) li span {display: inline-grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; background: #2d7453; color: white;}
+
+@media (max-width: 1180px) {
+  .scope :global(.hair-history-main-grid) {grid-template-columns: 1fr;}
+  .scope :global(.hair-history-editor-card) {position: static;}
+  .scope :global(.history-layer-chip-row) {justify-content: flex-start;}
+}
+
+@media (max-width: 760px) {
+  .scope :global(.hair-history-actions) {flex-direction: column; align-items: stretch;}
+  .scope :global(.hair-history-undated-list) {grid-template-columns: 1fr;}
+  .scope :global(.hair-history-actions) > div:last-child {width: 100%;}
+  .scope :global(.hair-history-actions) :global(.button) {flex: 1;}
+  .scope :global(.hair-history-panel-actions) {flex-direction: column;}
+  .scope :global(.hair-history-panel-actions) :global(.button) {width: 100%;}
+  .scope :global(.hair-history-confirm-dialog) {padding: 22px 18px;}
+}
+
+.scope :global(.hair-history-main-grid) {display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px;}
+
+.scope :global(.hair-history-chart-card) {width: 100%; padding: 14px 16px 10px;}
+
+.scope :global(.hair-history-svg-wrap) {width: 100%; overflow-x: auto;}
+
+.scope :global(.hair-history-svg-wrap) svg {display: block; width: 100%; min-width: 1080px; height: auto; touch-action: none; user-select: none;}
+
+.scope :global(.hair-history-editor-card) {position: static; min-height: 0; width: 100%;}
+
+.scope :global(.hair-history-review-header) {display: flex; align-items: flex-start; justify-content: space-between; gap: 18px;}
+
+.scope :global(.hair-history-review-header) > div {display: grid; gap: 3px;}
+
+.scope :global(.hair-history-selected-source) {color: var(--graphite); font-size: .66rem; font-weight: 700; white-space: nowrap;}
+
+.scope :global(.hair-history-review-fields) {display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: end;}
+
+.scope :global(.hair-history-review-fields) > label {min-width: 0;}
+
+.scope :global(.hair-history-review-fields) select,
+.scope :global(.hair-history-review-fields) input,
+.scope :global(.hair-history-review-fields) textarea,
+.scope :global(.hair-history-reopen-field) textarea {width: 100%; min-height: 42px;}
+
+.scope :global(.hair-history-reason-field) {grid-column: span 2;}
+
+.scope :global(.hair-history-reason-field) textarea {min-height: 64px;}
+
+.scope :global(.hair-history-reopen-field) {display: grid; gap: 6px; max-width: 760px;}
+
+.scope :global(.hair-history-segmented) {display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #c8cacc; border-radius: 9px; overflow: hidden; background: white;}
+
+.scope :global(.hair-history-segmented) button {min-height: 40px; border: 0; border-inline-start: 1px solid #e0e3e5; background: white; color: var(--graphite); font-weight: 800; cursor: pointer;}
+
+.scope :global(.hair-history-segmented) button:first-child {border-inline-start: 0;}
+
+.scope :global(.hair-history-segmented) button.is-active {background: #273349; color: white;}
+
+.scope :global(.hair-history-detail-list--inline) {grid-template-columns: repeat(2, minmax(0, 1fr)); border: 0; gap: 10px; overflow: visible;}
+
+.scope :global(.hair-history-detail-list--inline) > div {border: 1px solid #e1e5e8 !important; border-radius: 9px;}
+
+.scope :global(.history-date-guide) {stroke: #eef0f2; stroke-width: 1; stroke-dasharray: 3 5; pointer-events: none;}
+
+.scope :global(.history-drag-origin-marker) {fill: none; stroke: currentColor; stroke-width: 1.6; stroke-dasharray: 4 3; opacity: .42; pointer-events: none;}
+
+.scope :global(.history-point) {cursor: grab;}
+
+.scope :global(.history-point):active {cursor: grabbing;}
+
+.scope :global(.history-layer-chip-row) {justify-content: flex-start;}
+
+.scope :global(.hair-history-measure-legend) {gap: 8px 22px;}
+
+.scope :global(.history-legend-item) {font-size: .68rem;}
+
+.scope :global(.history-metric--shedding) {color: #141F32;}
+
+.scope :global(.history-metric--density) {color: #315F8C;}
+
+.scope :global(.history-metric--itch) {color: #6D5A9A;}
+
+.scope :global(.history-metric--burning) {color: #A56A14;}
+
+.scope :global(.history-metric--pain) {color: #A23A3A;}
+
+@media (max-width: 920px) {
+  .scope :global(.hair-history-review-fields) {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .scope :global(.hair-history-reason-field) {grid-column: 1 / -1;}
+  .scope :global(.hair-history-review-header) {flex-direction: column;}
+}
+
+@media (max-width: 620px) {
+  .scope :global(.hair-history-review-fields) {grid-template-columns: 1fr;}
+  .scope :global(.hair-history-reason-field) {grid-column: auto;}
+}
+
+.scope :global(.history-lane-divider) {stroke: #f0f2f3; stroke-width: 1;}
+
+.scope :global(.hair-history-workspace) {grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;}
+
+.scope :global(.history-layer-chip-row) {gap: 5px;
+  justify-content: flex-start;}
+
+.scope :global(.history-layer-chip) {min-height: 30px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  font-size: .64rem;}
+
+.scope :global(.hair-history-measure-legend) {margin-top: 9px;
+  padding-top: 9px;
+  gap: 7px 18px;}
+
+.scope :global(.hair-history-main-grid),
+.scope :global(.hair-history-undated-card),
+.scope :global(.hair-history-actions),
+.scope :global(.hair-history-message) {grid-column: 1 / -1;}
+
+.scope :global(.hair-history-main-grid) {gap: 12px;}
+
+.scope :global(.hair-history-chart-card) {padding: 14px 16px 12px;
+  border-radius: 15px;}
+
+.scope :global(.hair-history-svg-wrap) {overflow-x: hidden;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 47%, #fbfcfd 47%, #fbfcfd 100%);}
+
+.scope :global(.hair-history-svg-wrap) svg {width: 100%;
+  min-width: 1280px;}
+
+.scope :global(.history-axis-title) {font-size: 12px;}
+
+.scope :global(.history-axis-label),
+.scope :global(.history-date-label) {font-size: 11px;}
+
+.scope :global(.history-event-section-title) {font-size: 12px;}
+
+.scope :global(.history-lane-label) {font-size: 11px; fill: #39475a;}
+
+.scope :global(.history-lane-divider) {stroke: #e4e8ec;}
+
+.scope :global(.history-lane-line) {stroke: #dfe4e8;}
+
+.scope :global(.history-date-guide) {stroke: #e4e8ec; stroke-dasharray: 3 6;}
+
+.scope :global(.hair-history-editor-card) {grid-column: 1 / -1;
+  padding: 16px 18px;
+  border-radius: 15px;}
+
+.scope :global(.hair-history-edit-form) {gap: 14px;}
+
+.scope :global(.hair-history-review-header) {display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8ebed;}
+
+.scope :global(.hair-history-review-fields) {grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;}
+
+.scope :global(.hair-history-field--precision) {grid-column: span 2;}
+
+.scope :global(.hair-history-field--date) {grid-column: span 2;}
+
+.scope :global(.hair-history-field--value) {grid-column: span 1;}
+
+.scope :global(.hair-history-field--state) {grid-column: span 2;}
+
+.scope :global(.hair-history-field--reason) {grid-column: span 5;}
+
+.scope :global(.hair-history-review-fields) input,
+.scope :global(.hair-history-review-fields) select {min-height: 40px;}
+
+.scope :global(.hair-history-reason-field) textarea {min-height: 58px;}
+
+.scope :global(.hair-history-panel-actions) {justify-content: flex-start;
+  padding-top: 2px;}
+
+[dir="rtl"] .scope :global(.hair-history-panel-actions),
+.scope [dir="rtl"] :global(.hair-history-panel-actions) {justify-content: flex-end;}
+
+.scope :global(.hair-history-undated-card) {padding: 16px 18px;}
+
+.scope :global(.hair-history-undated-list) {grid-template-columns: repeat(4, minmax(0,1fr));}
+
+.scope :global(.hair-history-actions) {padding: 15px 18px;
+  border-radius: 15px;}
+
+@media (min-width: 1600px) {
+  .scope :global(.hair-history-chart-card) {padding-inline: 20px;}
+  .scope :global(.history-layer-chip) {font-size: .68rem; padding-inline: 11px;}
+}
+
+@media (max-width: 1399px) {
+  .scope :global(.hair-history-undated-list) {grid-template-columns: repeat(3, minmax(0,1fr));}
+  .scope :global(.hair-history-field--reason) {grid-column: span 4;}
+  .scope :global(.hair-history-field--state) {grid-column: span 3;}
+}
+
+.scope :global(.hair-history-svg-wrap) {position: relative;}
+
+.scope :global(.hair-history-overview-popover) {position: absolute;
+  top: 18px;
+  z-index: 18;
+  width: min(360px, calc(100% - 36px));
+  padding: 14px;
+  border: 1px solid #cfd6dc;
+  border-radius: 14px;
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 16px 40px rgba(20,31,50,.14);
+  backdrop-filter: blur(10px);}
+
+.scope :global(.hair-history-overview-header) {display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8ebed;}
+
+.scope :global(.hair-history-overview-header) > div {min-width: 0;}
+
+.scope :global(.hair-history-overview-header) :global(.eyebrow) {margin-bottom: 2px;}
+
+.scope :global(.hair-history-overview-header) h3 {margin: 0;
+  color: var(--deep-navy);
+  font-size: .9rem;
+  line-height: 1.45;}
+
+.scope :global(.hair-history-overview-close) {width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce1e5;
+  border-radius: 9px;
+  background: #f8fafb;
+  color: #485466;
+  font-size: 1.15rem;
+  cursor: pointer;}
+
+.scope :global(.hair-history-overview-neighbors) article span {display: block;
+  color: #79828a;
+  font-size: .58rem;
+  font-weight: 800;}
+
+.scope :global(.hair-history-overview-neighbors) {display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 8px;
+  margin-top: 9px;}
+
+.scope :global(.hair-history-overview-neighbors) article {padding: 8px 9px;
+  border: 1px solid #e6eaed;
+  border-radius: 9px;
+  background: #f8fafb;}
+
+.scope :global(.hair-history-overview-neighbors) article strong {display: block;
+  margin-top: 2px;
+  color: #273349;
+  font-size: .76rem;}
+
+.scope :global(.hair-history-overview-neighbors) article small {display: block;
+  margin-top: 2px;
+  color: #747e87;
+  font-size: .56rem;}
+
+.scope :global(.hair-history-overview-actions) {display: flex;
+  justify-content: flex-end;
+  margin-top: 11px;}
+
+[dir="rtl"] .scope :global(.hair-history-overview-actions),
+.scope [dir="rtl"] :global(.hair-history-overview-actions) {justify-content: flex-start;}
+
+.scope :global(.hair-history-overview-actions) :global(.button) {min-height: 34px; padding: 6px 13px; font-size: .64rem;}
+
+.scope :global(.history-point--selected) circle,
+.scope :global(.history-point--selected) rect,
+.scope :global(.history-point--selected) polygon {filter: drop-shadow(0 0 5px currentColor);}
+
+.scope :global(.history-point--selected) line {filter: drop-shadow(0 0 4px currentColor);}
+
+@media (min-width: 1600px) {
+  .scope :global(.hair-history-overview-popover) {width: 380px; padding: 15px;}
+}
+
+.scope :global(.hair-history-workspace) {display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;}
+
+.scope :global(.hair-history-commandbar) {grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(260px, 3fr) minmax(0, 9fr);
+  gap: 10px 22px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid #dce3e8;
+  border-radius: 14px;
+  background: #f7f9fa;}
+
+.scope :global(.hair-history-command-source) {display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;}
+
+.scope :global(.hair-history-command-source) > div {display: grid; gap: 2px; min-width: 0;}
+
+.scope :global(.hair-history-command-source) strong {color: #141f32; font-size: .78rem;}
+
+.scope :global(.hair-history-command-source) span:not(:global(.status-pill)) {color: #78828c; font-size: .61rem;}
+
+.scope :global(.hair-history-layer-tools) {display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  min-width: 0;}
+
+[dir="rtl"] .scope :global(.hair-history-layer-tools),
+.scope [dir="rtl"] :global(.hair-history-layer-tools) {justify-content: flex-start;}
+
+.scope :global(.hair-history-commandbar) :global(.history-layer-chip-row) {display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #d8e0e5;
+  border-radius: 11px;
+  background: #edf2f5;
+  min-width: 0;}
+
+.scope :global(.hair-history-commandbar) :global(.history-layer-chip) {position: relative;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #68747f;
+  font-size: .66rem;
+  font-weight: 800;
+  cursor: pointer;}
+
+.scope :global(.hair-history-commandbar) :global(.history-layer-chip--active) {border-color: #c9d5de; background: #fff; color: #141f32; box-shadow: 0 2px 7px rgba(20,31,50,.09);}
+
+.scope :global(.hair-history-commandbar) :global(.history-layer-chip--locked) {border-color: #b9d0c1; background: #f2f8f4; color: #2d7453; opacity: 1;}
+
+.scope :global(.hair-history-layer-mode) {min-height: 30px;
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  background: #fff;
+  color: #4a5665;
+  font-size: .62rem;
+  font-weight: 800;
+  cursor: pointer;}
+
+.scope :global(.hair-history-commandbar) :global(.hair-history-measure-legend) {grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px 24px;
+  margin: 0;
+  padding: 9px 2px 0;
+  border-top: 1px solid #eef1f3;}
+
+.scope :global(.hair-history-commandbar) :global(.history-legend-item) {font-size: .62rem;}
+
+.scope :global(.hair-history-main-grid) {grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 12px;}
+
+.scope :global(.hair-history-chart-card--modern) {position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #dce2e7;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(20,31,50,.045);}
+
+.scope :global(.hair-history-chart-viewport) {position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: #fff;}
+
+.scope :global(.hair-history-chart-card--modern) :global(.hair-history-svg-wrap) {width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 0;
+  background: #fff;
+  scrollbar-gutter: stable;}
+
+.scope :global(.hair-history-chart-card--modern) :global(.hair-history-svg-wrap) svg {display: block;
+  width: 100%;
+  min-width: 1180px;
+  height: auto;
+  background: #fff;}
+
+.scope :global(.history-axis-title),
+.scope :global(.history-event-section-title) {fill: #6c7782;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .01em;}
+
+.scope :global(.history-axis-label),
+.scope :global(.history-date-label) {fill: #7b858e; font-size: 10.5px; font-weight: 650;}
+
+.scope :global(.history-grid-line) {stroke: #edf0f2; stroke-width: 1;}
+
+.scope :global(.history-boundary-line) {stroke: #cfd6dc; stroke-width: 1;}
+
+.scope :global(.history-date-guide) {stroke: #e5e9ed; stroke-dasharray: 2 6; stroke-width: 1;}
+
+.scope :global(.history-lane-line) {stroke: #e9edf0; stroke-width: 1; stroke-dasharray: 2 7;}
+
+.scope :global(.history-lane-divider) {stroke: #f0f2f4; stroke-width: 1;}
+
+.scope :global(.history-lane-label) {fill: #344253;
+  font-size: 11.5px;
+  font-weight: 850;}
+
+.scope :global(.history-lane-accent) {stroke: currentColor; stroke-width: 3; stroke-linecap: round;}
+
+.scope :global(.history-point--readonly) {cursor: pointer;}
+
+.scope :global(.history-point-value) {fill: currentColor; font-size: 10px; font-weight: 900;}
+
+.scope :global(.history-metric-line) {stroke-width: 2.4; fill: none;}
+
+.scope :global(.history-point) {cursor: grab; touch-action: none;}
+
+.scope :global(.history-point--selected) {filter: drop-shadow(0 0 5px rgba(49,95,140,.35));}
+
+.scope :global(.hair-history-overview-popover) {position: absolute;
+  z-index: 20;
+  width: min(310px, calc(100% - 28px));
+  max-height: calc(100% - 24px);
+  overflow: auto;
+  padding: 11px 12px;
+  border: 1px solid rgba(207,214,220,.92);
+  border-radius: 11px;
+  background: rgba(255,255,255,.965);
+  box-shadow: 0 14px 36px rgba(20,31,50,.12);
+  backdrop-filter: blur(14px);
+  transition: opacity 120ms ease, box-shadow 120ms ease;}
+
+.scope :global(.hair-history-overview-popover)::before,
+.scope :global(.hair-history-overview-popover)::after {content: "";
+  position: absolute;
+  pointer-events: none;}
+
+.scope :global(.hair-history-overview-popover)::before {background: #315f8c;
+  opacity: .5;}
+
+.scope :global(.hair-history-overview-popover)::after {width: 10px;
+  height: 10px;
+  border: solid rgba(207,214,220,.92);
+  background: rgba(255,255,255,.98);
+  transform: rotate(45deg);}
+
+.scope :global(.hair-history-overview-popover)[data-placement="right"]::before {right: 100%;
+  top: var(--overview-pointer-y);
+  width: 18px;
+  height: 1px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="right"]::after {right: calc(100% - 5px);
+  top: calc(var(--overview-pointer-y) - 5px);
+  border-width: 0 0 1px 1px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="left"]::before {left: 100%;
+  top: var(--overview-pointer-y);
+  width: 18px;
+  height: 1px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="left"]::after {left: calc(100% - 5px);
+  top: calc(var(--overview-pointer-y) - 5px);
+  border-width: 1px 1px 0 0;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="below"]::before {left: var(--overview-pointer-x);
+  bottom: 100%;
+  width: 1px;
+  height: 18px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="below"]::after {left: calc(var(--overview-pointer-x) - 5px);
+  bottom: calc(100% - 5px);
+  border-width: 1px 0 0 1px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="above"]::before {left: var(--overview-pointer-x);
+  top: 100%;
+  width: 1px;
+  height: 18px;}
+
+.scope :global(.hair-history-overview-popover)[data-placement="above"]::after {left: calc(var(--overview-pointer-x) - 5px);
+  top: calc(100% - 5px);
+  border-width: 0 1px 1px 0;}
+
+.scope :global(.hair-history-overview-header) {padding-bottom: 7px; border-bottom: 1px solid #eef1f3;}
+
+.scope :global(.hair-history-overview-header) h3 {font-size: .78rem; line-height: 1.4;}
+
+.scope :global(.hair-history-overview-close) {width: 25px; height: 25px; border: 0; border-radius: 7px; background: #f1f4f6; font-size: .95rem;}
+
+.scope :global(.hair-history-overview-neighbors) article span {font-size: .52rem;}
+
+.scope :global(.hair-history-overview-neighbors) {gap: 4px; margin-top: 6px;}
+
+.scope :global(.hair-history-overview-neighbors) article {padding: 5px 7px; border: 0; border-radius: 7px; background: #f6f8f9;}
+
+.scope :global(.hair-history-overview-actions) {margin-top: 7px;}
+
+.scope :global(.hair-history-overview-actions) :global(.button) {min-height: 30px; padding: 4px 10px; font-size: .58rem;}
+
+.scope :global(.hair-history-editor-card) {grid-column: 1 / -1;
+  position: static;
+  padding: 14px 16px;
+  border: 1px solid #dce2e7;
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: none;}
+
+.scope :global(.hair-history-review-header) {padding-bottom: 8px; border-bottom: 1px solid #eef1f3;}
+
+.scope :global(.hair-history-review-header) h2 {font-size: .88rem;}
+
+.scope :global(.hair-history-review-fields) {grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 9px;}
+
+.scope :global(.hair-history-review-fields) label > span:first-child {color: #6e7984; font-size: .6rem; font-weight: 800;}
+
+.scope :global(.hair-history-review-fields) input,
+.scope :global(.hair-history-review-fields) select,
+.scope :global(.hair-history-review-fields) textarea {border-color: #dce2e7; border-radius: 8px; background: #fbfcfd;}
+
+.scope :global(.hair-history-actions),
+.scope :global(.hair-history-undated-card) {border-radius: 11px; box-shadow: none;}
+
+@media (min-width: 1700px) {
+  .scope :global(.hair-history-chart-card--modern) :global(.hair-history-svg-wrap) svg {min-width: 1500px;}
+}
+
+.scope :global(.hair-history-chart-card--modern) :global(.hair-history-svg-wrap) {background:
+    linear-gradient(180deg, rgba(247,250,252,.72), rgba(255,255,255,0) 34%),
+    #fff;}
+
+.scope :global(.hair-history-chart-card--modern) :global(.hair-history-svg-wrap) svg {min-width: 1080px;}
+
+.scope :global(.history-measure-empty) {fill: #8a949d;
+  font-size: 13px;
+  font-weight: 750;}
+
+.scope :global(.hair-history-sparse-note) {display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 14px 0;
+  padding: 9px 11px;
+  border: 1px solid #dbe4eb;
+  border-radius: 8px;
+  background: #f8fbfd;
+  color: #536172;
+  font-size: .61rem;
+  line-height: 1.5;}
+
+.scope :global(.hair-history-sparse-note) strong {flex: 0 0 auto; color: #23374c; font-size: .63rem;}
+
+.scope :global(.history-point-cluster-badge) {pointer-events: none;}
+
+.scope :global(.history-point-cluster-badge) circle {fill: #fff;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;}
+
+.scope :global(.history-point-cluster-badge) text {fill: currentColor;
+  font-size: 9px;
+  font-weight: 900;}
+
+.scope :global(.hair-history-context-dashboard) {display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #dce2e7;
+  border-radius: 12px;
+  background: #f8fafb;
+  box-shadow: 0 8px 24px rgba(20,31,50,.035);}
+
+.scope :global(.hair-history-context-heading) {display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #e0e5e9;}
+
+.scope :global(.hair-history-context-heading) > div {min-width: 0;}
+
+.scope :global(.hair-history-context-heading) h2 {margin: 1px 0 3px;
+  color: #141f32;
+  font-size: 1rem;}
+
+.scope :global(.hair-history-context-heading) p:not(:global(.eyebrow)) {margin: 0;
+  color: #6f7a85;
+  font-size: .68rem;
+  line-height: 1.6;}
+
+.scope :global(.hair-history-context-heading) > span {flex: 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid #d9e0e6;
+  border-radius: 999px;
+  background: #fff;
+  color: #536172;
+  font-size: .62rem;
+  font-weight: 850;}
+
+.scope :global(.hair-history-treatment-section) {display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #d8e2eb;
+  border-radius: 11px;
+  background: #fff;}
+
+.scope :global(.hair-history-context-section-title) {display: flex;
+  align-items: center;
+  gap: 10px;}
+
+.scope :global(.hair-history-context-section-title) h3,
+.scope :global(.hair-history-event-group) h3 {margin: 0;
+  color: #1b2a3f;
+  font-size: .78rem;}
+
+.scope :global(.hair-history-context-section-title) p {margin: 2px 0 0;
+  color: #78838d;
+  font-size: .58rem;}
+
+.scope :global(.hair-history-context-icon) {width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  color: #677381;
+  background: #fff;}
+
+.scope :global(.hair-history-context-icon--treatments) {color: #315f8c;}
+
+.scope :global(.hair-history-treatment-list) {display: grid; gap: 8px;}
+
+.scope :global(.hair-history-treatment-card) {width: 100%;
+  display: grid;
+  grid-template-columns: minmax(190px, .8fr) minmax(300px, 1fr) minmax(320px, 2.2fr);
+  gap: 18px;
+  align-items: center;
+  padding: 11px 12px;
+  border: 1px solid #e1e6ea;
+  border-radius: 9px;
+  background: #fbfcfd;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;}
+
+.scope :global(.hair-history-treatment-card):hover,
+.scope :global(.hair-history-treatment-card):focus-visible,
+.scope :global(.hair-history-treatment-card--selected) {border-color: #8caac5;
+  background: #f5f9fc;
+  box-shadow: 0 3px 12px rgba(49,95,140,.08);
+  outline: none;}
+
+.scope :global(.hair-history-treatment-card-copy) {display: grid; gap: 2px; min-width: 0;}
+
+.scope :global(.hair-history-treatment-card-copy) strong {overflow-wrap: anywhere;
+  color: #17263a;
+  font-size: .72rem;
+  line-height: 1.45;}
+
+.scope :global(.hair-history-treatment-card-copy) small {color: #6c7985; font-size: .55rem;}
+
+.scope :global(.hair-history-treatment-dates) {display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  color: #344253;
+  font-size: .61rem;}
+
+.scope :global(.hair-history-treatment-dates) > span {display: grid; gap: 2px; min-width: 0;}
+
+.scope :global(.hair-history-treatment-dates) b {color: #88919a; font-size: .51rem;}
+
+.scope :global(.hair-history-treatment-timeline) {display: grid; gap: 5px; min-width: 0;}
+
+.scope :global(.hair-history-treatment-timeline-label) {color: #667483;
+  font-size: .53rem;
+  font-weight: 800;}
+
+.scope :global(.hair-history-treatment-track) {position: relative;
+  height: 24px;
+  direction: ltr;
+  border-radius: 7px;
+  background:
+    linear-gradient(90deg, transparent 0, transparent calc(25% - .5px), #e4e9ed 25%, transparent calc(25% + .5px), transparent calc(50% - .5px), #e4e9ed 50%, transparent calc(50% + .5px), transparent calc(75% - .5px), #e4e9ed 75%, transparent calc(75% + .5px)),
+    #f0f3f5;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;}
+
+.scope :global(.hair-history-treatment-track--editable) {box-shadow: inset 0 0 0 1px rgba(49,95,140,.08);}
+
+.scope :global(.hair-history-treatment-duration) {position: absolute;
+  top: 5px;
+  bottom: 5px;
+  min-width: 10px;
+  border: 1px solid #315f8c;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #d7e7f4, #b9d2e7);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);}
+
+.scope :global(.hair-history-treatment-duration--ongoing) {border-style: dashed;
+  background: linear-gradient(90deg, #d7e7f4, #e9f1f7);}
+
+.scope :global(.hair-history-treatment-duration--draggable) {cursor: grab;}
+
+.scope :global(.hair-history-treatment-duration--draggable):active {cursor: grabbing;}
+
+.scope :global(.hair-history-treatment-boundary) {position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 8px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: #204d77;
+  box-shadow: 0 0 0 1px #204d77;
+  transform: translate(-4px, -50%);}
+
+.scope :global(.hair-history-treatment-boundary--end) {background: #557893; box-shadow: 0 0 0 1px #557893;}
+
+.scope :global(.hair-history-treatment-boundary--ongoing) {width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 2px #557893;
+  transform: translate(-4.5px, -50%);}
+
+.scope :global(.hair-history-treatment-boundary--draggable) {cursor: ew-resize;}
+
+.scope :global(.hair-history-event-groups) {display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+  align-items: start;}
+
+.scope :global(.hair-history-event-group) {min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e0e5e9;
+  border-radius: 10px;
+  background: #fff;}
+
+.scope :global(.hair-history-event-group) > header {display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 11px;
+  border-bottom: 1px solid #e8ecef;
+  background: #fbfcfd;}
+
+.scope :global(.hair-history-event-group) > header b {min-width: 22px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #edf1f4;
+  color: #687582;
+  font-size: .54rem;
+  text-align: center;}
+
+.scope :global(.hair-history-event-group) > div {display: grid;}
+
+.scope :global(.hair-history-event-card) {width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  gap: 9px;
+  align-items: center;
+  min-height: 58px;
+  padding: 9px 11px;
+  border: 0;
+  border-bottom: 1px solid #edf0f2;
+  background: #fff;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;}
+
+.scope :global(.hair-history-event-card):last-child {border-bottom: 0;}
+
+.scope :global(.hair-history-event-card):hover,
+.scope :global(.hair-history-event-card):focus-visible,
+.scope :global(.hair-history-event-card--selected) {background: #f5f8fa; outline: none;}
+
+.scope :global(.hair-history-event-card-marker) {width: 8px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #677381;
+  box-shadow: 0 0 0 1px #677381;}
+
+.scope :global(.hair-history-event-card) > span:nth-child(2) {display: grid; gap: 3px; min-width: 0;}
+
+.scope :global(.hair-history-event-card) strong {overflow-wrap: anywhere;
+  color: #273349;
+  font-size: .66rem;
+  line-height: 1.5;}
+
+.scope :global(.hair-history-event-card) small {color: #7b858e; font-size: .54rem;}
+
+.scope :global(.hair-history-event-card) > i {color: #9aa3ab;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-style: normal;}
+
+[dir="rtl"] .scope :global(.hair-history-event-card) > i,
+.scope [dir="rtl"] :global(.hair-history-event-card) > i {transform: rotate(180deg);}
+
+.scope :global(.hair-history-event-group--triggers) :global(.hair-history-context-icon),
+.scope :global(.hair-history-event-group--triggers) :global(.hair-history-event-card-marker) {color: #a56a14; background-color: #a56a14;}
+
+.scope :global(.hair-history-event-group--diagnoses) :global(.hair-history-context-icon),
+.scope :global(.hair-history-event-group--diagnoses) :global(.hair-history-event-card-marker) {color: #6d5a9a; background-color: #6d5a9a;}
+
+.scope :global(.hair-history-event-group--tests_labs) :global(.hair-history-context-icon),
+.scope :global(.hair-history-event-group--tests_labs) :global(.hair-history-event-card-marker) {color: #2d7453; background-color: #2d7453;}
+
+.scope :global(.hair-history-event-group--procedures) :global(.hair-history-context-icon),
+.scope :global(.hair-history-event-group--procedures) :global(.hair-history-event-card-marker) {color: #4a515d; background-color: #4a515d;}
+
+.scope :global(.hair-history-event-group--photos) :global(.hair-history-context-icon),
+.scope :global(.hair-history-event-group--photos) :global(.hair-history-event-card-marker) {color: #273349; background-color: #273349;}
+
+.scope :global(.hair-history-context-empty) {padding: 22px;
+  border: 1px dashed #d7dde2;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;}
+
+.scope :global(.hair-history-context-empty) strong {color: #344253; font-size: .74rem;}
+
+.scope :global(.hair-history-context-empty) p {margin: 4px 0 0; color: #7b858e; font-size: .62rem;}
+
+.scope :global(.hair-history-overview-category) {display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 3px;
+  color: #315f8c;
+  font-size: .52rem;
+  font-weight: 850;}
+
+.scope :global(.hair-history-overview-category)::before {content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;}
+
+.scope :global(.hair-history-overview-clinical) {display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 11px;
+  align-items: center;
+  padding: 10px 0 8px;}
+
+.scope :global(.hair-history-overview-clinical) > strong {min-width: 62px;
+  color: #141f32;
+  font-size: 1.12rem;
+  text-align: center;
+  white-space: nowrap;}
+
+.scope :global(.hair-history-overview-neighbors) article strong {white-space: nowrap;}
+
+.scope :global(.hair-history-overview-clinical) p {margin: 0;
+  color: #344253;
+  font-size: .65rem;
+  line-height: 1.65;}
+
+.scope :global(.hair-history-overview-details) {margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #edf0f2;}
+
+.scope :global(.hair-history-overview-details) summary {color: #536e87;
+  font-size: .58rem;
+  font-weight: 850;
+  cursor: pointer;}
+
+.scope :global(.hair-history-overview-details) dl {display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 7px;
+  margin: 7px 0 0;}
+
+.scope :global(.hair-history-overview-details) dl > div {padding: 6px 7px;
+  border-radius: 7px;
+  background: #f6f8f9;}
+
+.scope :global(.hair-history-overview-details) dt {color: #879099; font-size: .5rem; font-weight: 800;}
+
+.scope :global(.hair-history-overview-details) dd {margin: 2px 0 0; color: #344253; font-size: .58rem; font-weight: 800;}
+
+.scope :global(.hair-history-overview-cluster) {display: grid;
+  gap: 7px;
+  margin: 5px 0 8px;
+  padding: 9px;
+  border: 1px solid #e2e8ed;
+  border-radius: 8px;
+  background: #f8fafb;}
+
+.scope :global(.hair-history-overview-cluster) > div:first-child {display: grid; gap: 2px;}
+
+.scope :global(.hair-history-overview-cluster) > div:first-child strong {color: #27384c; font-size: .61rem;}
+
+.scope :global(.hair-history-overview-cluster) > div:first-child span {color: #75818c; font-size: .54rem; line-height: 1.45;}
+
+.scope :global(.hair-history-overview-cluster) > div:last-child {display: grid; gap: 5px;}
+
+.scope :global(.hair-history-overview-cluster-item) {display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid #e1e6ea;
+  border-radius: 7px;
+  background: #fff;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;}
+
+.scope :global(.hair-history-overview-cluster-item):hover,
+.scope :global(.hair-history-overview-cluster-item):focus-visible,
+.scope :global(.hair-history-overview-cluster-item--selected) {border-color: #9ab1c6; background: #f4f8fb; outline: none;}
+
+.scope :global(.hair-history-overview-cluster-item) > span {display: grid; gap: 1px; min-width: 0;}
+
+.scope :global(.hair-history-overview-cluster-item) b {color: #344253; font-size: .55rem;}
+
+.scope :global(.hair-history-overview-cluster-item) small {overflow-wrap: anywhere; color: #7a858f; font-size: .5rem;}
+
+.scope :global(.hair-history-overview-cluster-item) > strong {flex: 0 0 auto; color: #22364b; font-size: .58rem; white-space: nowrap;}
+
+@media (max-width: 1399px) {
+  .scope :global(.hair-history-treatment-card) {grid-template-columns: minmax(180px,.8fr) minmax(260px,1fr) minmax(260px,1.6fr);}
+  .scope :global(.hair-history-event-groups) {grid-template-columns: repeat(2, minmax(0,1fr));}
+}
+
+/* Selected-item clinical overview structure */
+.scope :global(.hair-history-overview-facts),
+.scope :global(.hair-history-selected-overview-grid) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.scope :global(.hair-history-overview-value),
+.scope :global(.hair-history-overview-date),
+.scope :global(.hair-history-selected-overview-grid) > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px 9px;
+  border-radius: 8px;
+  background: #f6f8f9;
+}
+
+.scope :global(.hair-history-overview-value) > span,
+.scope :global(.hair-history-overview-date) > span,
+.scope :global(.hair-history-selected-overview-grid) > div > span,
+.scope :global(.hair-history-selected-overview-detail) > span,
+.scope :global(.hair-history-overview-trend) > span {
+  color: #7c8791;
+  font-size: .52rem;
+  font-weight: 850;
+}
+
+.scope :global(.hair-history-overview-value) > strong,
+.scope :global(.hair-history-overview-date) > strong,
+.scope :global(.hair-history-selected-overview-grid) > div > strong {
+  color: #25374b;
+  font-size: .66rem;
+  line-height: 1.45;
+}
+
+.scope :global(.hair-history-overview-value) > strong {
+  font-size: 1rem;
+}
+
+.scope :global(.hair-history-overview-trend) {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #edf0f2;
+}
+
+.scope :global(.hair-history-overview-trend) > strong {
+  color: #536576;
+  font-size: .62rem;
+  line-height: 1.5;
+}
+
+.scope :global(.hair-history-selected-overview) {
+  display: grid;
+  gap: 9px;
+  padding: 14px 16px;
+  border-color: #dbe3e9;
+  box-shadow: 0 8px 24px rgba(34, 54, 75, .06);
+}
+
+.scope :global(.hair-history-selected-overview-header) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #edf0f2;
+}
+
+.scope :global(.hair-history-selected-overview-header) h3 {
+  margin: 0;
+  color: #17263a;
+  font-size: .82rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.scope :global(.hair-history-selected-overview-body) {
+  display: grid;
+  gap: 8px;
+}
+
+.scope :global(.hair-history-selected-overview-duration),
+.scope :global(.hair-history-selected-overview-clinical) {
+  grid-column: 1 / -1;
+}
+
+.scope :global(.hair-history-selected-overview-detail) {
+  display: grid;
+  gap: 4px;
+  padding: 9px 10px;
+  border: 1px solid #e7ebee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.scope :global(.hair-history-selected-overview-detail) p {
+  margin: 0;
+  color: #2f4052;
+  font-size: .65rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .scope :global(.hair-history-overview-facts),
+  .scope :global(.hair-history-selected-overview-grid) { grid-template-columns: 1fr; }
+  .scope :global(.hair-history-selected-overview-duration),
+  .scope :global(.hair-history-selected-overview-clinical) { grid-column: auto; }
+}
+
+/* Hair History collision-safe axis + clinically structured metric overview */
+.scope :global(.history-date-label-primary) { fill: #4f5d6d; font-size: 10.5px; font-weight: 850; }
+.scope :global(.history-date-label-secondary) { fill: #89939d; font-size: 9px; font-weight: 700; }
+
+.scope :global(.history-point-collision-connector) {
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: .42;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.scope :global(.hair-history-overview-header) h3 {
+  margin: 0;
+  color: #17263a;
+  font-size: .78rem;
+  line-height: 1.38;
+  overflow-wrap: anywhere;
+}
+
+.scope :global(.hair-history-overview-header) :global(.hair-history-overview-category) {
+  margin: 4px 0 0;
+  font-size: .5rem;
+}
+
+.scope :global(.hair-history-overview-rows) {
+  display: grid;
+  gap: 0;
+  margin: 8px 0 0;
+  border: 1px solid #e4e9ed;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.scope :global(.hair-history-overview-rows) > div {
+  display: grid;
+  grid-template-columns: minmax(92px, .72fr) minmax(0, 1.28fr);
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px 9px;
+  border-bottom: 1px solid #edf0f2;
+}
+
+.scope :global(.hair-history-overview-rows) > div:last-child { border-bottom: 0; }
+.scope :global(.hair-history-overview-rows) dt {
+  color: #7c8791;
+  font-size: .51rem;
+  font-weight: 850;
+  line-height: 1.35;
+}
+.scope :global(.hair-history-overview-rows) dd {
+  min-width: 0;
+  margin: 0;
+  color: #24364a;
+  font-size: .63rem;
+  font-weight: 800;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.scope :global(.hair-history-overview-rows) > div:first-child dd { font-size: .75rem; }
+.scope :global(.hair-history-overview-rows--cluster) > div:first-child dd { font-size: .63rem; }
+.scope :global(.hair-history-overview-row--context) { align-items: start; }
+
+.scope :global(.hair-history-overview-neighbors) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  margin: 0;
+}
+.scope :global(.hair-history-overview-neighbors) > span {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  padding: 5px 6px;
+  border-radius: 6px;
+  background: #f6f8f9;
+}
+.scope :global(.hair-history-overview-neighbors) > span b {
+  color: #7c8791;
+  font-size: .47rem;
+  font-weight: 850;
+}
+.scope :global(.hair-history-overview-neighbors) > span strong {
+  color: #25374b;
+  font-size: .56rem;
+  white-space: nowrap;
+}
+.scope :global(.hair-history-overview-neighbors) > span small {
+  color: #87919a;
+  font-size: .47rem;
+  line-height: 1.3;
+}
+
+.scope :global(.hair-history-overview-footer) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #edf0f2;
+}
+.scope :global(.hair-history-overview-footer) > :global(.button) {
+  min-height: 30px;
+  padding: 5px 11px;
+  font-size: .57rem;
+}
+.scope :global(.hair-history-overview-footer) :global(.hair-history-overview-details) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.scope :global(.hair-history-overview-footer) :global(.hair-history-overview-details) summary {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 2px;
+}
+[dir="rtl"] .scope :global(.hair-history-overview-footer) :global(.hair-history-overview-details) summary,
+.scope [dir="rtl"] :global(.hair-history-overview-footer) :global(.hair-history-overview-details) summary { justify-content: flex-start; }
+
+.scope :global(.hair-history-date-preview) {
+  display: block;
+  margin-top: 4px;
+  color: #657484;
+  font-size: .54rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .scope :global(.hair-history-overview-rows) > div { grid-template-columns: 1fr; gap: 3px; }
+  .scope :global(.hair-history-overview-footer) { grid-template-columns: 1fr; }
+  .scope :global(.hair-history-overview-footer) :global(.hair-history-overview-details) summary { justify-content: flex-start; }
+}

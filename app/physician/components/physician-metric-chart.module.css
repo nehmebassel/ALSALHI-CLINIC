@@ -1,0 +1,41 @@
+/* Physician metric chart scoped styles */
+.scope { display: contents; }
+
+.scope :global(.physician-chart-wrap) {margin-top: 14px;}
+
+.scope :global(.physician-chart-legend) {display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 8px;}
+
+.scope :global(.physician-chart-legend) span {display: inline-flex; align-items: center; gap: 6px; color: var(--graphite); font-size: .68rem; font-weight: 750;}
+
+.scope :global(.physician-chart-legend) i {width: 9px; height: 9px; border-radius: 50%; background: currentColor;}
+
+.scope :global(.metric-series--shedding) {color: #2f5578 !important;}
+
+.scope :global(.metric-series--density) {color: #6b596f !important;}
+
+.scope :global(.metric-series--itch) {color: #4f7b69 !important;}
+
+.scope :global(.metric-series--burning) {color: #9a6b42 !important;}
+
+.scope :global(.metric-series--pain) {color: #8a4c55 !important;}
+
+.scope :global(.metric-series--other) {color: #666f78 !important;}
+
+.scope :global(.physician-chart-scroll) {overflow-x: auto; border: 1px solid #e2e6e9; border-radius: 13px; background: #fbfcfc;}
+
+.scope :global(.physician-metric-chart) {display: block; width: 100%; min-width: 680px; height: auto;}
+
+.scope :global(.metric-grid-line) {stroke: #e1e5e8; stroke-width: 1;}
+
+.scope :global(.metric-grid-line--vertical) {stroke-dasharray: 3 5;}
+
+.scope :global(.metric-axis-label),
+.scope :global(.metric-date-label) {fill: #586573; font-size: 13px;}
+
+.scope :global(.metric-series-line) {stroke: currentColor; stroke-width: 2.25; vector-effect: non-scaling-stroke;}
+
+.scope :global(.metric-series-point) {fill: white; stroke: currentColor; stroke-width: 2.4; vector-effect: non-scaling-stroke;}
+
+.scope :global(.physician-chart-note) {margin: 8px 0 0; color: var(--graphite); font-size: .68rem; line-height: 1.5;}
+
+.scope :global(.physician-chart-empty) {min-height: 180px; display: grid; place-items: center; color: var(--graphite); border: 1px dashed #d7dde1; border-radius: 12px; background: #fafbfc; font-size: .8rem;}

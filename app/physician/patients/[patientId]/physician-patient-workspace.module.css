@@ -1,0 +1,311 @@
+/* Physician patient workspace scoped styles */
+.scope { display: contents; }
+
+.scope :global(.physician-record) {width: min(1320px, calc(100% - 40px));}
+
+.scope :global(.physician-breadcrumb) {display: flex; align-items: center; gap: 8px; margin-bottom: 16px; color: var(--graphite); font-size: .78rem;}
+
+.scope :global(.physician-breadcrumb) a {color: var(--info); text-decoration: none; font-weight: 800;}
+
+.scope :global(.physician-breadcrumb) b {color: var(--secondary-steel);}
+
+.scope :global(.physician-record-header) {display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 22px 24px; border-radius: 22px; border: 1px solid var(--silver); background: rgba(255,255,255,.96); box-shadow: 0 12px 42px rgba(20,31,50,.055);}
+
+.scope :global(.physician-record-identity) {display: flex; align-items: center; gap: 16px; min-width: 0;}
+
+.scope :global(.patient-avatar--record) {width: 64px; height: 64px; font-size: 1.35rem; flex: 0 0 auto;}
+
+.scope :global(.physician-record-identity) h1 {margin: 0; font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.25;}
+
+.scope :global(.physician-record-demographics) {display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; color: var(--graphite); font-size: .78rem; font-weight: 700;}
+
+.scope :global(.physician-record-status) {display: grid; gap: 8px; justify-items: end; text-align: end;}
+
+.scope :global(.physician-record-status-pills) {display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px;}
+
+.scope :global(.physician-record-status) small {color: var(--graphite); font-size: .75rem;}
+
+.scope :global(.physician-record-layout) {display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 16px; align-items: start;}
+
+.scope :global(.physician-record-layout--focus) {grid-template-columns: minmax(0, 1fr);}
+
+.scope :global(.physician-record-sidebar) {display: grid; gap: 12px; position: sticky; top: 14px;}
+
+.scope :global(.physician-side-card) {padding: 18px; box-shadow: none;}
+
+.scope :global(.physician-summary-list) {display: grid; gap: 8px; margin: 12px 0 0;}
+
+.scope :global(.physician-summary-list) div {display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid #eceff1;}
+
+.scope :global(.physician-summary-list) div:last-child {border-bottom: 0;}
+
+.scope :global(.physician-summary-list) dt {color: var(--graphite); font-size: .76rem;}
+
+.scope :global(.physician-summary-list) dd {margin: 0; color: var(--deep-navy); font-weight: 900;}
+
+.scope :global(.physician-episode-list) {display: grid; gap: 8px;}
+
+.scope :global(.physician-episode-card) {display: grid; gap: 5px; padding: 11px 12px; border: 1px solid #e0e5e9; border-radius: 11px; background: #fbfcfc;}
+
+.scope :global(.physician-episode-card) > div {display: flex; align-items: start; justify-content: space-between; gap: 8px;}
+
+.scope :global(.physician-episode-card) strong {color: var(--deep-navy); font-size: .78rem; line-height: 1.45;}
+
+.scope :global(.physician-episode-card) small {color: var(--graphite); font-size: .68rem;}
+
+.scope :global(.episode-state) {flex: 0 0 auto; font-size: .62rem; font-weight: 850; color: var(--graphite);}
+
+.scope :global(.episode-state--active) {color: var(--success);}
+
+.scope :global(.physician-record-main) {min-width: 0;}
+
+.scope :global(.physician-record-tabs) {display: flex; gap: 5px; padding: 5px; margin-bottom: 14px; overflow-x: auto; border: 1px solid #d7dee4; border-radius: 15px; background: #eef2f5; box-shadow: inset 0 1px 2px rgba(20,31,50,.04);}
+
+.scope :global(.physician-record-tabs) button {flex: 1 0 auto; min-height: 42px; border: 1px solid transparent; border-radius: 10px; padding: 8px 14px; background: transparent; color: #66717c; font-size: .75rem; font-weight: 800; cursor: pointer; transition: background .15s ease, color .15s ease, box-shadow .15s ease;}
+
+.scope :global(.physician-record-tabs) button[aria-selected="true"] {border-color: #cbd6df; color: var(--ink-navy); background: white; box-shadow: 0 4px 12px rgba(20,31,50,.1);}
+
+.scope :global(.physician-record-tabs) button:disabled {color: #9ba4ac; cursor: not-allowed; opacity: .68;}
+
+.scope :global(.physician-record-stack) {display: grid; gap: 12px;}
+
+.scope :global(.physician-record-stack) > :global(.surface-card) {padding: 22px; box-shadow: 0 8px 28px rgba(20,31,50,.04);}
+
+.scope :global(.physician-clinical-workspace-stack) {display: grid; gap: 12px;}
+
+.scope :global(.physician-clinical-workspace-heading),
+.scope :global(.physician-clinical-workspace-cta) {display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 22px; border-inline-start: 4px solid var(--info);}
+
+.scope :global(.physician-clinical-workspace-heading) h2,
+.scope :global(.physician-clinical-workspace-cta) h2 {margin: 2px 0 6px; color: var(--deep-navy); font-size: 1.08rem;}
+
+.scope :global(.physician-clinical-workspace-heading) p:not(:global(.eyebrow)),
+.scope :global(.physician-clinical-workspace-cta) p:not(:global(.eyebrow)) {margin: 0; color: var(--graphite); font-size: .76rem; line-height: 1.6;}
+
+.scope :global(.physician-summary-compact) {display: flex; align-items: center; justify-content: space-between; gap: 18px;}
+.scope :global(.physician-summary-compact) h2 {margin: 2px 0 0; color: var(--deep-navy); font-size: 1.05rem;}
+.scope :global(.physician-summary-compact) > p {display: grid; gap: 4px; margin: 0; color: var(--graphite); font-size: .72rem;}
+.scope :global(.physician-summary-compact) > p span {color: var(--deep-navy); font-size: .82rem;}
+
+.scope :global(.physician-clinical-snapshot) {display: grid; gap: 20px; padding: 24px !important;}
+
+.scope :global(.physician-clinical-snapshot__header) {display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 16px; border-bottom: 1px solid #e4e8eb;}
+
+.scope :global(.physician-clinical-snapshot__header) h2 {margin: 3px 0 0; color: var(--deep-navy); font-size: 1.1rem; line-height: 1.45;}
+
+.scope :global(.physician-clinical-snapshot__core) {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid #dfe5e9; border-radius: 14px; overflow: hidden;}
+
+.scope :global(.physician-clinical-snapshot__core) > section {display: grid; align-content: start; gap: 8px; min-width: 0; padding: 16px 18px; border-inline-start: 1px solid #e5e9ec; background: #fbfcfd;}
+
+.scope :global(.physician-clinical-snapshot__core) > section:first-child {border-inline-start: 0;}
+
+.scope :global(.physician-clinical-snapshot) h3 {margin: 0; color: #64717c; font-size: .7rem; font-weight: 850; letter-spacing: .02em;}
+
+.scope :global(.physician-clinical-snapshot__core) p {margin: 0; color: var(--deep-navy); font-size: .96rem; font-weight: 850; line-height: 1.55;}
+
+.scope :global(.physician-clinical-snapshot__values) {display: flex; flex-wrap: wrap; gap: 6px;}
+
+.scope :global(.physician-clinical-snapshot__values) span {color: var(--deep-navy); font-size: .84rem; font-weight: 780; line-height: 1.55;}
+
+.scope :global(.physician-clinical-snapshot__values) span + span::before {content: "·"; margin-inline-end: 6px; color: #9aa5ae;}
+
+.scope :global(.physician-clinical-snapshot__context) {display: grid; gap: 11px;}
+
+.scope :global(.physician-clinical-snapshot__context) dl {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 0;}
+
+.scope :global(.physician-clinical-snapshot__context) dl > div {display: grid; grid-template-columns: minmax(140px, .72fr) minmax(0, 1.28fr); gap: 14px; padding: 11px 0; border-top: 1px solid #e8ecef;}
+
+.scope :global(.physician-clinical-snapshot__context) dt {color: #6d7780; font-size: .72rem; font-weight: 720; line-height: 1.55;}
+
+.scope :global(.physician-clinical-snapshot__context) dd {display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 0; color: var(--deep-navy); font-size: .78rem; font-weight: 780; line-height: 1.55;}
+
+.scope :global(.physician-clinical-snapshot__context) dd span + span::before {content: "·"; margin-inline-end: 8px; color: #a1a9b0;}
+
+.scope :global(.physician-empty-state) {display: grid; gap: 6px; min-height: 130px; place-content: center; text-align: center; border-style: dashed !important; background: #fbfcfd !important;}
+
+.scope :global(.physician-empty-state--compact) {grid-column: 1 / -1; min-height: 104px; padding: 18px; border: 1px dashed #d9e0e5; border-radius: 12px; background: #fbfcfd;}
+
+.scope :global(.physician-empty-state) strong {color: var(--deep-navy); font-size: .86rem;}
+
+.scope :global(.physician-empty-state) p {margin: 0; color: var(--graphite); font-size: .73rem; line-height: 1.65;}
+
+.scope :global(.physician-record-error) {width: min(720px, 100%); margin: 56px auto 0; padding: 34px; text-align: center;}
+
+.scope :global(.physician-record-error) h1 {margin: 4px 0 10px; color: var(--deep-navy); font-size: 1.35rem;}
+
+.scope :global(.physician-record-error) > p:not(:global(.eyebrow)) {margin: 0 auto; max-width: 560px; color: var(--graphite); line-height: 1.75;}
+
+.scope :global(.physician-record-error) > div {display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px;}
+
+.scope :global(.physician-interview-header) h2,
+.scope :global(.physician-timeline-card) h2,
+.scope :global(.physician-visits-card) h2 {margin: 0;}
+
+.scope :global(.physician-interview-header) {display: flex; align-items: start; justify-content: space-between; gap: 16px;}
+
+.scope :global(.physician-question-group) > h2 {margin: 0 0 14px; font-size: 1rem; color: var(--deep-navy);}
+
+.scope :global(.physician-question-list) {display: grid; gap: 1px; border: 1px solid #e1e5e8; border-radius: 13px; overflow: hidden; background: #e1e5e8;}
+
+.scope :global(.physician-question-row) {display: grid; grid-template-columns: minmax(210px, .72fr) minmax(320px, 1.28fr); gap: 22px; padding: 16px 18px; background: white;}
+
+.scope :global(.physician-question-prompt) {display: grid; gap: 6px; align-content: start;}
+
+.scope :global(.physician-question-prompt) strong {color: #69737c; font-size: .72rem; font-weight: 700; line-height: 1.58;}
+
+.scope :global(.physician-question-prompt) small {color: #9aa0a6; font-size: .6rem;}
+
+.scope :global(.physician-question-answer) {display: flex; flex-wrap: wrap; align-content: start; gap: 7px;}
+
+.scope :global(.physician-question-answer) > span:not(:global(.language-origin-badge)) {padding: 6px 9px; border-radius: 8px; background: #edf2f5; color: var(--deep-navy); font-size: .82rem; font-weight: 760; line-height: 1.55;}
+
+.scope :global(.physician-question-row--long-answer) {align-items: start;}
+
+.scope :global(.physician-question-answer--long) {display: grid; padding: 13px 15px; border: 1px solid #dce4ea; border-inline-start: 3px solid #7891a4; border-radius: 10px; background: #f8fafb;}
+
+.scope :global(.physician-question-answer--long) > span:not(:global(.language-origin-badge)) {padding: 0; background: transparent; font-size: .84rem; line-height: 1.75; white-space: pre-wrap;}
+
+.scope :global(.physician-answer-meta) {width: 100%; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; color: #858c93; font-size: .64rem;}
+
+.scope :global(.language-origin-badge) {padding: 2px 6px; border-radius: 999px; background: #fff3db; color: #866316; font-weight: 800;}
+
+.scope :global(.physician-no-interview) {text-align: center; padding-block: 54px !important;}
+
+.scope :global(.physician-timeline) {display: grid; gap: 0; margin-top: 16px;}
+
+.scope :global(.physician-timeline-item) {position: relative; display: grid; grid-template-columns: 120px 18px 1fr; gap: 10px; min-height: 74px;}
+
+.scope :global(.physician-timeline-item)::before {content: ""; grid-column: 2; width: 2px; justify-self: center; background: #e0e5e8;}
+
+.scope :global(.physician-timeline-item)::after {content: ""; position: absolute; inset-inline-start: 128px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--info); box-shadow: 0 0 0 4px white;}
+
+.scope [dir="rtl"] :global(.physician-timeline-item)::after {inset-inline-start: auto; inset-inline-end: 128px;}
+
+.scope :global(.physician-timeline-item) time {grid-column: 1; grid-row: 1; color: var(--graphite); font-size: .7rem; font-weight: 750; padding-top: 3px;}
+
+.scope :global(.physician-timeline-item) > div {grid-column: 3; grid-row: 1; padding-bottom: 18px; display: grid; gap: 3px;}
+
+.scope :global(.physician-timeline-item) > div span {color: var(--info); font-size: .61rem; font-weight: 900; letter-spacing: .04em;}
+
+.scope :global(.physician-timeline-item) > div strong {color: var(--deep-navy); font-size: .8rem;}
+
+.scope :global(.physician-timeline-item) > div p {margin: 1px 0 0; color: var(--graphite); font-size: .72rem; line-height: 1.5;}
+
+.scope :global(.physician-visit-list) {display: grid; gap: 8px; margin-top: 14px;}
+
+.scope :global(.physician-visit-list) > div {display: grid; gap: 10px;}
+
+.scope :global(.physician-visit-row) {display: grid; grid-template-columns: 160px minmax(0,1fr) auto auto; align-items: center; gap: 14px; padding: 13px 14px; border: 1px solid #e0e5e8; border-radius: 11px; background: #fbfcfc;}
+
+.scope :global(.physician-visit-date) {display: grid; gap: 3px;}
+
+.scope :global(.physician-visit-date) strong {font-size: .78rem;}
+
+.scope :global(.physician-visit-date) small,
+.scope :global(.physician-visit-diagnosis) small {color: var(--graphite); font-size: .66rem;}
+
+.scope :global(.physician-visit-diagnosis) {display: grid; gap: 3px;}
+
+.scope :global(.physician-visit-diagnosis) strong {color: var(--secondary-steel); font-size: .78rem;}
+
+.scope :global(.physician-visit-diagnosis) span {color: #8b949c; font-size: .7rem;}
+
+.scope :global(.physician-visit-workflow-status) {display: grid; gap: 5px; justify-items: start; min-width: 150px;}
+
+.scope :global(.physician-visit-workflow-status) small {color: var(--graphite); font-size: .64rem; line-height: 1.45;}
+
+@media (max-width: 980px) {
+  .scope :global(.physician-record-layout) {grid-template-columns: 1fr;}
+  .scope :global(.physician-record-sidebar) {position: static; grid-template-columns: 1fr 1fr;}
+}
+
+@media (max-width: 720px) {
+  .scope :global(.physician-record) {width: min(100% - 22px, 1320px); padding-top: 28px;}
+  .scope :global(.physician-record-header) {align-items: flex-start; flex-direction: column;}
+  .scope :global(.physician-record-status) {justify-items: start; text-align: start;}
+  .scope :global(.physician-record-status-pills) {justify-content: flex-start;}
+  .scope :global(.physician-record-sidebar) {grid-template-columns: 1fr;}
+  .scope :global(.physician-question-row) {grid-template-columns: 1fr; gap: 10px;}
+  .scope :global(.physician-interview-header) {flex-direction: column;}
+  .scope :global(.physician-visit-row) {grid-template-columns: 1fr;}
+  .scope :global(.physician-clinical-workspace-heading),
+  .scope :global(.physician-clinical-workspace-cta),
+  .scope :global(.physician-summary-compact) {align-items: stretch; flex-direction: column;}
+  .scope :global(.physician-clinical-snapshot__header) {align-items: stretch; flex-direction: column;}
+  .scope :global(.physician-clinical-snapshot__core) {grid-template-columns: 1fr;}
+  .scope :global(.physician-clinical-snapshot__core) > section {border-inline-start: 0; border-top: 1px solid #e5e9ec;}
+  .scope :global(.physician-clinical-snapshot__core) > section:first-child {border-top: 0;}
+  .scope :global(.physician-clinical-snapshot__context) dl {grid-template-columns: 1fr;}
+  .scope :global(.physician-clinical-snapshot__context) dl > div {grid-template-columns: minmax(112px, .68fr) minmax(0, 1.32fr);}
+  .scope :global(.physician-timeline-item) {grid-template-columns: 92px 16px 1fr;}
+  .scope :global(.physician-timeline-item)::after {inset-inline-start: 98px;}
+  .scope [dir="rtl"] :global(.physician-timeline-item)::after {inset-inline-start: auto; inset-inline-end: 98px;}
+}
+
+.scope :global(.physician-question-prompt) small {color: #7f878e; font-size: .66rem; line-height: 1.55;}
+
+.scope :global(.physician-interview-source-summary) {display: grid; grid-template-columns: 1fr 1fr; gap: 18px;}
+
+.scope :global(.physician-interview-source-summary) > div {padding: 14px 16px; border: 1px solid #e1e6e9; border-radius: 12px; background: #fafbfc;}
+
+.scope :global(.physician-interview-source-summary) h2 {margin: 3px 0 5px; color: var(--deep-navy); font-size: 1rem;}
+
+.scope :global(.physician-interview-source-summary) strong {color: var(--deep-navy); font-size: .84rem;}
+
+.scope :global(.physician-interview-source-summary) :global(.muted) {margin: 4px 0 0;}
+
+.scope :global(.physician-follow-up-source) h2 {margin: 0; color: var(--deep-navy);}
+
+.scope :global(.physician-follow-up-sections) {display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 14px;}
+
+.scope :global(.physician-follow-up-section) {min-width: 0; padding: 13px 14px; border: 1px solid #e1e6e9; border-radius: 12px; background: #fbfcfc;}
+
+.scope :global(.physician-follow-up-section) h3 {margin: 0 0 9px; color: var(--secondary-steel); font-size: .78rem;}
+
+.scope :global(.physician-follow-up-fact) {display: grid; gap: 5px; padding: 9px 0; border-top: 1px solid #edf0f2;}
+
+.scope :global(.physician-follow-up-fact):first-of-type {border-top: 0; padding-top: 0;}
+
+.scope :global(.physician-follow-up-fact) strong {color: var(--deep-navy); font-size: .72rem;}
+
+.scope :global(.physician-follow-up-fact) > div {display: flex; flex-wrap: wrap; gap: 5px;}
+
+.scope :global(.physician-follow-up-fact) span {padding: 4px 7px; border-radius: 7px; background: white; color: var(--secondary-steel); font-size: .7rem; line-height: 1.4;}
+
+.scope :global(.physician-section-divider) {display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-inline-start: 3px solid #b5c3ce; color: var(--secondary-steel); background: #f7f9fa; border-radius: 8px;}
+
+.scope :global(.physician-section-divider) > div {display: grid; gap: 3px;}
+
+.scope :global(.physician-section-divider) strong {color: var(--deep-navy); font-size: .8rem;}
+
+.scope :global(.physician-section-divider) small {color: var(--graphite); font-size: .66rem;}
+
+.scope :global(.physician-section-divider--source) {margin-top: 4px; border-inline-start-color: var(--info);}
+
+@media (max-width: 720px) {
+  .scope :global(.physician-interview-source-summary),
+  .scope :global(.physician-follow-up-sections) {grid-template-columns: 1fr;}
+}
+
+.scope :global(.physician-record--history-focus) {width: min(1760px, calc(100% - 48px));}
+
+.scope :global(.physician-record--history-focus) :global(.physician-record-tabs) {position: sticky;
+  top: 10px;
+  z-index: 25;
+  background: rgba(244,246,248,.96);
+  backdrop-filter: blur(10px);}
+
+@media (min-width: 1600px) {
+  .scope :global(.physician-record--history-focus) {width: min(1840px, calc(100% - 56px));}
+}
+
+@media (max-width: 1399px) {
+  .scope :global(.physician-record--history-focus) {width: min(100% - 28px, 1360px);}
+}
+
+.scope :global(.physician-record--history-focus) {width: min(1880px, calc(100% - 44px));
+  max-width: none;}
+
+@media (min-width: 1700px) {
+  .scope :global(.physician-record--history-focus) {width: min(1940px, calc(100% - 52px));}
+}

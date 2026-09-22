@@ -1,0 +1,144 @@
+/* Clinical Story + 30-second summary scoped styles */
+.scope { display: contents; }
+
+.scope :global(.physician-30s-summary) h2,
+.scope :global(.physician-attention-card) h2,
+.scope :global(.physician-measures-summary) h2,
+.scope :global(.physician-story-intro) h2,
+.scope :global(.physician-story-section) h2 {margin: 0; color: var(--deep-navy);}
+
+.scope :global(.physician-30s-grid) {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px;}
+
+.scope :global(.physician-summary-focus) {min-height: 124px; display: grid; align-content: start; gap: 7px; padding: 17px 18px; border: 1px solid #dfe5e9; border-radius: 14px; background: linear-gradient(180deg, #fff 0%, #f8fafb 100%);}
+
+.scope :global(.physician-summary-focus) small {color: var(--graphite); font-size: .7rem; font-weight: 760;}
+
+.scope :global(.physician-summary-focus) strong {color: var(--ink-navy); font-size: .98rem; line-height: 1.65;}
+
+.scope :global(.physician-summary-focus) p {margin: 0; color: var(--secondary-steel); font-size: .73rem; line-height: 1.55;}
+
+.scope :global(.physician-attention-list) {display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none;}
+
+.scope :global(.physician-attention-list) li {position: relative; padding: 11px 14px; padding-inline-start: 34px; border: 1px solid #eadfc9; border-radius: 11px; background: #fffaf1; color: #694d1c; font-size: .78rem; line-height: 1.55;}
+
+.scope :global(.physician-attention-list) li::before {content: "!"; position: absolute; inset-inline-start: 12px; top: 11px; width: 16px; height: 16px; display: grid; place-items: center; border-radius: 50%; background: #f0d6a2; color: #725112; font-weight: 900; font-size: .65rem;}
+
+.scope :global(.physician-measure-grid) {display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 16px;}
+
+.scope :global(.physician-measure-card) {display: grid; gap: 5px; min-height: 128px; padding: 15px; border: 1px solid #dfe5e9; border-radius: 13px; background: #fbfcfc;}
+
+.scope :global(.physician-measure-card) small {color: var(--graphite); font-size: .68rem; font-weight: 800;}
+
+.scope :global(.physician-measure-card) strong {color: var(--deep-navy); font-size: 1.55rem; line-height: 1;}
+
+.scope :global(.physician-measure-card) strong span {margin-inline-start: 2px; color: #8b949b; font-size: .62rem; font-weight: 700;}
+
+.scope :global(.physician-measure-card) p,
+.scope :global(.physician-measure-card) time {margin: 0; color: var(--graphite); font-size: .65rem; line-height: 1.4;}
+
+.scope :global(.physician-measure-card--low) {box-shadow: inset 0 3px 0 #7eaa92;}
+
+.scope :global(.physician-measure-card--mid) {box-shadow: inset 0 3px 0 #b99852;}
+
+.scope :global(.physician-measure-card--high) {box-shadow: inset 0 3px 0 #b76b63;}
+
+.scope :global(.physician-story-intro) {display: flex; align-items: start; justify-content: space-between; gap: 18px;}
+
+.scope :global(.physician-story-intro) > div {max-width: 760px;}
+
+.scope :global(.physician-story-intro) :global(.muted) {margin-bottom: 0;}
+
+.scope :global(.physician-story-summary) {display: grid; gap: 10px; margin: 16px 0 0; color: var(--deep-navy);}
+
+.scope :global(.physician-story-summary) p {max-width: 76ch; margin: 0; font-size: .88rem; font-weight: 560; line-height: 1.82; overflow-wrap: anywhere;}
+
+.scope :global(.physician-story-grid) {display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start;}
+
+.scope :global(.physician-story-section) {min-width: 0; border-color: #dce3e8; box-shadow: 0 2px 12px rgb(30 55 72 / 4%);}
+
+.scope :global(.physician-story-section) > header {display: flex; align-items: start; justify-content: space-between; gap: 14px; padding-bottom: 13px; margin-bottom: 12px; border-bottom: 1px solid #e7eaed;}
+
+.scope :global(.physician-story-section) > header h2 {font-size: 1.04rem; letter-spacing: -.01em;}
+
+.scope :global(.physician-story-section) > header p {margin: 5px 0 0; color: var(--graphite); font-size: .68rem; line-height: 1.55;}
+
+.scope :global(.physician-story-groups) {display: grid; gap: 18px;}
+
+.scope :global(.physician-story-group) {display: grid; gap: 11px; min-width: 0;}
+
+.scope :global(.physician-story-group) + :global(.physician-story-group) {padding-top: 17px; border-top: 1px solid #e7ecef;}
+
+.scope :global(.physician-story-group) > h3 {margin: 0; color: #315f8c; font-size: .72rem; font-weight: 860; letter-spacing: .01em;}
+
+.scope :global(.physician-story-items) {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 30px; row-gap: 14px;}
+
+.scope :global(.physician-story-item) {display: grid; align-content: start; gap: 6px; min-width: 0;}
+
+.scope :global(.physician-story-item-heading) {display: flex; align-items: baseline; justify-content: space-between; gap: 10px;}
+
+.scope :global(.physician-story-item-heading) h4 {margin: 0; color: var(--graphite); font-size: .65rem; font-weight: 820; line-height: 1.45;}
+
+.scope :global(.physician-story-timeframe) {flex: 0 0 auto; padding: 3px 7px; border-radius: 999px; background: #eef3f6; color: var(--secondary-steel); font-size: .56rem; font-weight: 850;}
+
+.scope :global(.physician-story-timeframe--current_follow_up) {background: #e5f3f1; color: #0d766e;}
+
+.scope :global(.physician-story-timeframe--prior_follow_up) {background: #f1eff8; color: #66548d;}
+
+.scope :global(.physician-story-timeframe--baseline) {background: #f3f0e9; color: #715d36;}
+
+.scope :global(.physician-story-entries) {display: grid; gap: 7px; min-width: 0;}
+
+.scope :global(.physician-story-entry) {display: grid; gap: 3px; min-width: 0; color: var(--deep-navy); font-size: .78rem; line-height: 1.62;}
+
+.scope :global(.physician-story-entry) p {margin: 0; overflow-wrap: anywhere;}
+
+.scope :global(.physician-story-entry--record) {padding-inline-start: 10px; border-inline-start: 2px solid #dce6ec;}
+
+.scope :global(.physician-story-entry--record) + :global(.physician-story-entry--record) {margin-top: 3px; padding-top: 7px; border-top: 1px dotted #dfe5e9;}
+
+.scope :global(.physician-story-entry--measure) {width: fit-content; min-width: 96px; padding: 7px 11px; border-radius: 9px; background: #edf5f5; color: #0d6f69; font-size: .84rem; font-weight: 850;}
+
+.scope :global(.physician-story-entry--patient-authored) {padding: 8px 11px; border-radius: 8px; background: #f7f9fa; color: #263b4a; white-space: pre-wrap;}
+
+.scope :global(.physician-story-source-toggle) {flex: 0 0 auto; border: 1px solid #d8e0e5; border-radius: 9px; padding: 7px 10px; background: #fbfcfd; color: var(--secondary-steel); font-size: .65rem; font-weight: 800; cursor: pointer;}
+
+.scope :global(.physician-story-source-toggle[aria-expanded="true"]) {border-color: #b9c8d2; background: #f1f5f7; color: var(--deep-navy);}
+
+.scope :global(.physician-story-source-reference) {display: grid; gap: 12px; margin: -2px 0 14px; padding: 14px; border: 1px solid #dfe5e9; border-radius: 12px; background: #f8fafb;}
+
+.scope :global(.physician-story-source-reference-heading) {display: flex; align-items: start; justify-content: space-between; gap: 14px;}
+
+.scope :global(.physician-story-source-reference-heading) strong {display: block; color: var(--deep-navy); font-size: .78rem; line-height: 1.5;}
+
+.scope :global(.physician-story-source-reference-heading) p {margin: 4px 0 0; color: var(--graphite); font-size: .64rem; line-height: 1.55;}
+
+.scope :global(.physician-story-source-reference-heading) button {flex: 0 0 auto; border: 0; padding: 2px 0; background: transparent; color: var(--secondary-steel); font-size: .62rem; font-weight: 800; cursor: pointer;}
+
+.scope :global(.physician-story-source-bundles) {display: grid; gap: 12px;}
+
+.scope :global(.physician-story-source-bundle) {display: grid; gap: 8px;}
+
+.scope :global(.physician-story-source-context) {display: flex; align-items: center; gap: 8px; color: var(--secondary-steel); font-size: .62rem;}
+
+.scope :global(.physician-story-source-context) strong {color: var(--deep-navy); font-size: .68rem;}
+
+.scope :global(.physician-source-question-group) {display: grid; gap: 8px;}
+
+.scope :global(.physician-source-question-group) > h2 {margin: 0; color: var(--secondary-steel); font-size: .66rem;}
+
+.scope :global(.physician-story-empty) {margin: 0; padding: 14px; border: 1px dashed #d8dee2; border-radius: 10px; background: #fafbfc; color: #8a9298; font-size: .7rem; line-height: 1.5;}
+
+@media (max-width: 1080px) {
+  .scope :global(.physician-30s-grid) {grid-template-columns: 1fr 1fr;}
+  .scope :global(.physician-30s-grid) > :last-child {grid-column: 1 / -1;}
+  .scope :global(.physician-measure-grid) {grid-template-columns: repeat(3, minmax(0, 1fr));}
+  .scope :global(.physician-story-section) {grid-column: 1 / -1;}
+}
+
+@media (max-width: 720px) {
+  .scope :global(.physician-30s-grid) {grid-template-columns: 1fr;}
+  .scope :global(.physician-30s-grid) > :last-child {grid-column: auto;}
+  .scope :global(.physician-measure-grid) {grid-template-columns: 1fr 1fr;}
+  .scope :global(.physician-story-intro) {flex-direction: column;}
+  .scope :global(.physician-story-items) {grid-template-columns: minmax(0, 1fr);}
+}

@@ -1,0 +1,96 @@
+/* Global foundation only: tokens, reset/base, direction-safe defaults, and shared primitives.
+   Screen/component styling lives in colocated CSS modules. */
+@import "tailwindcss";
+
+:root {--ink-navy: #141f32;
+  --deep-navy: #273349;
+  --steel-navy: #303c56;
+  --secondary-steel: #4a515d;
+  --graphite: #616870;
+  --silver: #c8cacc;
+  --soft-silver: #dbdee0;
+  --off-white: #f5f5f5;
+  --white: #ffffff;
+  --info: #315f8c;
+  --warning: #a56a14;
+  --error: #a23a3a;
+  --success: #2d7453;
+  --shadow: 0 24px 70px rgba(20, 31, 50, 0.1);}
+
+* {box-sizing: border-box;}
+
+html {min-height: 100%; background: var(--off-white);}
+
+body {min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(200, 202, 204, 0.28), transparent 28rem),
+    var(--off-white);
+  color: var(--ink-navy);
+  font-family: Tahoma, Arial, "Segoe UI", sans-serif;}
+
+button,
+input,
+select,
+textarea {font: inherit;}
+
+button,
+a {-webkit-tap-highlight-color: transparent;}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {outline: 3px solid rgba(49, 95, 140, 0.35);
+  outline-offset: 2px;}
+
+.status-pill {display: inline-flex; align-items: center; min-height: 32px; padding: 6px 12px;
+  border-radius: 999px; background: var(--soft-silver); color: var(--deep-navy);
+  font-size: .78rem; font-weight: 700; white-space: nowrap;}
+
+.status-pill--success {background: #e0f1e8; color: var(--success);}
+
+.workspace-main {width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: clamp(42px, 7vw, 92px) 0;}
+
+.eyebrow {margin: 0 0 10px; color: var(--info); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;}
+
+[dir="rtl"] .eyebrow {letter-spacing: 0; text-transform: none;}
+
+.button {min-height: 48px; border: 1px solid var(--steel-navy); border-radius: 12px; padding: 11px 20px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+  text-decoration: none; font-weight: 800; transition: transform .16s ease, background .16s ease, opacity .16s ease;}
+
+.button:hover:not(:disabled) {transform: translateY(-1px);}
+
+.button:disabled {cursor: not-allowed; opacity: .5;}
+
+.button--primary {background: var(--ink-navy); color: white;}
+
+.button--secondary {background: white; color: var(--ink-navy);}
+
+.button--ghost {background: var(--off-white); color: var(--deep-navy); border-color: var(--silver);}
+
+.surface-card {padding: 26px; background: rgba(255,255,255,.94); border: 1px solid var(--silver); border-radius: 20px;}
+
+.muted {color: var(--graphite); line-height: 1.65; margin: 0;}
+
+.surface-card {box-shadow: 0 12px 45px rgba(20,31,50,.06);}
+
+.surface-card h2 {margin: 0 0 8px;}
+
+input,
+select,
+textarea {width: 100%; min-height: 48px; border: 1px solid var(--silver); border-radius: 11px; background: white; color: var(--ink-navy); padding: 10px 12px;}
+
+.empty-state {min-height: 440px; display: grid; place-content: center; text-align: center; color: var(--graphite);}
+
+.empty-state > span {font-size: 3rem; color: var(--soft-silver); font-weight: 900;}
+
+.card-heading-row {display: flex; align-items: start; justify-content: space-between; gap: 16px;}
+
+@media (max-width: 520px) {
+  .button {min-height: 46px; padding-inline: 14px;}
+}
+
+.button--compact {min-height: 40px; padding: 8px 14px; font-size: .83rem;}
+
+.status-pill--warning {background: #fff3db; color: #8b671c;}

@@ -1,0 +1,37 @@
+.scope { display: grid; gap: 22px; }
+.episodeHeader, .sectionHeading, .visitCardHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+.episodeHeader h2, .sectionHeading h3 { margin: 4px 0 6px; }
+.sectionBlock { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line, #e5e7eb); }
+.readOnlyBadge, .visitCount { border: 1px solid var(--line, #d9dde3); border-radius: 999px; padding: 6px 10px; font-size: .75rem; color: var(--graphite, #4a5560); white-space: nowrap; }
+.timeline { display: grid; gap: 10px; margin-top: 14px; }
+.timelineItem { display: grid; grid-template-columns: minmax(130px, 170px) 1fr; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line, #e5e7eb); }
+.timelineItem time { font-size: .78rem; color: var(--graphite, #5b6570); }
+.timelineItem strong { display: block; margin: 3px 0 4px; }
+.timelineItem p { margin: 0; color: var(--graphite, #5b6570); }
+.eventKind { font-size: .72rem; font-weight: 700; color: var(--steel-navy, #334a60); }
+.visitGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.visitCard { border: 1px solid var(--line, #dde1e6); border-radius: 16px; padding: 16px; display: grid; gap: 14px; background: var(--surface, #fff); }
+.visitCardHeader small, .visitCardHeader strong { display: block; }
+.visitCardHeader small { color: var(--graphite, #5b6570); margin-bottom: 3px; }
+.visitCardHeader > span { border-radius: 999px; background: #f3f5f7; padding: 5px 9px; font-size: .72rem; }
+.referenceGroup { border-top: 1px solid var(--line, #e5e7eb); padding-top: 12px; }
+.referenceGroup h4 { margin: 0 0 8px; font-size: .88rem; }
+.referenceGroup p { margin: 7px 0 0; color: var(--graphite, #5b6570); }
+.referenceGroup dl { display: grid; grid-template-columns: 1fr auto; gap: 7px 14px; margin: 0; }
+.referenceGroup dt { color: var(--graphite, #5b6570); }
+.referenceGroup dd { margin: 0; font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chips span { padding: 5px 8px; border: 1px solid var(--line, #dde1e6); border-radius: 999px; font-size: .72rem; background: #fafbfc; }
+
+.stateGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.stateCard { border: 1px solid var(--line, #dde1e6); border-radius: 14px; padding: 14px; background: #fafbfc; }
+.stateCard h4 { margin: 0 0 10px; font-size: .86rem; }
+.stateCard ul { margin: 0; padding-inline-start: 18px; display: grid; gap: 7px; }
+.stateCard li strong, .stateCard li span { display: block; }
+.stateCard li span { margin-top: 2px; color: var(--graphite, #5b6570); font-size: .76rem; }
+
+@media (max-width: 980px) {
+  .visitGrid, .stateGrid { grid-template-columns: 1fr; }
+  .timelineItem { grid-template-columns: 1fr; gap: 5px; }
+  .episodeHeader, .sectionHeading { flex-direction: column; }
+}

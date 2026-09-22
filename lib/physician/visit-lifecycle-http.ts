@@ -1,0 +1,39 @@
+import { noStoreJson } from "@/lib/http/no-store-json";
+import { PhysicianVisitLifecycleError } from "./visit-lifecycle-contracts";
+
+const ERROR_STATUS: Record<PhysicianVisitLifecycleError["code"], number> = {
+  INVALID_REQUEST: 400,
+  REQUEST_BODY_TOO_LARGE: 413,
+  UNSUPPORTED_MEDIA_TYPE: 415,
+  VISIT_NOT_FOUND: 404,
+  VISIT_CANCELLED: 409,
+  VISIT_NOT_ELIGIBLE: 409,
+  EPISODE_MISMATCH: 409,
+  DRAFT_NOT_FOUND: 404,
+  DRAFT_CONFLICT: 409,
+  ENCOUNTER_NOT_BEGUN: 409,
+  INVALID_VISIT_OCCURRED_AT: 409,
+  PHYSICIAN_VISIT_ALREADY_FINALIZED: 409,
+  PHYSICIAN_VISIT_NOT_FINALIZED: 409,
+  UNAPPROVED_FINALIZATION_CONTENT: 422,
+  INVALID_CLINICAL_DATA: 422,
+  VISIT_CORRECTION_WINDOW_CLOSED: 409,
+  IMMUTABLE_VISIT_FIELD: 409,
+  UNAPPROVED_CORRECTION_TARGET: 422,
+  INVALID_LONGITUDINAL_TARGET: 422,
+  LONGITUDINAL_DECISION_CONFLICT: 409,
+  DEPENDENT_LONGITUDINAL_DECISIONS: 409,
+  PATIENT_CONTEXT_VERSION_CONFLICT: 409,
+  ADDENDUM_BEFORE_HARD_LOCK: 409,
+  INVALID_ADDENDUM: 400,
+  RETRYABLE_CONFLICT: 409,
+};
+
+export function physicianVisitLifecycleErrorResponse(
+  error: PhysicianVisitLifecycleError,
+): Response {
+  return noStoreJson(
+    { error: { code: error.code, message: error.message } },
+    { status: ERROR_STATUS[error.code] },
+  );
+}

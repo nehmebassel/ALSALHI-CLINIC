@@ -1,0 +1,644 @@
+/* Patient Journey scoped styles */
+.scope { display: contents; }
+
+.scope :global(.app-shell),
+.scope :global(.patient-shell) {min-height: 100vh;}
+
+.scope :global(.brand-header) {min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px clamp(20px, 5vw, 72px);
+  background: var(--ink-navy);
+  color: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,0.12);}
+
+.scope :global(.brand-header--compact) {min-height: 68px; padding-block: 8px;}
+
+.scope :global(.brand-lockup) {color: inherit; text-decoration: none; display: flex; align-items: center; gap: 14px;}
+
+.scope :global(.brand-lockup) strong {display: block; font-size: 1.04rem; letter-spacing: .01em;}
+
+.scope :global(.brand-lockup) small {display: block; color: var(--silver); margin-top: 3px;}
+
+.scope :global(.brand-logo-frame) {width: 48px; height: 48px; border-radius: 12px; overflow: hidden; background: white; display: grid; place-items: center;}
+
+.scope :global(.brand-logo-frame) img {width: 100%; height: 100%; object-fit: contain;}
+
+.scope :global(.synthetic-badge) {display: inline-flex; align-items: center; min-height: 32px; padding: 6px 12px;
+  border-radius: 999px; background: var(--soft-silver); color: var(--deep-navy);
+  font-size: .78rem; font-weight: 700; white-space: nowrap;}
+
+.scope :global(.patient-card) h1 {margin: 0; line-height: 1.35; letter-spacing: -.03em;}
+
+.scope :global(.patient-actions) {display: flex; gap: 12px; flex-wrap: wrap;}
+
+.scope :global(.button--wide) {width: 100%;}
+
+.scope :global(.repeatable-item) label {font-size: .86rem; color: var(--secondary-steel); font-weight: 700;}
+
+.scope :global(.patient-shell) {background: linear-gradient(180deg, #eef0f2 0, var(--off-white) 220px);}
+
+.scope :global(.patient-main) {width: min(760px, calc(100% - 24px)); margin: 0 auto; padding: 20px 0 54px;}
+
+.scope :global(.patient-toolbar) {min-height: 42px; display: flex; justify-content: space-between; align-items: center; gap: 10px;}
+
+.scope :global(.language-toggle),
+.scope :global(.save-indicator) {border: 0; background: transparent; color: var(--info); font-weight: 800; cursor: pointer;}
+
+.scope :global(.save-indicator) {font-size: .78rem;}
+
+.scope :global(.save-indicator--saved) {color: var(--success);}
+
+.scope :global(.save-indicator--failed),
+.scope :global(.save-indicator--offline) {color: var(--error); text-decoration: underline;}
+
+.scope :global(.warning-banner),
+.scope :global(.error-summary) {padding: 12px 14px; border-radius: 10px; margin: 10px 0;}
+
+.scope :global(.warning-banner) {background: #fff0cf; color: var(--warning);}
+
+.scope :global(.error-summary) {background: #fae4e4; color: var(--error);}
+
+.scope :global(.progress-track) {height: 5px; border-radius: 999px; background: var(--soft-silver); overflow: hidden; margin: 8px 0 16px;}
+
+.scope :global(.progress-track) span {height: 100%; display: block; background: var(--deep-navy); transition: width .25s ease;}
+
+.scope :global(.patient-card) {background: white; border: 1px solid var(--silver); border-radius: 22px; padding: clamp(22px, 5vw, 40px); box-shadow: var(--shadow);}
+
+.scope :global(.patient-card-heading) {padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px solid var(--soft-silver);}
+
+.scope :global(.patient-card-heading) h1 {font-size: clamp(1.65rem, 6vw, 2.3rem);}
+
+.scope :global(.question-stack) {display: grid; gap: 24px;}
+
+.scope :global(.question-field) {min-width: 0; border: 0; margin: 0; padding: 0 0 22px; border-bottom: 1px solid var(--soft-silver);}
+
+.scope :global(.question-field):last-child {border-bottom: 0;}
+
+.scope :global(.question-field) legend {width: 100%; margin-bottom: 14px; font-size: 1.08rem; line-height: 1.55; font-weight: 800;}
+
+.scope :global(.question-field--invalid) legend {color: var(--error);}
+
+.scope :global(.option-list) {display: grid; gap: 9px;}
+
+.scope :global(.option-card) {display: flex; align-items: center; gap: 12px; padding: 13px 14px; border: 1px solid var(--silver); border-radius: 11px; cursor: pointer; background: white;}
+
+.scope :global(.option-card.selected) {border-color: var(--deep-navy); background: #edf0f5; box-shadow: inset 4px 0 0 var(--deep-navy);}
+
+.scope [dir="rtl"] :global(.option-card.selected) {box-shadow: inset -4px 0 0 var(--deep-navy);}
+
+.scope :global(.option-card) input,
+.scope :global(.consent-row) input {width: 20px; min-height: 20px; height: 20px; accent-color: var(--deep-navy); flex: 0 0 auto;}
+
+.scope :global(.scale-row) {display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px;}
+
+.scope :global(.scale-row) button {min-height: 46px; border: 1px solid var(--silver); border-radius: 10px; background: white; cursor: pointer;}
+
+.scope :global(.scale-row) button:hover {border-color: #91a2b2; background: #f5f8fa;}
+
+.scope :global(.scale-row) :global(button.selected) {background: var(--deep-navy); color: white; border-color: var(--deep-navy);}
+
+.scope :global(.field-error) {display: block; color: var(--error); margin-top: 8px;}
+
+.scope :global(.repeatable-list) {display: grid; gap: 12px; margin-bottom: 12px;}
+
+.scope :global(.repeatable-item) {display: grid; gap: 10px; padding: 16px; border: 1px solid var(--soft-silver); background: var(--off-white); border-radius: 12px; margin-bottom: 10px;}
+
+.scope :global(.repeatable-heading) {display: flex; justify-content: space-between; align-items: center;}
+
+.scope :global(.repeatable-heading) button {border: 0; background: transparent; color: var(--error); font-size: 1.4rem; cursor: pointer;}
+
+.scope :global(.repeatable-item) label {display: grid; gap: 6px;}
+
+.scope :global(.patient-actions) {justify-content: space-between; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--soft-silver);}
+
+.scope :global(.notice-box) {padding: 18px; background: #edf4fa; border-radius: 12px; color: var(--info);}
+
+.scope :global(.notice-box) > span {font-size: .78rem; font-weight: 900;}
+
+.scope :global(.notice-box) p {line-height: 1.8; color: var(--ink-navy);}
+
+.scope :global(.consent-row) {display: flex; align-items: flex-start; gap: 12px; margin-top: 20px; line-height: 1.7; cursor: pointer;}
+
+.scope :global(.final-confirm) {padding: 16px; border: 1px solid var(--silver); border-radius: 12px; margin: 20px 0; background: var(--off-white);}
+
+.scope :global(.patient-center-card) {width: min(620px, calc(100% - 24px)); margin: 70px auto; padding: 42px; background: white; border: 1px solid var(--silver); border-radius: 22px; box-shadow: var(--shadow); text-align: center;}
+
+.scope :global(.success-card) {border-color: #9fc8b3;}
+
+.scope :global(.success-mark) {width: 64px; height: 64px; display: grid; place-items: center; margin: 0 auto 16px; border-radius: 50%; background: #e0f1e8; color: var(--success); font-size: 2rem;}
+
+.scope :global(.spinner) {width: 38px; height: 38px; margin: 0 auto 14px; border: 4px solid var(--soft-silver); border-top-color: var(--deep-navy); border-radius: 50%; animation: spin .8s linear infinite;}
+
+.scope :global(.patient-loading) {padding: 40px;}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 820px) {
+  .scope :global(.brand-header) {padding-inline: 18px;}
+  .scope :global(.synthetic-badge) {display: none;}
+}
+
+@media (max-width: 520px) {
+  .scope :global(.brand-lockup) strong {font-size: .92rem;}
+  .scope :global(.brand-lockup) small {display: none;}
+  .scope :global(.brand-logo-frame) {width: 42px; height: 42px;}
+  .scope :global(.patient-main) {width: min(100% - 16px, 680px); padding-top: 10px;}
+  .scope :global(.patient-card) {border-radius: 16px; padding: 20px 16px;}
+  .scope :global(.patient-actions) :global(.button) {flex: 1;}
+  .scope :global(.scale-row) {gap: 4px;}
+}
+
+.scope :global(.patient-shell) {background:
+    radial-gradient(circle at 50% -12rem, rgba(49,95,140,.12), transparent 32rem),
+    linear-gradient(180deg, #eef2f5 0, #f7f7f6 380px, var(--off-white) 100%);}
+
+.scope :global(.patient-main) {width: min(760px, calc(100% - 28px)); padding-top: 14px;}
+
+.scope :global(.patient-toolbar) {position: sticky; top: 0; z-index: 8;
+  margin: 0 -8px 10px; padding: 9px 10px;
+  border: 1px solid rgba(200,202,204,.78); border-radius: 14px;
+  background: rgba(247,247,246,.91); backdrop-filter: blur(14px);}
+
+.scope :global(.language-toggle) {padding: 7px 10px; border-radius: 9px;}
+
+.scope :global(.save-indicator) {padding: 7px 10px; border-radius: 9px; background: rgba(255,255,255,.68);}
+
+.scope :global(.journey-progress) {margin: 12px 0 16px; padding: 16px 18px 14px;
+  border: 1px solid rgba(200,202,204,.88); border-radius: 18px;
+  background: rgba(255,255,255,.82); box-shadow: 0 10px 36px rgba(20,31,50,.05);}
+
+.scope :global(.journey-progress-copy) {display: flex; justify-content: space-between; align-items: baseline; gap: 12px;}
+
+.scope :global(.journey-progress-copy) strong {font-size: .9rem;}
+
+.scope :global(.journey-progress-copy) span {color: var(--graphite); font-size: .76rem;}
+
+.scope :global(.journey-progress) :global(.progress-track) {height: 7px; margin: 11px 0 13px; background: #e7e9eb;}
+
+.scope :global(.journey-progress) :global(.progress-track) span {background: linear-gradient(90deg, var(--steel-navy), var(--info));}
+
+.scope :global(.section-stepper) {display: flex; flex-wrap: wrap; gap: 8px; padding: 4px;}
+
+.scope :global(.repeatable-control) {display: grid; gap: 8px; min-width: 0;}
+
+.scope :global(.section-dot) {width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center;
+  border: 1px solid var(--soft-silver); border-radius: 50%;
+  color: var(--graphite); background: #f7f7f7; font-size: .68rem; font-weight: 900;}
+
+.scope :global(.section-dot--done) {border-color: #a8c7b7; background: #e8f3ed; color: var(--success);}
+
+.scope :global(.section-dot--current) {border-color: var(--deep-navy); background: var(--deep-navy); color: white; box-shadow: 0 0 0 4px rgba(39,51,73,.09);}
+
+.scope :global(.patient-card) {border-color: rgba(200,202,204,.86); border-radius: 26px;
+  padding: clamp(24px, 5vw, 44px); box-shadow: 0 24px 80px rgba(20,31,50,.085);}
+
+.scope :global(.patient-card-heading) {padding-bottom: 20px; margin-bottom: 26px;}
+
+.scope :global(.patient-card-heading) h1 {font-size: clamp(1.65rem, 5.4vw, 2.45rem);}
+
+.scope :global(.section-description) {margin: 10px 0 0; max-width: 620px; color: var(--graphite); line-height: 1.75; font-size: .94rem;}
+
+.scope :global(.question-stack) {gap: 30px;}
+
+.scope :global(.question-field) {padding-bottom: 28px;}
+
+.scope :global(.question-field) legend {margin-bottom: 16px; font-size: 1.06rem;}
+
+.scope :global(.question-help) {display: block; margin-top: 7px; color: var(--graphite); font-size: .8rem; font-weight: 500; line-height: 1.65;}
+
+.scope :global(.question-field--nested) {margin: 4px 0 2px; padding: 16px 17px 15px; border: 0;
+  border-inline-start: 3px solid #c8d4df; border-radius: 0 13px 13px 0; background: #f8fafb;}
+
+.scope [dir="rtl"] :global(.question-field--nested) {border-radius: 13px 0 0 13px;}
+
+.scope :global(.question-field--nested) legend {font-size: .96rem; margin-bottom: 11px;}
+
+.scope :global(.question-field--repeatable) {background: transparent;}
+
+.scope :global(.option-list) {gap: 10px;}
+
+.scope :global(.option-shell) {border: 1px solid transparent; border-radius: 15px; transition: background .18s ease, border-color .18s ease;}
+
+.scope :global(.option-shell.selected) {border-color: #d4dce3; background: #f7f9fb; overflow: clip;}
+
+.scope :global(.option-card) {min-height: 54px; padding: 14px 15px; border-radius: 14px; line-height: 1.55;
+  transition: border-color .16s ease, background .16s ease, box-shadow .16s ease, transform .16s ease;}
+
+.scope :global(.option-card):hover {border-color: #aab5c0; transform: translateY(-1px);}
+
+.scope :global(.option-card):focus-within {outline: 3px solid rgba(49,95,140,.24); outline-offset: 2px;}
+
+.scope :global(.option-shell.selected) > :global(.option-card) {border-color: var(--steel-navy); border-width: 2px; background: #edf3f7; box-shadow: inset 0 0 0 1px rgba(49,95,140,.1);}
+
+.scope [dir="rtl"] :global(.option-shell.selected) > :global(.option-card),
+.scope [dir="ltr"] :global(.option-shell.selected) > :global(.option-card) {box-shadow: none;}
+
+.scope :global(.inline-followup) {padding: 0 14px 14px; animation: reveal-inline .18s ease both;}
+
+@keyframes reveal-inline { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+.scope :global(.inline-detail-card) {display: grid; gap: 13px; margin-top: 3px; padding: 16px;
+  border: 1px solid #d8e0e6; border-radius: 13px; background: white;}
+
+.scope :global(.inline-detail-card--compact) {padding: 13px 14px;}
+
+.scope :global(.inline-detail-card) label {display: grid; gap: 7px; color: var(--secondary-steel); font-size: .84rem; font-weight: 750;}
+
+.scope :global(.inline-detail-title) {margin: 0; color: var(--info); font-size: .78rem; font-weight: 900;}
+
+.scope :global(.metrics-guide) {margin: -5px 0 28px; padding: 16px 18px; border: 1px solid #cad8e4;
+  border-radius: 16px; background: #f4f8fb;}
+
+.scope :global(.metrics-guide) summary {display: flex; align-items: center; gap: 9px; cursor: pointer; color: var(--deep-navy); font-weight: 900;}
+
+.scope :global(.metrics-guide) p {margin: 12px 0; color: var(--graphite); line-height: 1.75; font-size: .86rem;}
+
+.scope :global(.info-icon) {width: 23px; height: 23px; display: grid; place-items: center; border-radius: 50%; background: var(--info); color: white; font-family: Georgia, serif; font-size: .8rem;}
+
+.scope :global(.metric-name-grid) {display: flex; flex-wrap: wrap; gap: 7px;}
+
+.scope :global(.metric-name-grid) span {padding: 6px 9px; border-radius: 999px; background: white; border: 1px solid #d6e0e8; font-size: .72rem; font-weight: 750;}
+
+.scope :global(.scale-legend-inline) {display: flex; justify-content: space-between; gap: 12px; margin-top: 13px; padding-top: 11px; border-top: 1px solid #dce4ea; color: var(--graphite); font-size: .74rem;}
+
+.scope :global(.clinical-scale) {display: grid; gap: 13px;}
+
+.scope :global(.metric-explanation) {display: grid; gap: 4px; padding: 11px 13px; border-radius: 11px; background: #f6f8fa;}
+
+.scope :global(.metric-explanation) strong {font-size: .88rem;}
+
+.scope :global(.metric-explanation) span {color: var(--graphite); line-height: 1.55; font-size: .78rem;}
+
+.scope :global(.scale-choice-grid) {display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px;}
+
+.scope :global(.scale-choice-grid) button {min-height: 72px; padding: 8px 4px; display: grid; place-items: center; align-content: center; gap: 4px;
+  border: 1px solid var(--silver); border-radius: 12px; background: white; color: var(--ink-navy); cursor: pointer;}
+
+.scope :global(.scale-choice-grid) button:hover {border-color: #91a2b2; background: #f5f8fa;}
+
+.scope :global(.scale-choice-grid) button b {font-size: 1.05rem;}
+
+.scope :global(.scale-choice-grid) button small {max-width: 88px; color: var(--graphite); line-height: 1.3; font-size: .7rem; text-align: center;}
+
+.scope :global(.scale-choice-grid) :global(button.selected) {border-color: var(--deep-navy); background: var(--deep-navy); color: white; box-shadow: 0 7px 20px rgba(39,51,73,.15);}
+
+.scope :global(.scale-choice-grid) :global(button.selected) small {color: #e9edf2;}
+
+.scope :global(.numeric-scale) {display: grid; gap: 8px;}
+
+.scope :global(.scale-endpoints) {display: flex; justify-content: space-between; gap: 12px; color: var(--graphite); font-size: .74rem;}
+
+.scope :global(.clinical-date-picker) {display: grid;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid #d7dee5;
+  border-radius: 16px;
+  background: #f8fafb;}
+
+.scope :global(.calendar-toggle) {display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: #e8edf1;}
+
+.scope :global(.calendar-toggle) button {min-height: 42px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--graphite);
+  cursor: pointer;
+  font-weight: 800;}
+
+.scope :global(.calendar-toggle) button.active,
+.scope :global(.calendar-toggle) button[aria-pressed="true"] {background: white;
+  color: var(--ink-navy);
+  box-shadow: 0 2px 10px rgba(20,31,50,.09);}
+
+.scope :global(.date-precision-row) {display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px;}
+
+.scope :global(.precision-chip) {display: flex !important;
+  grid-template-columns: none !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px !important;
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 1px solid #cfd7dd;
+  border-radius: 11px;
+  background: white;
+  cursor: pointer;
+  color: var(--secondary-steel);
+  font-size: .84rem !important;
+  font-weight: 750;}
+
+.scope :global(.precision-chip) input {width: 16px; min-height: 16px; height: 16px; margin: 0; accent-color: var(--deep-navy);}
+
+.scope :global(.precision-chip.selected) {border-color: var(--steel-navy); background: #edf3f7; color: var(--deep-navy); box-shadow: inset 0 0 0 1px rgba(49,95,140,.08);}
+
+.scope :global(.date-select-grid) {display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px;}
+
+.scope :global(.date-select-grid) > label {display: grid; gap: 7px; color: var(--secondary-steel); font-size: .86rem; font-weight: 750;}
+
+.scope :global(.date-select-grid) > label:only-child {grid-column: 1 / -1;}
+
+.scope :global(.date-select-grid) input,
+.scope :global(.date-select-grid) select {min-height: 48px; background: white;}
+
+.scope :global(.date-preview) {display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 8px;
+  padding-top: 2px;}
+
+.scope :global(.date-preview) > span {display: grid; gap: 4px; min-width: 0; padding: 10px 12px; border-radius: 11px; background: white; border: 1px solid #e0e5e9; color: var(--graphite); font-size: .78rem;}
+
+.scope :global(.date-preview) strong {color: var(--deep-navy); font-size: .9rem; line-height: 1.5; overflow-wrap: anywhere;}
+
+.scope :global(.date-guidance) {color: var(--graphite); line-height: 1.6; font-size: .78rem;}
+
+.scope :global(.repeatable-item) {padding: 17px; border-radius: 14px; background: #f8f9fa;}
+
+.scope :global(.review-section-grid) {display: grid; gap: 10px;}
+
+.scope :global(.review-section-card) {width: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+  padding: 14px 15px; border: 1px solid var(--soft-silver); border-radius: 14px; background: white; color: var(--ink-navy); text-align: start; cursor: pointer;}
+
+.scope :global(.review-section-card):hover {border-color: #aab5c0;}
+
+.scope :global(.review-section-card) > span:nth-child(2) {display: grid; gap: 3px;}
+
+.scope :global(.review-section-card) strong {font-size: .9rem;}
+
+.scope :global(.review-section-card) small {color: var(--graphite); font-size: .72rem;}
+
+.scope :global(.review-section-card--missing) {border-color: #e4b5b5; background: #fffafa;}
+
+.scope :global(.review-section-icon) {width: 31px; height: 31px; display: grid; place-items: center; border-radius: 50%; background: #e8f3ed; color: var(--success); font-weight: 900;}
+
+.scope :global(.review-section-card--missing) :global(.review-section-icon) {background: #fae4e4; color: var(--error);}
+
+.scope :global(.review-edit) {color: var(--info); font-size: .76rem; font-weight: 850;}
+
+.scope :global(.review-preview) {margin-top: 22px; padding: 17px; border: 1px solid var(--soft-silver); border-radius: 15px; background: #fafafa;}
+
+.scope :global(.review-preview) h2 {margin: 0 0 10px; font-size: 1rem;}
+
+.scope :global(.review-preview-row) {display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid #e8e8e8; font-size: .77rem;}
+
+.scope :global(.review-preview-row):last-child {border-bottom: 0;}
+
+.scope :global(.review-preview-row) span {color: var(--graphite);}
+
+.scope :global(.review-preview-row) strong {max-width: 48%; text-align: end; overflow-wrap: anywhere;}
+
+@media (max-width: 620px) {
+  .scope :global(.patient-main) {width: min(100% - 16px, 760px); padding-bottom: 34px;}
+  .scope :global(.patient-toolbar) {margin-inline: 0;}
+  .scope :global(.journey-progress) {padding: 14px 15px 12px; border-radius: 16px;}
+  .scope :global(.journey-progress-copy) {align-items: flex-start; flex-direction: column; gap: 3px;}
+  .scope :global(.patient-card) {padding: 24px 17px; border-radius: 19px;}
+  .scope :global(.question-stack) {gap: 25px;}
+  .scope :global(.option-card) {min-height: 52px;}
+  .scope :global(.inline-followup) {padding-inline: 9px;}
+  .scope :global(.scale-choice-grid) {grid-template-columns: repeat(3, 1fr);}
+  .scope :global(.scale-choice-grid) button {min-height: 66px;}
+  .scope :global(.date-select-grid) {grid-template-columns: 1fr;}
+  .scope :global(.review-preview-row) {flex-direction: column; gap: 4px;}
+  .scope :global(.review-preview-row) strong {max-width: none; text-align: start;}
+  .scope :global(.patient-actions) {position: sticky; bottom: 0; z-index: 5; margin: 24px -7px -9px; padding: 13px 7px 7px; background: linear-gradient(180deg, rgba(255,255,255,0), white 18px);}
+}
+
+.scope :global(.hair-pattern-grid) {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px;}
+
+.scope :global(.hair-pattern-card) {position:relative; border:1px solid var(--border, #d9dee7); border-radius:18px; padding:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; cursor:pointer; background:var(--surface, #fff); min-height:118px; text-align:center; overflow:hidden; transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;}
+
+.scope :global(.hair-pattern-card):hover {border-color:#91a2b2; transform:translateY(-1px); box-shadow:0 8px 22px rgba(39,51,73,.08);}
+
+.scope :global(.hair-pattern-card.selected) {border:3px solid var(--steel-navy); background:#edf3f7; box-shadow:0 0 0 3px rgba(49,95,140,.14);}
+
+.scope :global(.hair-pattern-card.selected)::after {content:"✓"; position:absolute; z-index:2; inset-block-start:10px; inset-inline-end:10px; width:28px; height:28px; display:grid; place-items:center; border-radius:50%; background:var(--deep-navy); color:white; font-size:.9rem; font-weight:900; box-shadow:0 2px 8px rgba(20,31,50,.22);}
+
+.scope :global(.hair-pattern-card):focus-within {outline:3px solid rgba(49,95,140,.25); outline-offset:3px;}
+
+.scope :global(.hair-pattern-card) input {position:absolute; opacity:0; pointer-events:none;}
+
+.scope :global(.hair-pattern-card--visual) {padding:0 0 14px; justify-content:flex-start;}
+
+.scope :global(.hair-pattern-card--visual) strong {padding:0 12px;}
+
+.scope :global(.hair-pattern-card--text) {min-height:84px;}
+
+.scope :global(.hair-pattern-image-wrap) {position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; background:#f3f0ec;}
+
+.scope :global(.hair-pattern-image) {object-fit:contain; object-position:center top;}
+
+.scope :global(.question-legend-with-help) {display:flex; align-items:center; gap:9px;}
+
+.scope :global(.question-help-toggle) {width:27px; height:27px; flex:0 0 auto; display:grid; place-items:center; padding:0; border:1px solid #9cabb8; border-radius:50%; background:white; color:var(--steel-navy); font:inherit; font-size:.86rem; font-weight:900; cursor:pointer;}
+
+.scope :global(.question-help-toggle):hover {border-color:var(--steel-navy); background:#f0f5f8;}
+
+.scope :global(.question-help-toggle):focus-visible {outline:3px solid rgba(49,95,140,.25); outline-offset:2px;}
+
+.scope :global(.question-help-toggle)[aria-expanded="true"] {background:var(--deep-navy); border-color:var(--deep-navy); color:white;}
+
+.scope :global(.hair-state-help) {display:grid; gap:12px; margin:-2px 0 15px; padding:15px 17px; border:1px solid #d7e0e7; border-radius:14px; background:#f8fafb;}
+
+.scope :global(.hair-state-help) section {display:grid; gap:5px;}
+.scope :global(.hair-state-help) strong {color:#2d6f75; font-size:.84rem;}
+.scope :global(.hair-state-help) section + section strong {color:#91633d;}
+.scope :global(.hair-state-help) p {margin:0; color:var(--graphite); font-size:.8rem; line-height:1.7;}
+
+.scope :global(.post-wash-order) {display:grid; gap:10px;}
+
+.scope :global(.post-wash-order) label {display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:12px; align-items:center;}
+
+.scope :global(.inline-note) {margin:4px 0 10px; padding:10px 12px; border-radius:12px; background:rgba(98,112,126,.08); font-size:.92rem;}
+
+@media (max-width:640px) {
+  .scope :global(.hair-pattern-grid) {grid-template-columns:1fr 1fr;}
+  .scope :global(.post-wash-order) label {grid-template-columns:1fr 88px;}
+}
+
+.scope :global(.patient-avatar) {width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: #edf2f6; color: var(--steel-navy); font-weight: 900;}
+
+.scope :global(.patient-card--returning) {padding-top: clamp(22px, 4vw, 34px);}
+
+.scope :global(.patient-card--returning) :global(.patient-card-heading) {margin-bottom: 20px; padding-bottom: 18px;}
+
+.scope :global(.patient-card--returning) :global(.patient-card-heading) h1 {font-size: clamp(1.45rem, 4.8vw, 2rem); line-height: 1.5;}
+
+.scope :global(.patient-card--returning) :global(.section-description) {font-size: .9rem; line-height: 1.7;}
+
+.scope :global(.follow-up-stack) {display: grid; gap: 18px;}
+
+.scope :global(.follow-up-purpose-block),
+.scope :global(.follow-up-visit-banner),
+.scope :global(.follow-up-additional-card),
+.scope :global(.follow-up-safety-card),
+.scope :global(.follow-up-review-summary) {border: 1px solid #dce2e6;
+  border-radius: 18px;
+  background: #fbfcfc;
+  padding: clamp(17px, 3vw, 24px);}
+
+.scope :global(.follow-up-purpose-block) h2 {margin: 0 0 16px; color: var(--deep-navy); font-size: 1.12rem; line-height: 1.65;}
+
+.scope :global(.follow-up-episode-grid) {display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 10px; margin-bottom: 10px;}
+
+.scope :global(.follow-up-choice-card) {width: 100%; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
+  min-height: 86px; padding: 16px; text-align: start; border: 1px solid #d3dbe1; border-radius: 14px;
+  background: white; color: inherit; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;}
+
+.scope :global(.follow-up-choice-card):hover {border-color: #9eafbd; box-shadow: 0 7px 20px rgba(22,39,58,.06);}
+
+.scope :global(.follow-up-choice-card--selected) {border-color: var(--steel-navy); background: #f1f5f8; box-shadow: inset 0 0 0 1px rgba(49,95,140,.1);}
+
+.scope :global(.follow-up-choice-card--new) {margin-top: 8px; min-height: 64px;}
+
+.scope :global(.follow-up-choice-card) span:last-child {display: grid; gap: 5px;}
+
+.scope :global(.follow-up-choice-card) strong {color: var(--deep-navy); font-size: .95rem; line-height: 1.55;}
+
+.scope :global(.follow-up-choice-card) b {color: var(--steel-navy); font-size: .9rem; line-height: 1.5;}
+
+.scope :global(.follow-up-choice-card) small {color: var(--graphite); line-height: 1.55; font-size: .82rem;}
+
+.scope :global(.choice-radio) {color: var(--steel-navy); line-height: 1.45; font-size: 1.05rem;}
+
+.scope :global(.follow-up-visit-banner) {display: flex; flex-direction: column; gap: 7px; align-items: stretch; background: #f5f8fa;}
+
+.scope :global(.follow-up-visit-banner__main) {display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px 10px;}
+
+.scope :global(.follow-up-visit-banner__main) span {color: var(--info); font-size: .82rem; font-weight: 850;}
+
+.scope :global(.follow-up-visit-banner__main) strong {color: var(--deep-navy); font-size: 1.05rem; line-height: 1.55;}
+
+.scope :global(.follow-up-visit-banner) time {color: var(--graphite); font-size: .82rem; font-weight: 700; align-self: flex-start;}
+
+.scope :global(.follow-up-visit-banner) p {margin: 2px 0 0; color: var(--graphite); line-height: 1.7; font-size: .9rem;}
+
+.scope :global(.follow-up-domain-list) {display: grid; gap: 14px;}
+
+.scope :global(.follow-up-domain-card) {display: grid; gap: 14px; padding: clamp(17px, 3vw, 22px); border: 1px solid #dce2e6;
+  border-radius: 17px; background: #fff; box-shadow: 0 5px 18px rgba(20,31,50,.035);}
+
+.scope :global(.follow-up-domain-card--invalid) {border-color: #d7abab; box-shadow: inset 3px 0 0 var(--error);}
+
+.scope :global(.follow-up-field--invalid) {border-inline-start: 3px solid var(--error) !important; padding-inline-start: 12px;}
+
+.scope [dir="rtl"] :global(.follow-up-domain-card--invalid) {box-shadow: inset -3px 0 0 var(--error);}
+
+.scope :global(.follow-up-domain-header) {display: flex; align-items: start; justify-content: space-between; gap: 12px;}
+
+.scope :global(.follow-up-domain-header) strong {color: var(--deep-navy); line-height: 1.75; font-size: 1rem;}
+
+.scope :global(.follow-up-answer-grid) {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px;}
+
+.scope :global(.follow-up-answer-grid--compact) {grid-template-columns: repeat(3,minmax(0,1fr));}
+
+.scope :global(.choice-chip) {width: 100%; min-height: 48px; padding: 10px 13px; border: 1px solid #cfd7dd; border-radius: 11px;
+  background: white; color: var(--secondary-steel); font: inherit; font-size: .88rem; line-height: 1.45;
+  font-weight: 750; cursor: pointer; text-align: start; transition: border-color .14s ease, background .14s ease, box-shadow .14s ease;}
+
+.scope :global(.choice-chip):hover {border-color: #a5b3bf; background: #fafcfd;}
+
+.scope :global(.choice-chip--selected),
+.scope :global(.choice-chip)[aria-pressed="true"] {border-color: var(--steel-navy); background: #edf3f7; color: var(--deep-navy); box-shadow: inset 0 0 0 1px rgba(49,95,140,.08);}
+
+.scope :global(.follow-up-inline-details) {display: grid; gap: 14px; padding: 15px; border-radius: 14px; background: #f6f8fa; border: 1px solid #e0e5e9;}
+
+.scope :global(.delta-editor-block) {display: grid; gap: 11px;}
+
+.scope :global(.delta-editor-title) {display: flex; align-items: center; justify-content: space-between; gap: 12px;}
+
+.scope :global(.delta-editor-title) strong {color: var(--secondary-steel); font-size: .9rem; line-height: 1.55;}
+
+.scope :global(.delta-item-card),
+.scope :global(.delta-existing-card) {display: grid; gap: 12px; padding: 15px; border-radius: 13px; background: #fff; border: 1px solid #dbe2e7;}
+
+.scope :global(.delta-existing-card--selected) {border-color: #a8b9c6; box-shadow: inset 0 0 0 1px rgba(49,95,140,.08);}
+
+.scope :global(.delta-item-card) label,
+.scope :global(.delta-existing-details) label,
+.scope :global(.follow-up-inline-details) > label {display: grid; gap: 7px; color: var(--secondary-steel); font-size: .86rem; line-height: 1.55; font-weight: 700;}
+
+.scope :global(.delta-item-card) input,
+.scope :global(.delta-item-card) textarea,
+.scope :global(.delta-item-card) select,
+.scope :global(.delta-existing-details) input,
+.scope :global(.delta-existing-details) textarea,
+.scope :global(.follow-up-inline-details) > label input,
+.scope :global(.follow-up-inline-details) > label textarea {width: 100%; min-height: 48px; border: 1px solid #cbd4da; border-radius: 10px; background: #fff; color: var(--deep-navy); padding: 10px 11px; font: inherit;}
+
+.scope :global(.delta-existing-select) {display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--deep-navy); font-size: .92rem; line-height: 1.55;}
+
+.scope :global(.delta-existing-select) input {width: 18px; min-height: 18px; height: 18px; flex: 0 0 auto;}
+
+.scope :global(.delta-existing-details) {display: grid; gap: 11px;}
+
+.scope :global(.delta-option-grid) {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px;}
+
+.scope :global(.delta-help),
+.scope :global(.follow-up-empty-note) {margin: 0; color: var(--graphite); font-size: .84rem; line-height: 1.65;}
+
+.scope :global(.delta-action-group) {display: grid; gap: 11px; padding: 14px; border: 1px solid #dfe5e9; border-radius: 12px; background: #fff;}
+
+.scope :global(.delta-action-group) > strong {color: var(--secondary-steel); font-size: .9rem; line-height: 1.6;}
+
+.scope :global(.delta-governed-details) {display: grid; gap: 12px;}
+
+.scope :global(.follow-up-governed-question) {display: grid; gap: 10px; padding: 14px; border: 1px solid #dce3e8; border-radius: 12px; background: #fff;}
+
+.scope :global(.follow-up-governed-question) > strong {color: var(--deep-navy); font-size: .92rem; line-height: 1.65;}
+
+.scope :global(.follow-up-governed-question) input,
+.scope :global(.follow-up-governed-question) textarea {font-size: .92rem;}
+
+.scope :global(.button-link) {border: 0; background: transparent; color: var(--steel-navy); font: inherit; font-weight: 800; cursor: pointer; padding: 5px;}
+
+.scope :global(.button-link--danger) {color: var(--error); justify-self: start;}
+
+.scope :global(.follow-up-additional-card) {display: grid; gap: 13px;}
+
+.scope :global(.follow-up-additional-card) > strong {color: var(--deep-navy); font-size: .98rem; line-height: 1.65;}
+
+.scope :global(.follow-up-safety-card),
+.scope :global(.follow-up-review-summary) {display: grid; gap: 16px;}
+
+.scope :global(.follow-up-safety-card) h2,
+.scope :global(.follow-up-review-summary) h2 {margin: 4px 0 0; color: var(--deep-navy); font-size: 1.05rem; line-height: 1.6;}
+
+.scope :global(.follow-up-safety-question) {display: grid; gap: 11px; padding-top: 15px; border-top: 1px solid #e1e6ea;}
+
+.scope :global(.follow-up-safety-question) > strong {color: var(--deep-navy); line-height: 1.7; font-size: .95rem;}
+
+.scope :global(.follow-up-review-groups) {display: grid; gap: 10px;}
+
+.scope :global(.follow-up-review-group) {display: grid; gap: 9px; padding: 14px 15px; border: 1px solid #dfe5e9; border-radius: 12px; background: #fff;}
+
+.scope :global(.follow-up-review-group) > div:first-child {display: flex; justify-content: space-between; gap: 14px; align-items: start;}
+
+.scope :global(.follow-up-review-group) strong {color: var(--deep-navy); font-size: .9rem; line-height: 1.6;}
+
+.scope :global(.follow-up-review-group) span {color: var(--steel-navy); font-size: .82rem; line-height: 1.5; font-weight: 800; white-space: nowrap;}
+
+.scope :global(.follow-up-review-list) {margin: 0; padding-inline-start: 22px; color: var(--graphite); font-size: .86rem; line-height: 1.7;}
+
+.scope :global(.follow-up-review-actions) {display: flex; flex-wrap: wrap; gap: 9px;}
+
+.scope :global(.follow-up-metrics-list) :global(.scale-choice-grid) button small {font-size: .72rem; line-height: 1.25;}
+
+@media (max-width: 680px) {
+  .scope :global(.follow-up-episode-grid) {grid-template-columns: 1fr;}
+  .scope :global(.follow-up-answer-grid),
+  .scope :global(.follow-up-answer-grid--compact),
+  .scope :global(.delta-option-grid) {grid-template-columns: 1fr;}
+  .scope :global(.choice-chip) {min-height: 50px;}
+  .scope :global(.date-precision-row) {grid-template-columns: 1fr;}
+  .scope :global(.date-preview) {grid-template-columns: 1fr;}
+  .scope :global(.follow-up-review-group) > div:first-child {flex-direction: column; gap: 4px;}
+  .scope :global(.follow-up-review-group) span {white-space: normal;}
+}

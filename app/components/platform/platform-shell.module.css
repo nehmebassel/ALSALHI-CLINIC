@@ -1,0 +1,38 @@
+/* Shared authenticated Platform Shell scoped styles */
+.scope { display: contents; }
+
+.scope :global(.platform-shell) {min-height: 100vh; background: linear-gradient(180deg, #f4f6f7 0, #fafafa 320px, #f7f7f6 100%);}
+
+.scope :global(.platform-header) {min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  padding: 12px clamp(18px, 4vw, 54px); border-bottom: 1px solid #dfe3e6; background: rgba(255,255,255,.94);
+  position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);}
+
+.scope :global(.platform-brand) {display: flex; align-items: center; gap: 12px; min-width: 0;}
+
+.scope :global(.platform-brand) img {width: 48px; height: 48px; border-radius: 12px; object-fit: cover;}
+
+.scope :global(.platform-brand) > div {display: grid; gap: 2px;}
+
+.scope :global(.platform-brand) strong {color: var(--deep-navy); font-size: .98rem;}
+
+.scope :global(.platform-brand) small {color: var(--graphite); font-size: .72rem;}
+
+.scope :global(.platform-header-actions) {display: flex; align-items: center; gap: 12px;}
+
+.scope :global(.platform-user) {display: grid; gap: 1px; padding-inline: 10px; border-inline-end: 1px solid #e2e5e7;}
+
+.scope :global(.platform-user) strong {font-size: .82rem;}
+
+.scope :global(.platform-user) small {color: var(--graphite); font-size: .68rem;}
+
+.scope :global(.platform-language) {display: flex; gap: 3px; padding: 3px; border-radius: 10px; background: #edf0f2;}
+
+.scope :global(.platform-language) button {min-height: 34px; padding: 6px 10px; border: 0; border-radius: 8px; background: transparent; color: var(--graphite); font-size: .73rem; font-weight: 800; cursor: pointer;}
+
+.scope :global(.platform-language) button.active {background: white; color: var(--deep-navy); box-shadow: 0 2px 8px rgba(20,31,50,.08);}
+
+@media (max-width: 760px) {
+  .scope :global(.platform-header) {align-items: flex-start; flex-direction: column; gap: 11px;}
+  .scope :global(.platform-header-actions) {width: 100%; flex-wrap: wrap;}
+  .scope :global(.platform-user) {margin-inline-end: auto; padding-inline-start: 0;}
+}
