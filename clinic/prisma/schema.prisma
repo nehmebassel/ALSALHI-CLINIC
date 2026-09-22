@@ -1,0 +1,1933 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum MaritalStatus {
+  MARRIED
+  NOT_MARRIED
+}
+
+enum ExternalIdentifierType {
+  CLINIC_MRN
+}
+
+enum ClinicDeviceStatus {
+  APPROVED
+  REVOKED
+}
+
+enum PatientSessionStatus {
+  ACTIVE
+  LOCKED
+  EXPIRED
+  CLOSED
+}
+
+enum PatientSessionCloseReason {
+  CANCELLED
+  SUBMITTED
+}
+
+enum ResponseSource {
+  PATIENT
+  PHYSICIAN
+}
+
+enum ClinicalDatePrecision {
+  DAY
+  MONTH
+  YEAR
+  UNKNOWN
+}
+
+enum DraftInterviewStatus {
+  DRAFT
+  SUBMITTED
+  CANCELLED
+  EXPIRED
+}
+
+enum VisitStatus {
+  CREATED
+  COMPLETED
+  CANCELLED
+}
+
+enum PhysicianVisitRecordStatus {
+  DRAFT
+  FINALIZED
+}
+
+enum PhysicianVisitAddendumType {
+  CORRECTION
+  CLARIFICATION
+  ADDITIONAL_DOCUMENTATION
+}
+
+enum PhysicianHairPullResult {
+  POSITIVE
+  NEGATIVE
+  NOT_RECORDED
+}
+
+enum PhysicianHairPartingFinding {
+  UNIVERSAL
+  FRONTAL_THINNER
+  CROWN_THINNER
+  VERTEX_THINNER
+}
+
+enum PhysicianVisitMeasurementCode {
+  SHEDDING
+  DENSITY_LOSS
+  ITCH
+  BURNING
+  SCALP_PAIN
+}
+
+enum PhysicianTrichoscopyFindingCode {
+  VELLUS_HAIRS
+  CORKSCREW_HAIRS
+  ANISOTRICHOSIS
+  EXCLAMATION_TAPERING_HAIRS
+  SINGLE_HAIR_FOLLICULAR_UNITS
+  COUDABILITY_HAIRS
+  YELLOW_DOTS
+  PIGTAIL_CIRCLE_HAIRS
+  FOLLICULAR_PLUGS
+  UPRIGHT_REGROWING_HAIRS
+  PUSTULES
+  PERIFOLLICULAR_SCALE
+  BLACK_DOTS
+  PERIFOLLICULAR_ERYTHEMA
+  RED_DOTS
+  INTERFOLLICULAR_SCALES
+  FOLLICULAR_DROPOUT
+  DYSPIGMENTATION
+  PERIPILAR_SIGN
+  ARBORIZING_DILATED_BLOOD_VESSELS
+  BROKEN_HAIRS
+  GLOMERULAR_BLOOD_VESSELS
+  V_SIGN
+  SERPIGINOUS_BLOOD_VESSELS
+  HOOK_HAIRS
+  PILI_TORTI
+  COILED_HAIRS
+  WIGGLY_SQUIGGLY_HAIR
+  FLAME_HAIRS
+  TRICHOPTILOSIS
+  TULIP_HAIRS
+  POLYTRICHIA
+  COMMA_HAIRS
+  MILKY_WHITE_STRUCTURELESS_AREAS
+  ZIGZAG_HAIRS
+}
+
+enum PhysicianAnatomicalMapView {
+  FRONT
+  TOP
+  RIGHT_SIDE
+  LEFT_SIDE
+}
+
+enum PhysicianAnatomicalRegionCode {
+  FRONTAL_SCALP
+  MID_SCALP
+  VERTEX_CROWN
+  RIGHT_TEMPORAL
+  LEFT_TEMPORAL
+  RIGHT_PARIETAL
+  LEFT_PARIETAL
+  RIGHT_OCCIPITAL
+  LEFT_OCCIPITAL
+}
+
+enum PhysicianDiagnosisDecisionAction {
+  ADD
+  REVISE
+  RESOLVE
+}
+
+enum PhysicianTreatmentDecisionAction {
+  START
+  CONTINUE_EXISTING
+  MODIFY
+  STOP
+}
+
+enum PhysicianProcedureDecisionAction {
+  PLAN
+  PERFORM
+  CANCEL_OR_DEFER
+}
+
+enum PhysicianProcedureCode {
+  PRP
+  MICRONEEDLING
+  HAIR_LASER
+  RED_LIGHT
+  MINOXIDIL_INJ
+  DUTASTERIDE_INJ
+  EXOSOME
+  CORTISONE_INJ
+  REGENERA
+  ACELL
+  HAIR_TRANSPLANT
+  OTHER
+}
+
+enum PatientContextValueKind {
+  SCALAR
+  STRUCTURED
+  LIST
+}
+
+enum PatientContextSource {
+  PATIENT_REPORTED
+}
+
+enum PhysicianMcuFvBasic {
+  L
+  M0
+  M1
+  M2
+  M3
+  C0
+  C1
+  C2
+  C3
+  U1
+  U2
+  U3
+}
+
+enum PhysicianMcuFvFrontal {
+  F1
+  F2
+  F3
+}
+
+enum PhysicianMcuFvVertex {
+  V1
+  V2
+  V3
+}
+
+enum VisitType {
+  INITIAL
+  FOLLOW_UP
+}
+
+enum ClinicalEpisodeStatus {
+  ACTIVE
+  CLOSED
+}
+
+enum VisitReasonRole {
+  PRIMARY
+  ADDITIONAL
+}
+
+enum ClinicalInterviewStatus {
+  UNDER_REVIEW
+  COMPLETED
+}
+
+enum ActivationSourceType {
+  SYSTEM
+  PATHWAY
+  RULE
+  ASSESSMENT
+  VISIT_REASON
+  PROCEDURE_SELECTION
+  LASER_SERVICE_SELECTION
+  PHYSICIAN_REVIEW_REQUIREMENT
+}
+
+enum QuestionResponseType {
+  BOOLEAN
+  SINGLE_SELECT
+  MULTI_SELECT
+  TEXT
+  LONG_TEXT
+  NUMBER
+  INTEGER
+  DATE
+  MONTH_YEAR
+  YEAR
+  SCALE
+}
+
+enum ResponseScopeType {
+  VISIT
+  PATHWAY
+  MODULE
+  PROCEDURE_SELECTION
+  LASER_SERVICE_SELECTION
+  MEDICATION_ITEM
+  CONDITION_ITEM
+  SYMPTOM_ITEM
+  EVENT_ITEM
+  BODY_AREA
+  VISUAL_CLASSIFICATION
+}
+
+enum QuestionDefinitionStatus {
+  APPROVED
+  DRAFT
+  RETIRED
+  ARCHIVE_ONLY
+}
+
+enum RuleEvaluationState {
+  TRUE
+  FALSE
+  UNKNOWN
+  PENDING
+  CONFIGURATION_ERROR
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  APPROVE
+  SUBMIT
+  CANCEL
+  EXPIRE
+  REACTIVATE
+  ACCESS_DENIED
+  PHYSICIAN_VISIT_DRAFT_STARTED
+  PHYSICIAN_VISIT_DRAFT_UPDATED
+  PHYSICIAN_ENCOUNTER_BEGAN
+  PHYSICIAN_VISIT_FINALIZED
+  PHYSICIAN_VISIT_LATE_FINALIZED
+  PHYSICIAN_VISIT_ADDENDUM_ADDED
+  PHYSICIAN_CLINICAL_CORRECTION
+  PATIENT_CONTEXT_REVIEWED
+  PATIENT_CONTEXT_RECONCILED
+}
+
+enum HairHistoryReviewStatus {
+  PATIENT_REPORTED_PREVIEW
+  REVIEWED_DRAFT
+  AMENDMENT_DRAFT
+}
+
+enum HairHistoryLayer {
+  MEASURES
+  SYMPTOMS
+  TREATMENTS
+  PROCEDURES
+  TRIGGERS
+  DIAGNOSES
+  TESTS_LABS
+  PHOTOS
+}
+
+enum HairHistoryItemSource {
+  PATIENT
+  PHYSICIAN
+}
+
+enum MediaStorageProvider {
+  LOCAL
+}
+
+enum MediaCategory {
+  BASELINE
+  FOLLOW_UP
+  PROCEDURE
+  OTHER
+}
+
+enum TimelineEventType {
+  MEDICATION
+  PROCEDURE
+  LAB
+  DIAGNOSIS
+  TRIGGER
+  OTHER
+}
+
+model Role {
+  id        String   @id @default(uuid()) @db.Uuid
+  code      String   @unique
+  nameAr    String
+  nameEn    String
+  createdAt DateTime @default(now())
+
+  users User[]
+}
+
+model ClinicScope {
+  id        String   @id @default(uuid()) @db.Uuid
+  code      String   @unique
+  nameAr    String
+  nameEn    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  devices                 ClinicDevice[]
+  externalIdentifiers     ExternalPatientIdentifier[]
+  invitations             InterviewInvitation[]
+  authenticatedSessions   AuthenticatedUserSession[]
+  clinicalEpisodes        ClinicalEpisode[]
+  visits                  Visit[]
+  physicianDiagnoses      PhysicianDiagnosis[]
+  physicianTreatments     PhysicianTreatmentCourse[]
+  physicianProcedurePlans PhysicianProcedurePlan[]
+}
+
+model ClinicDevice {
+  id                         String             @id @default(uuid()) @db.Uuid
+  clinicScopeId              String             @db.Uuid
+  name                       String
+  certificateFingerprintHash String             @unique
+  status                     ClinicDeviceStatus @default(APPROVED)
+  approvedAt                 DateTime?
+  revokedAt                  DateTime?
+  createdAt                  DateTime           @default(now())
+  updatedAt                  DateTime           @updatedAt
+
+  clinicScope           ClinicScope                @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+  authenticatedSessions AuthenticatedUserSession[]
+
+  @@index([clinicScopeId, status])
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String
+  email        String   @unique
+  passwordHash String
+  roleId       String   @db.Uuid
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  role Role @relation(fields: [roleId], references: [id], onDelete: Restrict)
+
+  createdInvitations             InterviewInvitation[]            @relation("InvitationCreatedBy")
+  reviewedClinicalInterviews     ClinicalInterview[]              @relation("InterviewReviewedBy")
+  updatedResponses               Response[]                       @relation("ResponseUpdatedBy")
+  assessedDualPerspectives       DualPerspectiveAssessment[]      @relation("DualPerspectiveAssessedBy")
+  resolvedReviewItems            ReviewItem[]                     @relation("ReviewItemResolvedBy")
+  clinicianAssessments           ClinicianAssessment[]            @relation("ClinicianAssessmentCreatedBy")
+  approvedHairHistories          ApprovedHairHistory[]            @relation("HairHistoryApprovedBy")
+  editedHairHistoryDrafts        HairHistoryDraft[]               @relation("HairHistoryDraftEditedBy")
+  recordedMeasurements           Measurement[]                    @relation("MeasurementRecordedBy")
+  recordedTimelineEvents         TimelineEvent[]                  @relation("TimelineEventRecordedBy")
+  recordedMediaAssets            MediaAsset[]                     @relation("MediaRecordedBy")
+  auditLogs                      AuditLog[]                       @relation("AuditChangedBy")
+  authenticatedSessions          AuthenticatedUserSession[]
+  updatedEpisodeFollowUpProfiles ClinicalEpisodeFollowUpProfile[] @relation("EpisodeFollowUpProfileUpdatedBy")
+  preparedPhysicianVisitDrafts   PhysicianVisitRecord[]           @relation("PhysicianVisitDraftStartedBy")
+  editedPhysicianVisitDrafts     PhysicianVisitRecord[]           @relation("PhysicianVisitLastDraftEditedBy")
+  finalizedPhysicianVisits       PhysicianVisitRecord[]           @relation("PhysicianVisitFinalizedBy")
+  physicianVisitAddenda          PhysicianVisitAddendum[]         @relation("PhysicianVisitAddendumAuthor")
+  patientContextReviews          PatientContextReview[]           @relation("PatientContextReviewedBy")
+  patientContextReconciliations  PatientContextReconciliation[]   @relation("PatientContextReconciledBy")
+
+  @@index([roleId])
+  @@index([isActive])
+}
+
+model AuthenticatedUserSession {
+  id               String    @id @default(uuid()) @db.Uuid
+  sessionTokenHash String    @unique
+  userId           String    @db.Uuid
+  clinicScopeId    String    @db.Uuid
+  clinicDeviceId   String?   @db.Uuid
+  expiresAt        DateTime
+  revokedAt        DateTime?
+  lastSeenAt       DateTime  @default(now())
+  createdAt        DateTime  @default(now())
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  clinicScope  ClinicScope   @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+  clinicDevice ClinicDevice? @relation(fields: [clinicDeviceId], references: [id], onDelete: Restrict)
+
+  @@index([userId, expiresAt])
+  @@index([clinicScopeId])
+  @@index([clinicDeviceId])
+}
+
+model Patient {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile                 PatientProfile?
+  conditions              Condition[]
+  medications             Medication[]
+  allergies               Allergy[]
+  surgeriesProcedures     SurgeryProcedure[]
+  interviewInvitations    InterviewInvitation[]
+  visits                  Visit[]
+  clinicalEpisodes        ClinicalEpisode[]
+  followUpSessionContexts FollowUpSessionContext[]
+  hairHistoryDraft        HairHistoryDraft?
+  approvedHairHistory     ApprovedHairHistory?
+  physicianHairJourney    PhysicianHairJourney?
+  mediaAssets             MediaAsset[]
+  auditLogs               AuditLog[]
+  externalIdentifiers     ExternalPatientIdentifier[]
+  patientContextVersions  PatientContextVersion[]
+  physicianDiagnoses      PhysicianDiagnosis[]
+  physicianTreatments     PhysicianTreatmentCourse[]
+  physicianProcedurePlans PhysicianProcedurePlan[]
+}
+
+model ExternalPatientIdentifier {
+  id              String                 @id @default(uuid()) @db.Uuid
+  patientId       String                 @db.Uuid
+  clinicScopeId   String                 @db.Uuid
+  identifierType  ExternalIdentifierType @default(CLINIC_MRN)
+  normalizedValue String
+  displayValue    String
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+
+  patient     Patient     @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  clinicScope ClinicScope @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+
+  @@unique([clinicScopeId, identifierType, normalizedValue])
+  @@index([patientId])
+}
+
+model PatientProfile {
+  id            String        @id @default(uuid()) @db.Uuid
+  patientId     String        @unique @db.Uuid
+  fullName      String
+  gender        Gender
+  dateOfBirth   DateTime      @db.Date
+  maritalStatus MaritalStatus
+  occupation    String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([gender])
+  @@index([maritalStatus])
+}
+
+model Condition {
+  id          String    @id @default(uuid()) @db.Uuid
+  patientId   String    @db.Uuid
+  name        String
+  status      String?
+  diagnosedAt DateTime?
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([name])
+}
+
+model Medication {
+  id        String    @id @default(uuid()) @db.Uuid
+  patientId String    @db.Uuid
+  name      String
+  dose      String?
+  frequency String?
+  startedAt DateTime?
+  endedAt   DateTime?
+  isCurrent Boolean   @default(true)
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([name])
+  @@index([isCurrent])
+}
+
+model Allergy {
+  id        String   @id @default(uuid()) @db.Uuid
+  patientId String   @db.Uuid
+  substance String
+  reaction  String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([substance])
+}
+
+model SurgeryProcedure {
+  id          String    @id @default(uuid()) @db.Uuid
+  patientId   String    @db.Uuid
+  name        String
+  performedAt DateTime?
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([name])
+}
+
+model InterviewInvitation {
+  id                          String    @id @default(uuid()) @db.Uuid
+  patientId                   String?   @db.Uuid
+  clinicScopeId               String    @db.Uuid
+  createdByUserId             String    @db.Uuid
+  temporaryMrnDisplayValue    String?
+  temporaryMrnNormalizedValue String?
+  createdAt                   DateTime  @default(now())
+  cancelledAt                 DateTime?
+  expiresAt                   DateTime?
+
+  patient     Patient?              @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  clinicScope ClinicScope           @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+  createdBy   User                  @relation("InvitationCreatedBy", fields: [createdByUserId], references: [id], onDelete: Restrict)
+  session     PatientAccessSession?
+
+  @@index([patientId])
+  @@index([clinicScopeId, temporaryMrnNormalizedValue])
+  @@index([createdByUserId])
+  @@index([expiresAt])
+}
+
+model PatientAccessSession {
+  id               String                     @id @default(uuid()) @db.Uuid
+  invitationId     String                     @unique @db.Uuid
+  sessionTokenHash String                     @unique
+  status           PatientSessionStatus       @default(ACTIVE)
+  closeReason      PatientSessionCloseReason?
+  lastActivityAt   DateTime                   @default(now())
+  expiresAt        DateTime
+  lockedAt         DateTime?
+  expiredAt        DateTime?
+  closedAt         DateTime?
+  createdAt        DateTime                   @default(now())
+  updatedAt        DateTime                   @updatedAt
+
+  invitation            InterviewInvitation     @relation(fields: [invitationId], references: [id], onDelete: Restrict)
+  draft                 DraftClinicalInterview?
+  followUpServerContext FollowUpSessionContext?
+}
+
+model DraftClinicalInterview {
+  id               String               @id @default(uuid()) @db.Uuid
+  sessionId        String               @unique @db.Uuid
+  contentVersionId String               @db.Uuid
+  patientInputJson Json
+  status           DraftInterviewStatus @default(DRAFT)
+  expiresAt        DateTime
+  submittedAt      DateTime?
+  cancelledAt      DateTime?
+  purgeAfter       DateTime?
+  purgedAt         DateTime?
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+
+  session        PatientAccessSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  contentVersion ContentVersion       @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  visit          Visit?
+
+  @@index([contentVersionId])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+model ClinicalService {
+  id       String  @id @default(uuid()) @db.Uuid
+  code     String  @unique
+  nameAr   String
+  nameEn   String
+  isActive Boolean @default(true)
+
+  reasonDefinitions     ReasonForVisitDefinition[]
+  pathwayDefinitions    ClinicalPathwayDefinition[]
+  assessmentDefinitions AssessmentDefinition[]
+}
+
+model ClinicalEpisode {
+  id                String                @id @default(uuid()) @db.Uuid
+  patientId         String                @db.Uuid
+  clinicScopeId     String?               @db.Uuid
+  primaryReasonCode String
+  status            ClinicalEpisodeStatus @default(ACTIVE)
+  openedAt          DateTime              @default(now())
+  closedAt          DateTime?
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @default(now()) @updatedAt
+
+  patient                 Patient                         @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  clinicScope             ClinicScope?                    @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+  visits                  Visit[]
+  followUpProfile         ClinicalEpisodeFollowUpProfile?
+  physicianDiagnoses      PhysicianDiagnosis[]
+  physicianTreatments     PhysicianTreatmentCourse[]
+  physicianProcedurePlans PhysicianProcedurePlan[]
+
+  @@index([patientId, status])
+  @@index([patientId, primaryReasonCode])
+  @@index([clinicScopeId, status])
+}
+
+model FollowUpSessionContext {
+  id             String   @id @default(uuid()) @db.Uuid
+  sessionId      String   @unique @db.Uuid
+  patientId      String   @db.Uuid
+  contextVersion String
+  contextJson    Json
+  generatedAt    DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  session PatientAccessSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  patient Patient              @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([generatedAt])
+}
+
+model ClinicalEpisodeFollowUpProfile {
+  id                        String   @id @default(uuid()) @db.Uuid
+  clinicalEpisodeId         String   @unique @db.Uuid
+  sourceVisitId             String   @db.Uuid
+  updatedByUserId           String   @db.Uuid
+  routingJson               Json
+  patientVisibleSummaryJson Json
+  approvedAt                DateTime
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  clinicalEpisode ClinicalEpisode @relation(fields: [clinicalEpisodeId], references: [id], onDelete: Restrict)
+  sourceVisit     Visit           @relation("FollowUpProfileSourceVisit", fields: [sourceVisitId], references: [id], onDelete: Restrict)
+  updatedBy       User            @relation("EpisodeFollowUpProfileUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: Restrict)
+
+  @@index([sourceVisitId])
+  @@index([updatedByUserId])
+  @@index([approvedAt])
+}
+
+model FollowUpVisitContext {
+  id                String   @id @default(uuid()) @db.Uuid
+  visitId           String   @unique @db.Uuid
+  sourceVisitId     String?  @db.Uuid
+  intent            String
+  snapshotJson      Json
+  confirmationsJson Json
+  patientDeltaJson  Json?
+  createdAt         DateTime @default(now())
+
+  visit       Visit  @relation("FollowUpVisit", fields: [visitId], references: [id], onDelete: Restrict)
+  sourceVisit Visit? @relation("FollowUpSourceVisit", fields: [sourceVisitId], references: [id], onDelete: Restrict)
+
+  @@index([sourceVisitId])
+}
+
+model Visit {
+  id                String      @id @default(uuid()) @db.Uuid
+  patientId         String      @db.Uuid
+  clinicScopeId     String?     @db.Uuid
+  sourceDraftId     String      @unique @db.Uuid
+  clinicalEpisodeId String?     @db.Uuid
+  visitType         VisitType
+  status            VisitStatus @default(CREATED)
+  visitOccurredAt   DateTime?
+  createdAt         DateTime    @default(now())
+  completedAt       DateTime?
+  cancelledAt       DateTime?
+  updatedAt         DateTime    @updatedAt
+
+  patient                Patient                @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  clinicScope            ClinicScope?           @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict)
+  sourceDraft            DraftClinicalInterview @relation(fields: [sourceDraftId], references: [id], onDelete: Restrict)
+  clinicalEpisode        ClinicalEpisode?       @relation(fields: [clinicalEpisodeId], references: [id], onDelete: Restrict)
+  followUpContext        FollowUpVisitContext?  @relation("FollowUpVisit")
+  followUpSourceContexts FollowUpVisitContext[] @relation("FollowUpSourceVisit")
+
+  reasons                       VisitReason[]
+  aestheticProcedureSelections  VisitAestheticProcedureSelection[]
+  laserServiceSelections        VisitLaserServiceSelection[]
+  clinicalInterview             ClinicalInterview?
+  generatedOutputs              GeneratedOutput[]
+  approvedHairHistories         ApprovedHairHistory[]
+  hairHistoryDraftSources       HairHistoryDraft[]                 @relation("HairHistoryDraftSourceVisit")
+  recordedMeasurements          Measurement[]                      @relation("MeasurementRecordedInVisit")
+  recordedTimelineEvents        TimelineEvent[]                    @relation("TimelineEventRecordedInVisit")
+  recordedMediaAssets           MediaAsset[]                       @relation("MediaRecordedInVisit")
+  followUpProfileSources        ClinicalEpisodeFollowUpProfile[]   @relation("FollowUpProfileSourceVisit")
+  physicianVisitRecord          PhysicianVisitRecord?
+  patientContextSourceVersions  PatientContextVersion[]            @relation("PatientContextSourceVisit")
+  patientContextSourceItems     PatientContextItem[]               @relation("PatientContextItemSourceVisit")
+  patientContextReviews         PatientContextReview[]
+  patientContextReconciliations PatientContextReconciliation[]
+  physicianDiagnosisDecisions   PhysicianDiagnosisDecision[]
+  physicianTreatmentDecisions   PhysicianTreatmentDecision[]
+  physicianProcedureDecisions   PhysicianProcedureDecision[]
+
+  @@index([patientId])
+  @@index([clinicalEpisodeId])
+  @@index([clinicScopeId, status])
+  @@index([visitType])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model PhysicianVisitRecord {
+  id                               String                     @id @default(uuid()) @db.Uuid
+  visitId                          String                     @unique @db.Uuid
+  status                           PhysicianVisitRecordStatus @default(DRAFT)
+  draftJson                        Json
+  draftVersion                     Int                        @default(1)
+  draftStartedByUserId             String                     @db.Uuid
+  draftStartedAt                   DateTime                   @default(now())
+  lastDraftEditedByUserId          String                     @db.Uuid
+  lastDraftEditedAt                DateTime                   @default(now())
+  finalizedByUserId                String?                    @db.Uuid
+  finalizedAt                      DateTime?
+  finalizedDraftVersion            Int?
+  finalizedDraftSha256             String?                    @db.VarChar(64)
+  originalFinalizationEvidenceJson Json?
+  isLateDocumentation              Boolean                    @default(false)
+  createdAt                        DateTime                   @default(now())
+  updatedAt                        DateTime                   @updatedAt
+
+  visit                Visit                         @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  draftStartedBy       User                          @relation("PhysicianVisitDraftStartedBy", fields: [draftStartedByUserId], references: [id], onDelete: Restrict)
+  lastDraftEditedBy    User                          @relation("PhysicianVisitLastDraftEditedBy", fields: [lastDraftEditedByUserId], references: [id], onDelete: Restrict)
+  finalizedBy          User?                         @relation("PhysicianVisitFinalizedBy", fields: [finalizedByUserId], references: [id], onDelete: Restrict)
+  addenda              PhysicianVisitAddendum[]
+  clinicalExamination  PhysicianClinicalExamination?
+  clinicalMeasurements PhysicianVisitMeasurement[]
+  patternAssessment    PhysicianPatternAssessment?
+  trichoscopy          PhysicianVisitTrichoscopy?
+  anatomicalMap        PhysicianVisitAnatomicalMap?
+  diagnosisDecisions   PhysicianDiagnosisDecision[]
+  treatmentDecisions   PhysicianTreatmentDecision[]
+  procedureDecisions   PhysicianProcedureDecision[]
+
+  @@index([status])
+  @@index([draftStartedAt])
+  @@index([draftStartedByUserId])
+  @@index([lastDraftEditedByUserId])
+  @@index([finalizedByUserId])
+  @@index([finalizedAt])
+}
+
+model PhysicianClinicalExamination {
+  id                     String                        @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                        @unique @db.Uuid
+  hairPull               PhysicianHairPullResult?
+  hairParting            PhysicianHairPartingFinding[] @default([])
+  createdAt              DateTime                      @default(now())
+  updatedAt              DateTime                      @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict)
+
+  @@index([createdAt])
+}
+
+model PhysicianVisitMeasurement {
+  id                     String                        @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                        @db.Uuid
+  code                   PhysicianVisitMeasurementCode
+  value                  Int
+  createdAt              DateTime                      @default(now())
+  updatedAt              DateTime                      @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict)
+
+  @@unique([physicianVisitRecordId, code])
+  @@index([physicianVisitRecordId])
+  @@index([code])
+}
+
+model PhysicianPatternAssessment {
+  id                     String                 @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                 @unique @db.Uuid
+  sinclair               Int?
+  mcuFvBasic             PhysicianMcuFvBasic?
+  mcuFvFrontal           PhysicianMcuFvFrontal?
+  mcuFvVertex            PhysicianMcuFvVertex?
+  hairLineMidlineCm      Decimal?               @db.Decimal
+  hairLineRightSideCm    Decimal?               @db.Decimal
+  hairLineLeftSideCm     Decimal?               @db.Decimal
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict)
+
+  @@index([createdAt])
+}
+
+model PhysicianVisitTrichoscopy {
+  id                     String   @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String   @unique @db.Uuid
+  otherFindingText       String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord               @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict)
+  findings             PhysicianVisitTrichoscopyFinding[]
+
+  @@index([createdAt])
+}
+
+model PhysicianVisitTrichoscopyFinding {
+  id                          String                          @id @default(uuid()) @db.Uuid
+  physicianVisitTrichoscopyId String                          @db.Uuid
+  code                        PhysicianTrichoscopyFindingCode
+  createdAt                   DateTime                        @default(now())
+
+  physicianVisitTrichoscopy PhysicianVisitTrichoscopy @relation(fields: [physicianVisitTrichoscopyId], references: [id], onDelete: Restrict, map: "PhysicianVisitTrichoscopyFinding_physicianVisitTrichoscopyId_fk")
+
+  @@unique([physicianVisitTrichoscopyId, code], map: "PhysicianVisitTrichoscopyFinding_physicianVisitTrichoscopyId_co")
+  @@index([physicianVisitTrichoscopyId], map: "PhysicianVisitTrichoscopyFinding_physicianVisitTrichoscopyId_id")
+  @@index([code])
+}
+
+model PhysicianVisitAnatomicalMap {
+  id                     String   @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String   @unique(map: "PVA_Map_pvr_key") @db.Uuid
+  templateVersion        Int      @default(1)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord             @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict, map: "PVA_Map_pvr_fk")
+  regions              PhysicianVisitAnatomicalRegion[]
+
+  @@index([createdAt], map: "PVA_Map_created_idx")
+}
+
+model PhysicianVisitAnatomicalRegion {
+  id                            String                     @id @default(uuid()) @db.Uuid
+  physicianVisitAnatomicalMapId String                     @db.Uuid
+  view                          PhysicianAnatomicalMapView
+  anatomicalRegionCode          PhysicianAnatomicalRegionCode?
+  geometry                      Json                       @db.JsonB
+  noteText                      String?
+  displayColorHex               String?
+  displayOrder                  Int
+  createdAt                     DateTime                   @default(now())
+  updatedAt                     DateTime                   @updatedAt
+
+  physicianVisitAnatomicalMap PhysicianVisitAnatomicalMap @relation(fields: [physicianVisitAnatomicalMapId], references: [id], onDelete: Restrict, map: "PVA_Region_map_fk")
+
+  @@unique([physicianVisitAnatomicalMapId, displayOrder], map: "PVA_Region_map_order_key")
+  @@index([physicianVisitAnatomicalMapId], map: "PVA_Region_map_idx")
+  @@index([view], map: "PVA_Region_view_idx")
+}
+
+model PhysicianVisitAddendum {
+  id                     String                     @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                     @db.Uuid
+  authorUserId           String                     @db.Uuid
+  type                   PhysicianVisitAddendumType
+  content                String
+  createdAt              DateTime                   @default(now())
+
+  physicianVisitRecord PhysicianVisitRecord @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict)
+  author               User                 @relation("PhysicianVisitAddendumAuthor", fields: [authorUserId], references: [id], onDelete: Restrict)
+
+  @@index([physicianVisitRecordId, createdAt])
+  @@index([authorUserId])
+}
+
+model PhysicianDiagnosis {
+  id                String   @id @default(uuid()) @db.Uuid
+  clinicalEpisodeId String   @db.Uuid
+  patientId         String   @db.Uuid
+  clinicScopeId     String   @db.Uuid
+  createdAt         DateTime @default(now())
+
+  clinicalEpisode ClinicalEpisode              @relation(fields: [clinicalEpisodeId], references: [id], onDelete: Restrict, map: "PD_episode_fk")
+  patient         Patient                      @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "PD_patient_fk")
+  clinicScope     ClinicScope                  @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict, map: "PD_clinic_fk")
+  decisions       PhysicianDiagnosisDecision[]
+
+  @@unique([id, clinicalEpisodeId, patientId, clinicScopeId], map: "PD_owner_key")
+  @@index([clinicalEpisodeId], map: "PD_episode_idx")
+  @@index([patientId], map: "PD_patient_idx")
+  @@index([clinicScopeId], map: "PD_clinic_idx")
+}
+
+model PhysicianDiagnosisDecision {
+  id                     String                           @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                           @db.Uuid
+  visitId                String                           @db.Uuid
+  diagnosisId            String                           @db.Uuid
+  clinicalEpisodeId      String                           @db.Uuid
+  patientId              String                           @db.Uuid
+  clinicScopeId          String                           @db.Uuid
+  action                 PhysicianDiagnosisDecisionAction
+  text                   String?
+  decisionOrder          Int
+  createdAt              DateTime                         @default(now())
+  updatedAt              DateTime                         @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict, map: "PDD_pvr_fk")
+  visit                Visit                @relation(fields: [visitId], references: [id], onDelete: Restrict, map: "PDD_visit_fk")
+  diagnosis            PhysicianDiagnosis   @relation(fields: [diagnosisId, clinicalEpisodeId, patientId, clinicScopeId], references: [id, clinicalEpisodeId, patientId, clinicScopeId], onDelete: Restrict, map: "PDD_diagnosis_owner_fk")
+
+  @@unique([physicianVisitRecordId, decisionOrder], map: "PDD_pvr_order_key")
+  @@unique([physicianVisitRecordId, diagnosisId], map: "PDD_pvr_diagnosis_key")
+  @@index([visitId], map: "PDD_visit_idx")
+  @@index([diagnosisId], map: "PDD_diagnosis_idx")
+  @@index([clinicalEpisodeId], map: "PDD_episode_idx")
+}
+
+model PhysicianTreatmentCourse {
+  id                String   @id @default(uuid()) @db.Uuid
+  clinicalEpisodeId String   @db.Uuid
+  patientId         String   @db.Uuid
+  clinicScopeId     String   @db.Uuid
+  createdAt         DateTime @default(now())
+
+  clinicalEpisode ClinicalEpisode              @relation(fields: [clinicalEpisodeId], references: [id], onDelete: Restrict, map: "PTC_episode_fk")
+  patient         Patient                      @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "PTC_patient_fk")
+  clinicScope     ClinicScope                  @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict, map: "PTC_clinic_fk")
+  decisions       PhysicianTreatmentDecision[]
+
+  @@unique([id, clinicalEpisodeId, patientId, clinicScopeId], map: "PTC_owner_key")
+  @@index([clinicalEpisodeId], map: "PTC_episode_idx")
+  @@index([patientId], map: "PTC_patient_idx")
+  @@index([clinicScopeId], map: "PTC_clinic_idx")
+}
+
+model PhysicianTreatmentDecision {
+  id                     String                           @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                           @db.Uuid
+  visitId                String                           @db.Uuid
+  treatmentCourseId      String                           @db.Uuid
+  clinicalEpisodeId      String                           @db.Uuid
+  patientId              String                           @db.Uuid
+  clinicScopeId          String                           @db.Uuid
+  action                 PhysicianTreatmentDecisionAction
+  name                   String?
+  regimenText            String?
+  noteText               String?
+  setsName               Boolean                          @default(false)
+  setsRegimen            Boolean                          @default(false)
+  setsNote               Boolean                          @default(false)
+  decisionOrder          Int
+  createdAt              DateTime                         @default(now())
+  updatedAt              DateTime                         @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord     @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict, map: "PTD_pvr_fk")
+  visit                Visit                    @relation(fields: [visitId], references: [id], onDelete: Restrict, map: "PTD_visit_fk")
+  treatmentCourse      PhysicianTreatmentCourse @relation(fields: [treatmentCourseId, clinicalEpisodeId, patientId, clinicScopeId], references: [id, clinicalEpisodeId, patientId, clinicScopeId], onDelete: Restrict, map: "PTD_course_owner_fk")
+
+  @@unique([physicianVisitRecordId, decisionOrder], map: "PTD_pvr_order_key")
+  @@unique([physicianVisitRecordId, treatmentCourseId], map: "PTD_pvr_course_key")
+  @@index([visitId], map: "PTD_visit_idx")
+  @@index([treatmentCourseId], map: "PTD_course_idx")
+  @@index([clinicalEpisodeId], map: "PTD_episode_idx")
+}
+
+model PhysicianProcedurePlan {
+  id                String   @id @default(uuid()) @db.Uuid
+  clinicalEpisodeId String   @db.Uuid
+  patientId         String   @db.Uuid
+  clinicScopeId     String   @db.Uuid
+  createdAt         DateTime @default(now())
+
+  clinicalEpisode ClinicalEpisode              @relation(fields: [clinicalEpisodeId], references: [id], onDelete: Restrict, map: "PPP_episode_fk")
+  patient         Patient                      @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "PPP_patient_fk")
+  clinicScope     ClinicScope                  @relation(fields: [clinicScopeId], references: [id], onDelete: Restrict, map: "PPP_clinic_fk")
+  decisions       PhysicianProcedureDecision[]
+
+  @@unique([id, clinicalEpisodeId, patientId, clinicScopeId], map: "PPP_owner_key")
+  @@index([clinicalEpisodeId], map: "PPP_episode_idx")
+  @@index([patientId], map: "PPP_patient_idx")
+  @@index([clinicScopeId], map: "PPP_clinic_idx")
+}
+
+model PhysicianProcedureDecision {
+  id                     String                           @id @default(uuid()) @db.Uuid
+  physicianVisitRecordId String                           @db.Uuid
+  visitId                String                           @db.Uuid
+  procedurePlanId        String?                          @db.Uuid
+  clinicalEpisodeId      String                           @db.Uuid
+  patientId              String                           @db.Uuid
+  clinicScopeId          String                           @db.Uuid
+  action                 PhysicianProcedureDecisionAction
+  procedureCode          PhysicianProcedureCode?
+  otherProcedureText     String?
+  plannedDate            DateTime?                        @db.Date
+  performedDate          DateTime?                        @db.Date
+  noteText               String?
+  decisionOrder          Int
+  createdAt              DateTime                         @default(now())
+  updatedAt              DateTime                         @updatedAt
+
+  physicianVisitRecord PhysicianVisitRecord    @relation(fields: [physicianVisitRecordId], references: [id], onDelete: Restrict, map: "PPD_pvr_fk")
+  visit                Visit                   @relation(fields: [visitId], references: [id], onDelete: Restrict, map: "PPD_visit_fk")
+  procedurePlan        PhysicianProcedurePlan? @relation(fields: [procedurePlanId, clinicalEpisodeId, patientId, clinicScopeId], references: [id, clinicalEpisodeId, patientId, clinicScopeId], onDelete: Restrict, map: "PPD_plan_owner_fk")
+
+  @@unique([physicianVisitRecordId, decisionOrder], map: "PPD_pvr_order_key")
+  @@unique([physicianVisitRecordId, procedurePlanId], map: "PPD_pvr_plan_key")
+  @@index([visitId], map: "PPD_visit_idx")
+  @@index([procedurePlanId], map: "PPD_plan_idx")
+  @@index([clinicalEpisodeId], map: "PPD_episode_idx")
+}
+
+model PatientContextDefinition {
+  id                   String                  @id @default(uuid()) @db.Uuid
+  code                 String                  @unique(map: "PCD_code_key")
+  valueKind            PatientContextValueKind
+  payloadSchemaVersion String
+  isActive             Boolean                 @default(true)
+  createdAt            DateTime                @default(now())
+
+  items PatientContextItem[]
+
+  @@index([isActive], map: "PCD_active_idx")
+}
+
+model PatientContextVersion {
+  id                        String   @id @default(uuid()) @db.Uuid
+  patientId                 String   @db.Uuid
+  sourceVisitId             String   @db.Uuid
+  sourceClinicalInterviewId String   @unique(map: "PCV_source_interview_key") @db.Uuid
+  sequence                  Int
+  fingerprint               String   @db.VarChar(64)
+  createdAt                 DateTime @default(now())
+
+  patient                 Patient                        @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "PCV_patient_fk")
+  sourceVisit             Visit                          @relation("PatientContextSourceVisit", fields: [sourceVisitId], references: [id], onDelete: Restrict, map: "PCV_source_visit_fk")
+  sourceClinicalInterview ClinicalInterview              @relation(fields: [sourceClinicalInterviewId], references: [id], onDelete: Restrict, map: "PCV_source_interview_fk")
+  items                   PatientContextItem[]
+  reviews                 PatientContextReview[]
+  reconciliations         PatientContextReconciliation[]
+
+  @@unique([patientId, sequence], map: "PCV_patient_sequence_key")
+  @@index([patientId, fingerprint], map: "PCV_patient_fingerprint_idx")
+  @@index([patientId, createdAt], map: "PCV_patient_created_idx")
+}
+
+model PatientContextItem {
+  id                        String               @id @default(uuid()) @db.Uuid
+  contextVersionId          String               @db.Uuid
+  definitionId              String               @db.Uuid
+  sourceType                PatientContextSource @default(PATIENT_REPORTED)
+  payloadJson               Json                 @db.JsonB
+  itemFingerprint           String               @db.VarChar(64)
+  sourceQuestionCodes       String[]
+  sourceVisitId             String               @db.Uuid
+  sourceClinicalInterviewId String               @db.Uuid
+  sourceUpdatedAt           DateTime
+  createdAt                 DateTime             @default(now())
+
+  contextVersion          PatientContextVersion          @relation(fields: [contextVersionId], references: [id], onDelete: Restrict, map: "PCI_version_fk")
+  definition              PatientContextDefinition       @relation(fields: [definitionId], references: [id], onDelete: Restrict, map: "PCI_definition_fk")
+  sourceVisit             Visit                          @relation("PatientContextItemSourceVisit", fields: [sourceVisitId], references: [id], onDelete: Restrict, map: "PCI_source_visit_fk")
+  sourceClinicalInterview ClinicalInterview              @relation("PatientContextItemSourceInterview", fields: [sourceClinicalInterviewId], references: [id], onDelete: Restrict, map: "PCI_source_interview_fk")
+  reconciliations         PatientContextReconciliation[]
+
+  @@unique([contextVersionId, definitionId], map: "PCI_version_definition_key")
+  @@index([definitionId], map: "PCI_definition_idx")
+  @@index([sourceVisitId], map: "PCI_source_visit_idx")
+}
+
+model PatientContextReview {
+  id               String   @id @default(uuid()) @db.Uuid
+  contextVersionId String   @db.Uuid
+  visitId          String   @db.Uuid
+  physicianUserId  String   @db.Uuid
+  reviewedAt       DateTime @default(now())
+
+  contextVersion PatientContextVersion @relation(fields: [contextVersionId], references: [id], onDelete: Restrict, map: "PCR_version_fk")
+  visit          Visit                 @relation(fields: [visitId], references: [id], onDelete: Restrict, map: "PCR_visit_fk")
+  physician      User                  @relation("PatientContextReviewedBy", fields: [physicianUserId], references: [id], onDelete: Restrict, map: "PCR_physician_fk")
+
+  @@index([contextVersionId, reviewedAt], map: "PCR_version_reviewed_idx")
+  @@index([visitId], map: "PCR_visit_idx")
+}
+
+model PatientContextReconciliation {
+  id               String   @id @default(uuid()) @db.Uuid
+  contextVersionId String   @db.Uuid
+  contextItemId    String   @db.Uuid
+  visitId          String   @db.Uuid
+  physicianUserId  String   @db.Uuid
+  reconciledAt     DateTime @default(now())
+
+  contextVersion PatientContextVersion @relation(fields: [contextVersionId], references: [id], onDelete: Restrict, map: "PCRN_version_fk")
+  contextItem    PatientContextItem    @relation(fields: [contextItemId], references: [id], onDelete: Restrict, map: "PCRN_item_fk")
+  visit          Visit                 @relation(fields: [visitId], references: [id], onDelete: Restrict, map: "PCRN_visit_fk")
+  physician      User                  @relation("PatientContextReconciledBy", fields: [physicianUserId], references: [id], onDelete: Restrict, map: "PCRN_physician_fk")
+
+  @@index([contextVersionId, reconciledAt], map: "PCRN_version_reconciled_idx")
+  @@index([contextItemId], map: "PCRN_item_idx")
+  @@index([visitId], map: "PCRN_visit_idx")
+}
+
+model ReasonForVisitDefinition {
+  id                String  @id @default(uuid()) @db.Uuid
+  code              String
+  clinicalServiceId String  @db.Uuid
+  contentVersionId  String  @db.Uuid
+  labelAr           String
+  labelEn           String
+  isActive          Boolean @default(true)
+
+  clinicalService ClinicalService @relation(fields: [clinicalServiceId], references: [id], onDelete: Restrict)
+  contentVersion  ContentVersion  @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  visitReasons    VisitReason[]
+
+  @@unique([contentVersionId, code])
+  @@index([clinicalServiceId])
+  @@index([contentVersionId])
+}
+
+model VisitReason {
+  id                 String          @id @default(uuid()) @db.Uuid
+  visitId            String          @db.Uuid
+  reasonDefinitionId String          @db.Uuid
+  role               VisitReasonRole
+  createdAt          DateTime        @default(now())
+
+  visit            Visit                    @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  reasonDefinition ReasonForVisitDefinition @relation(fields: [reasonDefinitionId], references: [id], onDelete: Restrict)
+
+  @@unique([visitId, reasonDefinitionId])
+  @@index([visitId])
+  @@index([reasonDefinitionId])
+  @@index([role])
+}
+
+model ClinicalInterview {
+  id               String                  @id @default(uuid()) @db.Uuid
+  visitId          String                  @unique @db.Uuid
+  status           ClinicalInterviewStatus @default(UNDER_REVIEW)
+  reviewedByUserId String?                 @db.Uuid
+  reviewedAt       DateTime?
+  completedAt      DateTime?
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
+
+  visit      Visit @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  reviewedBy User? @relation("InterviewReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: Restrict)
+
+  activePathways               ActivePathway[]
+  assessmentInstances          AssessmentInstance[]
+  activeLibraries              ActiveLibrary[]
+  routingEvaluations           RoutingEvaluation[]
+  questionInstances            QuestionInstance[]
+  reviewItems                  ReviewItem[]
+  clinicianAssessments         ClinicianAssessment[]
+  outputEligibilityEvaluations OutputEligibilityEvaluation[]
+  patientContextSourceVersion  PatientContextVersion?
+  patientContextSourceItems    PatientContextItem[]          @relation("PatientContextItemSourceInterview")
+
+  @@index([status])
+  @@index([reviewedByUserId])
+}
+
+model ContentVersion {
+  id          String    @id @default(uuid()) @db.Uuid
+  versionCode String    @unique
+  publishedAt DateTime?
+  isActive    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  drafts                        DraftClinicalInterview[]
+  reasonForVisitDefinitions     ReasonForVisitDefinition[]
+  pathwayDefinitions            ClinicalPathwayDefinition[]
+  assessmentDefinitions         AssessmentDefinition[]
+  clinicalLibraries             ClinicalLibrary[]
+  ruleVersions                  ContentVersionRuleVersion[]
+  aestheticProcedureDefinitions AestheticProcedureDefinition[]
+  laserServiceDefinitions       LaserServiceDefinition[]
+  generatedOutputs              GeneratedOutput[]
+}
+
+model ContentVersionRuleVersion {
+  contentVersionId String @db.Uuid
+  ruleVersionId    String @db.Uuid
+
+  contentVersion ContentVersion @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  ruleVersion    RuleVersion    @relation(fields: [ruleVersionId], references: [id], onDelete: Restrict)
+
+  @@id([contentVersionId, ruleVersionId])
+  @@index([ruleVersionId])
+}
+
+model AestheticProcedureDefinition {
+  id               String   @id @default(uuid()) @db.Uuid
+  contentVersionId String   @db.Uuid
+  code             String
+  labelAr          String
+  labelEn          String
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  contentVersion ContentVersion                     @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  selections     VisitAestheticProcedureSelection[]
+
+  @@unique([contentVersionId, code])
+  @@index([contentVersionId])
+  @@index([isActive])
+}
+
+model LaserServiceDefinition {
+  id               String   @id @default(uuid()) @db.Uuid
+  contentVersionId String   @db.Uuid
+  code             String
+  labelAr          String
+  labelEn          String
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  contentVersion ContentVersion               @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  selections     VisitLaserServiceSelection[]
+
+  @@unique([contentVersionId, code])
+  @@index([contentVersionId])
+  @@index([isActive])
+}
+
+model VisitAestheticProcedureSelection {
+  id                    String   @id @default(uuid()) @db.Uuid
+  visitId               String   @db.Uuid
+  procedureDefinitionId String   @db.Uuid
+  notes                 String?
+  createdAt             DateTime @default(now())
+
+  visit               Visit                        @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  procedureDefinition AestheticProcedureDefinition @relation(fields: [procedureDefinitionId], references: [id], onDelete: Restrict)
+
+  @@unique([visitId, procedureDefinitionId])
+  @@index([visitId])
+  @@index([procedureDefinitionId])
+}
+
+model VisitLaserServiceSelection {
+  id                       String   @id @default(uuid()) @db.Uuid
+  visitId                  String   @db.Uuid
+  laserServiceDefinitionId String   @db.Uuid
+  notes                    String?
+  createdAt                DateTime @default(now())
+
+  visit                  Visit                  @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  laserServiceDefinition LaserServiceDefinition @relation(fields: [laserServiceDefinitionId], references: [id], onDelete: Restrict)
+
+  @@unique([visitId, laserServiceDefinitionId])
+  @@index([visitId])
+  @@index([laserServiceDefinitionId])
+}
+
+model ClinicalPathwayDefinition {
+  id                String  @id @default(uuid()) @db.Uuid
+  code              String
+  clinicalServiceId String  @db.Uuid
+  contentVersionId  String  @db.Uuid
+  nameAr            String
+  nameEn            String
+  isActive          Boolean @default(true)
+
+  clinicalService ClinicalService @relation(fields: [clinicalServiceId], references: [id], onDelete: Restrict)
+  contentVersion  ContentVersion  @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  activePathways  ActivePathway[]
+
+  @@unique([code, contentVersionId])
+  @@index([clinicalServiceId])
+  @@index([contentVersionId])
+}
+
+model AssessmentDefinition {
+  id                String  @id @default(uuid()) @db.Uuid
+  code              String
+  clinicalServiceId String  @db.Uuid
+  contentVersionId  String  @db.Uuid
+  nameAr            String
+  nameEn            String
+  isActive          Boolean @default(true)
+
+  clinicalService     ClinicalService      @relation(fields: [clinicalServiceId], references: [id], onDelete: Restrict)
+  contentVersion      ContentVersion       @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  assessmentInstances AssessmentInstance[]
+
+  @@unique([code, contentVersionId])
+  @@index([clinicalServiceId])
+  @@index([contentVersionId])
+}
+
+model ClinicalLibrary {
+  id               String  @id @default(uuid()) @db.Uuid
+  code             String
+  contentVersionId String  @db.Uuid
+  nameAr           String
+  nameEn           String
+  isActive         Boolean @default(true)
+
+  contentVersion      ContentVersion       @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+  questionGroups      QuestionGroup[]
+  questionDefinitions QuestionDefinition[] @relation("QuestionDefinitionLibrary")
+  activeLibraries     ActiveLibrary[]
+
+  @@unique([code, contentVersionId])
+  @@index([contentVersionId])
+}
+
+model QuestionGroup {
+  id                String  @id @default(uuid()) @db.Uuid
+  clinicalLibraryId String  @db.Uuid
+  code              String
+  titleAr           String?
+  titleEn           String?
+  sortOrder         Int
+
+  clinicalLibrary     ClinicalLibrary      @relation(fields: [clinicalLibraryId], references: [id], onDelete: Restrict)
+  questionDefinitions QuestionDefinition[] @relation("QuestionGroupDefinitions")
+
+  @@unique([clinicalLibraryId, code])
+  @@unique([id, clinicalLibraryId])
+  @@index([clinicalLibraryId])
+}
+
+model QuestionDefinition {
+  id                      String                   @id @default(uuid()) @db.Uuid
+  clinicalLibraryId       String                   @db.Uuid
+  questionGroupId         String                   @db.Uuid
+  code                    String
+  version                 String
+  textAr                  String
+  textEn                  String
+  helpAr                  String?
+  helpEn                  String?
+  responseType            QuestionResponseType
+  visibilityRule          Json
+  requirednessRule        Json
+  validationRule          Json
+  responseScopePolicy     ResponseScopeType
+  dependencies            Json
+  orderingKey             String
+  outputEligibility       Json
+  provenanceBaseline      String
+  provenanceSourceFile    String
+  provenanceSourceSection String
+  status                  QuestionDefinitionStatus @default(DRAFT)
+  editableByPhysician     Boolean                  @default(true)
+  isDualPerspective       Boolean                  @default(false)
+  sortOrder               Int
+  isActive                Boolean                  @default(true)
+
+  clinicalLibrary   ClinicalLibrary            @relation("QuestionDefinitionLibrary", fields: [clinicalLibraryId], references: [id], onDelete: Restrict)
+  questionGroup     QuestionGroup              @relation("QuestionGroupDefinitions", fields: [questionGroupId, clinicalLibraryId], references: [id, clinicalLibraryId], onDelete: Restrict)
+  questionInstances QuestionInstance[]
+  options           QuestionOptionDefinition[]
+
+  @@unique([clinicalLibraryId, code])
+  @@index([clinicalLibraryId])
+  @@index([questionGroupId])
+  @@index([status])
+}
+
+model QuestionOptionDefinition {
+  id                   String   @id @default(uuid()) @db.Uuid
+  questionDefinitionId String   @db.Uuid
+  code                 String
+  labelAr              String
+  labelEn              String
+  sortOrder            Int
+  exclusiveWithCodes   Json
+  createdAt            DateTime @default(now())
+
+  questionDefinition QuestionDefinition @relation(fields: [questionDefinitionId], references: [id], onDelete: Restrict)
+
+  @@unique([questionDefinitionId, code])
+  @@index([questionDefinitionId, sortOrder])
+}
+
+model ActivePathway {
+  id                  String   @id @default(uuid()) @db.Uuid
+  clinicalInterviewId String   @db.Uuid
+  pathwayDefinitionId String   @db.Uuid
+  activatedAt         DateTime @default(now())
+
+  clinicalInterview  ClinicalInterview         @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  pathwayDefinition  ClinicalPathwayDefinition @relation(fields: [pathwayDefinitionId], references: [id], onDelete: Restrict)
+  activatedLibraries ActiveLibrary[]           @relation("ActiveLibrarySourcePathway")
+
+  @@unique([clinicalInterviewId, pathwayDefinitionId])
+  @@index([clinicalInterviewId])
+  @@index([pathwayDefinitionId])
+}
+
+model AssessmentInstance {
+  id                     String   @id @default(uuid()) @db.Uuid
+  clinicalInterviewId    String   @db.Uuid
+  assessmentDefinitionId String   @db.Uuid
+  createdAt              DateTime @default(now())
+
+  clinicalInterview    ClinicalInterview    @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  assessmentDefinition AssessmentDefinition @relation(fields: [assessmentDefinitionId], references: [id], onDelete: Restrict)
+  activatedLibraries   ActiveLibrary[]      @relation("ActiveLibrarySourceAssessment")
+
+  @@unique([clinicalInterviewId, assessmentDefinitionId])
+  @@index([clinicalInterviewId])
+  @@index([assessmentDefinitionId])
+}
+
+model ActiveLibrary {
+  id                         String               @id @default(uuid()) @db.Uuid
+  clinicalInterviewId        String               @db.Uuid
+  clinicalLibraryId          String               @db.Uuid
+  activationSourceType       ActivationSourceType
+  sourceActivePathwayId      String?              @db.Uuid
+  sourceRuleVersionId        String?              @db.Uuid
+  sourceAssessmentInstanceId String?              @db.Uuid
+  activatedAt                DateTime             @default(now())
+
+  clinicalInterview        ClinicalInterview   @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  clinicalLibrary          ClinicalLibrary     @relation(fields: [clinicalLibraryId], references: [id], onDelete: Restrict)
+  sourceActivePathway      ActivePathway?      @relation("ActiveLibrarySourcePathway", fields: [sourceActivePathwayId], references: [id], onDelete: Restrict)
+  sourceRuleVersion        RuleVersion?        @relation("ActiveLibrarySourceRule", fields: [sourceRuleVersionId], references: [id], onDelete: Restrict)
+  sourceAssessmentInstance AssessmentInstance? @relation("ActiveLibrarySourceAssessment", fields: [sourceAssessmentInstanceId], references: [id], onDelete: Restrict)
+
+  @@unique([clinicalInterviewId, clinicalLibraryId])
+  @@index([clinicalInterviewId])
+  @@index([clinicalLibraryId])
+  @@index([activationSourceType])
+  @@index([sourceActivePathwayId])
+  @@index([sourceRuleVersionId])
+  @@index([sourceAssessmentInstanceId])
+}
+
+model QuestionInstance {
+  id                   String            @id @default(uuid()) @db.Uuid
+  clinicalInterviewId  String            @db.Uuid
+  questionDefinitionId String            @db.Uuid
+  responseScopeType    ResponseScopeType
+  responseScopeKey     String
+  activatedAt          DateTime          @default(now())
+  becameInactiveAt     DateTime?
+  createdAt            DateTime          @default(now())
+
+  clinicalInterview         ClinicalInterview          @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  questionDefinition        QuestionDefinition         @relation(fields: [questionDefinitionId], references: [id], onDelete: Restrict)
+  response                  Response?
+  dualPerspectiveAssessment DualPerspectiveAssessment?
+  activationSources         QuestionActivationSource[]
+
+  @@unique([clinicalInterviewId, questionDefinitionId, responseScopeType, responseScopeKey])
+  @@index([clinicalInterviewId])
+  @@index([questionDefinitionId])
+}
+
+model QuestionActivationSource {
+  id                 String               @id @default(uuid()) @db.Uuid
+  questionInstanceId String               @db.Uuid
+  sourceType         ActivationSourceType
+  sourceKey          String
+  isRequired         Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+
+  questionInstance QuestionInstance @relation(fields: [questionInstanceId], references: [id], onDelete: Cascade)
+
+  @@unique([questionInstanceId, sourceType, sourceKey])
+  @@index([questionInstanceId])
+}
+
+model Response {
+  id                 String         @id @default(uuid()) @db.Uuid
+  questionInstanceId String         @unique @db.Uuid
+  valueJson          Json
+  currentSource      ResponseSource
+  updatedByUserId    String?        @db.Uuid
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  questionInstance     QuestionInstance         @relation(fields: [questionInstanceId], references: [id], onDelete: Restrict)
+  updatedBy            User?                    @relation("ResponseUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: Restrict)
+  repeatableItems      RepeatableResponseItem[]
+  clinicianAssessments ClinicianAssessment[]
+
+  @@index([updatedByUserId])
+}
+
+model RepeatableResponseItem {
+  id              String                @id @default(uuid()) @db.Uuid
+  responseId      String                @db.Uuid
+  valueJson       Json
+  approximateDate DateTime?             @db.Date
+  datePrecision   ClinicalDatePrecision @default(UNKNOWN)
+  sortOrder       Int
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+
+  response Response @relation(fields: [responseId], references: [id], onDelete: Cascade)
+
+  @@index([responseId])
+}
+
+model DualPerspectiveAssessment {
+  id                   String    @id @default(uuid()) @db.Uuid
+  questionInstanceId   String    @unique @db.Uuid
+  patientValueJson     Json?
+  physicianValueJson   Json?
+  effectiveValueJson   Json?
+  effectiveValueSource String?
+  assessedByUserId     String?   @db.Uuid
+  assessedAt           DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  questionInstance QuestionInstance @relation(fields: [questionInstanceId], references: [id], onDelete: Restrict)
+  assessedBy       User?            @relation("DualPerspectiveAssessedBy", fields: [assessedByUserId], references: [id], onDelete: Restrict)
+
+  @@index([assessedByUserId])
+}
+
+model RuleVersion {
+  id             String   @id @default(uuid()) @db.Uuid
+  code           String
+  version        String
+  ruleType       String
+  definitionJson Json
+  createdAt      DateTime @default(now())
+
+  contentVersions              ContentVersionRuleVersion[]
+  routingEvaluations           RoutingEvaluation[]
+  outputEligibilityEvaluations OutputEligibilityEvaluation[]
+  activatedLibraries           ActiveLibrary[]               @relation("ActiveLibrarySourceRule")
+
+  @@unique([code, version])
+  @@index([ruleType])
+}
+
+model RoutingEvaluation {
+  id                  String              @id @default(uuid()) @db.Uuid
+  clinicalInterviewId String              @db.Uuid
+  ruleVersionId       String              @db.Uuid
+  resultState         RuleEvaluationState
+  resultJson          Json?
+  evaluatedAt         DateTime            @default(now())
+
+  clinicalInterview ClinicalInterview @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  ruleVersion       RuleVersion       @relation(fields: [ruleVersionId], references: [id], onDelete: Restrict)
+
+  @@index([clinicalInterviewId])
+  @@index([ruleVersionId])
+  @@index([evaluatedAt])
+}
+
+model OutputEligibilityEvaluation {
+  id                  String   @id @default(uuid()) @db.Uuid
+  clinicalInterviewId String   @db.Uuid
+  ruleVersionId       String?  @db.Uuid
+  outputType          String
+  entityType          String?
+  entityId            String?
+  eligible            Boolean
+  evaluatedAt         DateTime @default(now())
+
+  clinicalInterview ClinicalInterview @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  ruleVersion       RuleVersion?      @relation(fields: [ruleVersionId], references: [id], onDelete: Restrict)
+
+  @@index([clinicalInterviewId])
+  @@index([ruleVersionId])
+  @@index([outputType])
+  @@index([eligible])
+}
+
+model ReviewItem {
+  id                  String    @id @default(uuid()) @db.Uuid
+  clinicalInterviewId String    @db.Uuid
+  entityType          String
+  entityId            String
+  note                String?
+  createdAt           DateTime  @default(now())
+  resolvedAt          DateTime?
+  resolvedByUserId    String?   @db.Uuid
+
+  clinicalInterview ClinicalInterview @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  resolvedBy        User?             @relation("ReviewItemResolvedBy", fields: [resolvedByUserId], references: [id], onDelete: Restrict)
+
+  @@index([clinicalInterviewId])
+  @@index([resolvedAt])
+  @@index([entityType, entityId])
+}
+
+model ClinicianAssessment {
+  id                  String   @id @default(uuid()) @db.Uuid
+  clinicalInterviewId String   @db.Uuid
+  responseId          String?  @db.Uuid
+  assessmentType      String
+  valueJson           Json?
+  note                String?
+  createdByUserId     String   @db.Uuid
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  clinicalInterview ClinicalInterview @relation(fields: [clinicalInterviewId], references: [id], onDelete: Restrict)
+  response          Response?         @relation(fields: [responseId], references: [id], onDelete: Restrict)
+  createdBy         User              @relation("ClinicianAssessmentCreatedBy", fields: [createdByUserId], references: [id], onDelete: Restrict)
+
+  @@index([clinicalInterviewId])
+  @@index([responseId])
+  @@index([createdByUserId])
+}
+
+model HairHistoryDraft {
+  id                 String                  @id @default(uuid()) @db.Uuid
+  patientId          String                  @unique @db.Uuid
+  sourceVisitId      String                  @db.Uuid
+  status             HairHistoryReviewStatus @default(PATIENT_REPORTED_PREVIEW)
+  baseRevision       Int                     @default(0)
+  lastEditedByUserId String?                 @db.Uuid
+  lastEditedAt       DateTime?
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+
+  patient      Patient                @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  sourceVisit  Visit                  @relation("HairHistoryDraftSourceVisit", fields: [sourceVisitId], references: [id], onDelete: Restrict)
+  lastEditedBy User?                  @relation("HairHistoryDraftEditedBy", fields: [lastEditedByUserId], references: [id], onDelete: Restrict)
+  items        HairHistoryDraftItem[]
+
+  @@index([sourceVisitId])
+  @@index([lastEditedByUserId])
+  @@index([status])
+}
+
+model HairHistoryDraftItem {
+  id                 String                @id @default(uuid()) @db.Uuid
+  hairHistoryDraftId String                @db.Uuid
+  layer              HairHistoryLayer
+  itemType           String
+  labelAr            String
+  labelEn            String
+  valueJson          Json
+  approximateDate    DateTime?             @db.Date
+  datePrecision      ClinicalDatePrecision @default(UNKNOWN)
+  source             HairHistoryItemSource @default(PATIENT)
+  sourceQuestionCode String?
+  sourceScopeKey     String?
+  sourceResponseId   String?               @db.Uuid
+  sourceItemIndex    Int?
+  isIncluded         Boolean               @default(true)
+  sortOrder          Int                   @default(0)
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+
+  hairHistoryDraft HairHistoryDraft @relation(fields: [hairHistoryDraftId], references: [id], onDelete: Cascade)
+
+  @@index([hairHistoryDraftId])
+  @@index([layer])
+  @@index([approximateDate])
+  @@index([sourceQuestionCode])
+}
+
+model ApprovedHairHistory {
+  id               String   @id @default(uuid()) @db.Uuid
+  patientId        String   @unique @db.Uuid
+  approvedByUserId String   @db.Uuid
+  approvedVisitId  String   @db.Uuid
+  approvedAt       DateTime
+  revision         Int      @default(1)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  patient       Patient           @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  approvedBy    User              @relation("HairHistoryApprovedBy", fields: [approvedByUserId], references: [id], onDelete: Restrict)
+  approvedVisit Visit             @relation(fields: [approvedVisitId], references: [id], onDelete: Restrict)
+  items         HairHistoryItem[]
+
+  @@index([approvedVisitId])
+  @@index([approvedByUserId])
+}
+
+model HairHistoryItem {
+  id                    String                @id @default(uuid()) @db.Uuid
+  approvedHairHistoryId String                @db.Uuid
+  itemType              String
+  valueJson             Json
+  approximateDate       DateTime?             @db.Date
+  datePrecision         ClinicalDatePrecision @default(UNKNOWN)
+  source                String?
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+
+  approvedHairHistory ApprovedHairHistory @relation(fields: [approvedHairHistoryId], references: [id], onDelete: Cascade)
+
+  @@index([approvedHairHistoryId])
+  @@index([itemType])
+}
+
+model PhysicianHairJourney {
+  id        String   @id @default(uuid()) @db.Uuid
+  patientId String   @unique @db.Uuid
+  startedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  patient        Patient         @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  measurements   Measurement[]
+  timelineEvents TimelineEvent[]
+  mediaAssets    MediaAsset[]
+}
+
+model MeasurementDefinition {
+  id       String  @id @default(uuid()) @db.Uuid
+  code     String  @unique
+  nameAr   String
+  nameEn   String
+  unitCode String?
+  isActive Boolean @default(true)
+
+  measurements Measurement[]
+}
+
+model Measurement {
+  id                      String   @id @default(uuid()) @db.Uuid
+  physicianHairJourneyId  String   @db.Uuid
+  recordedInVisitId       String   @db.Uuid
+  recordedByUserId        String   @db.Uuid
+  measurementDefinitionId String   @db.Uuid
+  value                   Decimal
+  measurementDate         DateTime
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  physicianHairJourney  PhysicianHairJourney  @relation(fields: [physicianHairJourneyId], references: [id], onDelete: Restrict)
+  recordedInVisit       Visit                 @relation("MeasurementRecordedInVisit", fields: [recordedInVisitId], references: [id], onDelete: Restrict)
+  recordedBy            User                  @relation("MeasurementRecordedBy", fields: [recordedByUserId], references: [id], onDelete: Restrict)
+  measurementDefinition MeasurementDefinition @relation(fields: [measurementDefinitionId], references: [id], onDelete: Restrict)
+
+  @@index([physicianHairJourneyId])
+  @@index([recordedInVisitId])
+  @@index([measurementDefinitionId])
+  @@index([measurementDate])
+}
+
+model TimelineEvent {
+  id                     String                @id @default(uuid()) @db.Uuid
+  physicianHairJourneyId String                @db.Uuid
+  recordedInVisitId      String                @db.Uuid
+  recordedByUserId       String                @db.Uuid
+  type                   TimelineEventType
+  title                  String?
+  description            String?
+  valueJson              Json?
+  eventDate              DateTime?             @db.Date
+  eventDatePrecision     ClinicalDatePrecision @default(UNKNOWN)
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+
+  physicianHairJourney PhysicianHairJourney @relation(fields: [physicianHairJourneyId], references: [id], onDelete: Restrict)
+  recordedInVisit      Visit                @relation("TimelineEventRecordedInVisit", fields: [recordedInVisitId], references: [id], onDelete: Restrict)
+  recordedBy           User                 @relation("TimelineEventRecordedBy", fields: [recordedByUserId], references: [id], onDelete: Restrict)
+
+  @@index([physicianHairJourneyId])
+  @@index([recordedInVisitId])
+  @@index([type])
+  @@index([eventDate])
+  @@index([eventDatePrecision])
+}
+
+model MediaTypeDefinition {
+  id       String  @id @default(uuid()) @db.Uuid
+  code     String  @unique
+  nameAr   String
+  nameEn   String
+  isActive Boolean @default(true)
+
+  mediaAssets MediaAsset[]
+}
+
+model MediaAsset {
+  id                     String               @id @default(uuid()) @db.Uuid
+  patientId              String               @db.Uuid
+  recordedInVisitId      String?              @db.Uuid
+  physicianHairJourneyId String?              @db.Uuid
+  recordedByUserId       String               @db.Uuid
+  mediaTypeDefinitionId  String               @db.Uuid
+  category               MediaCategory        @default(OTHER)
+  storageProvider        MediaStorageProvider @default(LOCAL)
+  storageKey             String               @unique
+  originalFilename       String?
+  mimeType               String?
+  sizeBytes              Int?
+  capturedAt             DateTime?
+  createdAt              DateTime             @default(now())
+
+  patient              Patient               @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  recordedInVisit      Visit?                @relation("MediaRecordedInVisit", fields: [recordedInVisitId], references: [id], onDelete: Restrict)
+  physicianHairJourney PhysicianHairJourney? @relation(fields: [physicianHairJourneyId], references: [id], onDelete: Restrict)
+  recordedBy           User                  @relation("MediaRecordedBy", fields: [recordedByUserId], references: [id], onDelete: Restrict)
+  mediaTypeDefinition  MediaTypeDefinition   @relation(fields: [mediaTypeDefinitionId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([recordedInVisitId])
+  @@index([physicianHairJourneyId])
+  @@index([mediaTypeDefinitionId])
+  @@index([category])
+  @@index([capturedAt])
+}
+
+model GeneratedOutput {
+  id               String   @id @default(uuid()) @db.Uuid
+  visitId          String   @db.Uuid
+  contentVersionId String   @db.Uuid
+  outputType       String
+  contentJson      Json
+  sourceMetaJson   Json?
+  generatorVersion String?
+  generatedAt      DateTime @default(now())
+
+  visit          Visit          @relation(fields: [visitId], references: [id], onDelete: Restrict)
+  contentVersion ContentVersion @relation(fields: [contentVersionId], references: [id], onDelete: Restrict)
+
+  @@index([visitId])
+  @@index([contentVersionId])
+  @@index([outputType])
+  @@index([generatedAt])
+}
+
+model AuditLog {
+  id              String      @id @default(uuid()) @db.Uuid
+  patientId       String?     @db.Uuid
+  entityType      String
+  entityId        String
+  fieldName       String?
+  action          AuditAction
+  oldValueJson    Json?
+  newValueJson    Json?
+  changedByUserId String?     @db.Uuid
+  changedAt       DateTime    @default(now())
+  reason          String?
+
+  patient   Patient? @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  changedBy User?    @relation("AuditChangedBy", fields: [changedByUserId], references: [id], onDelete: Restrict)
+
+  @@index([patientId])
+  @@index([entityType, entityId])
+  @@index([changedByUserId])
+  @@index([changedAt])
+}
